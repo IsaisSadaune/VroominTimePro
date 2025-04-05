@@ -313,8 +313,8 @@ TrailRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
-        value: 0.302521
+        time: 0.006122589
+        value: 0.08474755
         inSlope: -0.01342606
         outSlope: -0.01342606
         tangentMode: 0
@@ -322,8 +322,8 @@ TrailRenderer:
         inWeight: 0.33333334
         outWeight: 1
       - serializedVersion: 3
-        time: 0.5552137
-        value: 0.302521
+        time: 0.52460456
+        value: 0.098083735
         inSlope: 0.040197458
         outSlope: 0.040197458
         tangentMode: 0
@@ -333,11 +333,11 @@ TrailRenderer:
       - serializedVersion: 3
         time: 1
         value: 0
-        inSlope: -0.9928571
-        outSlope: -0.9928571
+        inSlope: -0.6700852
+        outSlope: -0.6700852
         tangentMode: 0
         weightedMode: 0
-        inWeight: 1
+        inWeight: 0.22322993
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -571,7 +571,7 @@ GameObject:
   - component: {fileID: -2923950036466502857}
   m_Layer: 0
   m_Name: Voiture
-  m_TagString: Untagged
+  m_TagString: Car
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -665,7 +665,6 @@ MonoBehaviour:
   driftCatchSpeed: 2.25
   bufferTiming: 0.5
   maxDriftAngle: 65
-  multiplayerManager: {fileID: 0}
   ChocVFX: {fileID: 6049994839898122673, guid: 1ccf157ebc52be141b66f8c8c1140905, type: 3}
   speedLost: 65
 --- !u!114 &-2923950036466502857
@@ -957,8 +956,8 @@ TrailRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
-        value: 0.302521
+        time: 0.006122589
+        value: 0.08474755
         inSlope: -0.01342606
         outSlope: -0.01342606
         tangentMode: 0
@@ -966,8 +965,8 @@ TrailRenderer:
         inWeight: 0.33333334
         outWeight: 1
       - serializedVersion: 3
-        time: 0.5552137
-        value: 0.302521
+        time: 0.52460456
+        value: 0.098083735
         inSlope: 0.040197458
         outSlope: 0.040197458
         tangentMode: 0
@@ -977,11 +976,11 @@ TrailRenderer:
       - serializedVersion: 3
         time: 1
         value: 0
-        inSlope: -0.9928571
-        outSlope: -0.9928571
+        inSlope: -0.6700852
+        outSlope: -0.6700852
         tangentMode: 0
         weightedMode: 0
-        inWeight: 1
+        inWeight: 0.22322993
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2

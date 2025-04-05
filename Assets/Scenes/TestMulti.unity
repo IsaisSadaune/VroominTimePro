@@ -164,11 +164,67 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -2923950036466502857, guid: aa89c80a19ae91040a73715cbc4080dd, type: 3}
       propertyPath: m_DefaultActionMap
-      value: 9a1f0fbc-b477-451b-b53b-afb374ab03a5
+      value: Car
       objectReference: {fileID: 0}
     - target: {fileID: -2923950036466502857, guid: aa89c80a19ae91040a73715cbc4080dd, type: 3}
       propertyPath: m_NotificationBehavior
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -2923950036466502857, guid: aa89c80a19ae91040a73715cbc4080dd, type: 3}
+      propertyPath: m_DeviceLostEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -2923950036466502857, guid: aa89c80a19ae91040a73715cbc4080dd, type: 3}
+      propertyPath: m_DeviceRegainedEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -2923950036466502857, guid: aa89c80a19ae91040a73715cbc4080dd, type: 3}
+      propertyPath: m_ControlsChangedEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -2923950036466502857, guid: aa89c80a19ae91040a73715cbc4080dd, type: 3}
+      propertyPath: m_DeviceLostEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -2923950036466502857, guid: aa89c80a19ae91040a73715cbc4080dd, type: 3}
+      propertyPath: m_DeviceLostEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 261349742}
+    - target: {fileID: -2923950036466502857, guid: aa89c80a19ae91040a73715cbc4080dd, type: 3}
+      propertyPath: m_DeviceRegainedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -2923950036466502857, guid: aa89c80a19ae91040a73715cbc4080dd, type: 3}
+      propertyPath: m_ControlsChangedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -2923950036466502857, guid: aa89c80a19ae91040a73715cbc4080dd, type: 3}
+      propertyPath: m_DeviceLostEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -2923950036466502857, guid: aa89c80a19ae91040a73715cbc4080dd, type: 3}
+      propertyPath: m_DeviceLostEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: -2923950036466502857, guid: aa89c80a19ae91040a73715cbc4080dd, type: 3}
+      propertyPath: m_DeviceRegainedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -2923950036466502857, guid: aa89c80a19ae91040a73715cbc4080dd, type: 3}
+      propertyPath: m_ControlsChangedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -2923950036466502857, guid: aa89c80a19ae91040a73715cbc4080dd, type: 3}
+      propertyPath: m_DeviceLostEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: -2923950036466502857, guid: aa89c80a19ae91040a73715cbc4080dd, type: 3}
+      propertyPath: m_DeviceLostEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: -2923950036466502857, guid: aa89c80a19ae91040a73715cbc4080dd, type: 3}
+      propertyPath: m_DeviceLostEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7326527532483379056, guid: aa89c80a19ae91040a73715cbc4080dd, type: 3}
       propertyPath: m_Name
@@ -227,6 +283,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa89c80a19ae91040a73715cbc4080dd, type: 3}
+--- !u!114 &261349742 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8351692593727493842, guid: aa89c80a19ae91040a73715cbc4080dd, type: 3}
+  m_PrefabInstance: {fileID: 261349741}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2100162ec008bf47beab004854abc8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &830088592
 GameObject:
   m_ObjectHideFlags: 0
@@ -345,6 +412,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1230799828}
   - component: {fileID: 1230799827}
+  - component: {fileID: 1230799829}
   m_Layer: 0
   m_Name: MultiplayerManager
   m_TagString: Untagged
@@ -383,6 +451,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1230799829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1230799826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 621567455fd1c4ceb811cc8a00b6a1a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NotificationBehavior: 2
+  m_MaxPlayerCount: -1
+  m_AllowJoining: 0
+  m_JoinBehavior: 0
+  m_PlayerJoinedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_PlayerLeftEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_JoinAction:
+    m_UseReference: 0
+    m_Action:
+      m_Name: 
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 869c8f3e-790a-47e1-b19b-d480cffe2fd2
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 0}
+  m_PlayerPrefab: {fileID: 7326527532483379056, guid: aa89c80a19ae91040a73715cbc4080dd, type: 3}
+  m_SplitScreen: 0
+  m_MaintainAspectRatioInSplitScreen: 0
+  m_FixedNumberOfSplitScreens: -1
+  m_SplitScreenRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
 --- !u!1 &1377753161
 GameObject:
   m_ObjectHideFlags: 0

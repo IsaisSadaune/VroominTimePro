@@ -1,70 +1,68 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using TMPro;
 
 public class MultiplayerManager : MonoBehaviour
 {
+    private static MultiplayerManager instance = null;
+    public static MultiplayerManager Instance => instance;
+
+
     public List<GameObject> players;
     public List<Transform> spawnPoint;
     public bool settingUpPlayer = true;
     public float timer;
-    
-    void Start()
+    private PlayerInputManager playerInputManager;
+
+    void Awake()
     {
-        
+        if (instance != null && instance != this)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+        else
+        {
+            instance = this;
+        }
+        DontDestroyOnLoad(this.gameObject);
+        playerInputManager = GetComponent<PlayerInputManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-      
-    }
+       
 
-    public void StartRaceM()
-    {
-        foreach(GameObject car in players) 
-        {
-                car.GetComponent<PlayerInput>().SwitchCurrentActionMap("Car");
-        }
-        settingUpPlayer = false;
 
     }
 
 
-    public void Victory(GameObject winner)
+
+
+    public void ChangeMenu(GameObject oldMenu, GameObject newMenu)
     {
-        settingUpPlayer = true;
+        StartCoroutine(DisablePlayer(2));
+        oldMenu.transform.DOMove(new Vector3(0, -48, 0), 1.3f).SetEase(Ease.InBack);
+        newMenu.transform.DOMove(new Vector3(0, 0, 0), 2).SetEase(Ease.OutQuad);
+
+    }
+
+    public IEnumerator DisablePlayer(float waitTime)
+    {
+        playerInputManager.DisableJoining();
         foreach (GameObject car in players)
         {
-
-            car.GetComponent<PlayerInput>().SwitchCurrentActionMap("Vide");
+            car.GetComponent<PlayerInput>().DeactivateInput();
         }
-
-    
-
-        Invoke("StartPick", 2f);
-    }
-
-    void StartPick()
-    {
-        TPBack();
-
-    }
-    public void TPBack()
-    {
-        for (int i = 0; i < players.Count; i++)
-        {
-            players[i].transform.position = spawnPoint[i].position;
-            players[i].transform.rotation = spawnPoint[i].rotation;
-        }
-
+        yield return new WaitForSeconds(2);
         foreach (GameObject car in players)
         {
-
-            car.GetComponent<PlayerInput>().SwitchCurrentActionMap("BeforeRace");
+            car.GetComponent<PlayerInput>().ActivateInput();
         }
-    }
+        playerInputManager.EnableJoining();
 
+    }
 }

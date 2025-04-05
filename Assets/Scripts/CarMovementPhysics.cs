@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using System;
+using static UnityEditor.Experimental.GraphView.GraphView;
 public class CarMovementPhysics : MonoBehaviour
 {
     [Header("Statistics")]
@@ -38,7 +36,6 @@ public class CarMovementPhysics : MonoBehaviour
 
     [Header("References")]
    
-    [SerializeField] private MultiplayerManager multiplayerManager;
 
     [SerializeField] private GameObject ChocVFX;
 
@@ -54,12 +51,9 @@ public class CarMovementPhysics : MonoBehaviour
     private float isAccelerating;
     private Rigidbody rb;
     private float speedActu = 0;
-
-    private void Awake()
-    {
-        carInput = new CarInput();
-        multiplayerManager.players.Add(gameObject);
-    }
+    private GameObject e;
+    private MultiplayerManager multiplayer;
+    
    
 
     //______________________________________________[Subscribing Function To read Values Of Inputs Events]____________________________________________
@@ -81,12 +75,23 @@ public class CarMovementPhysics : MonoBehaviour
     {
         carInput.Enable();
     }
-   
+
+    private void Awake()
+    {
+
+        carInput = new CarInput();
+        multiplayer = MultiplayerManager.Instance;
+        multiplayer.players.Add(gameObject);
+    }
+
     void Start()
     {
+
         moveDirection = transform.forward;
         rb = GetComponent<Rigidbody>();
         maxSpeed = speed;
+        Vector3 spawnPoint = multiplayer.spawnPoint[multiplayer.players.IndexOf(gameObject)].position;
+        transform.position = spawnPoint + new Vector3(0, 0.23f, 0);
     }
 
     
@@ -142,7 +147,10 @@ public class CarMovementPhysics : MonoBehaviour
         }
     }
 
-
+    public void TestEventArg(string argument)
+    {
+        Debug.Log(argument);
+    }
    
 
 }
