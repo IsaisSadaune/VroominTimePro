@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System;
 
 public class MultiplayerManager : MonoBehaviour
 {
     private static MultiplayerManager instance = null;
     public static MultiplayerManager Instance => instance;
 
+    public delegate void LeaveHandler();
+    public LeaveHandler PlayerLeaveEvent;
 
     public List<GameObject> players;
     public List<Transform> spawnPoint;
@@ -34,12 +37,11 @@ public class MultiplayerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
-
+        
 
     }
 
-
+    
 
 
     public void ChangeMenu(GameObject oldMenu, GameObject newMenu)

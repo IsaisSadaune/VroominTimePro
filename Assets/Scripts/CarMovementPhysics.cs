@@ -68,18 +68,14 @@ public class CarMovementPhysics : MonoBehaviour
     {
         isAccelerating = ctx.ReadValue<float>();
     }
-
+   
 
     //__________________________________________________________[Algorithm]__________________________________________________________________________
-    private void OnEnable()
-    {
-        carInput.Enable();
-    }
+    
 
     private void Awake()
     {
 
-        carInput = new CarInput();
         multiplayer = MultiplayerManager.Instance;
         multiplayer.players.Add(gameObject);
     }
@@ -147,10 +143,5 @@ public class CarMovementPhysics : MonoBehaviour
         }
     }
 
-    public void TestEventArg(string argument)
-    {
-        Debug.Log(argument);
-    }
-   
 
 }

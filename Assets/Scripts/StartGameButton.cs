@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class StartGameButton : MonoBehaviour
 {
-    private MultiplayerManager multiplayerManager;
-    private GameManager gameManager;
+   
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        multiplayerManager = MultiplayerManager.Instance;
-        gameManager = GameManager.Instance;
+        MultiplayerManager.Instance.PlayerLeaveEvent += CheckForStartGame;
+
     }
 
     // Update is called once per frame
@@ -18,21 +17,26 @@ public class StartGameButton : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position,2.2f);
+       CheckForStartGame();
+        
+    }
+
+    private void CheckForStartGame()
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 2.2f);
         int numbeOfPlayer = 0;
         foreach (Collider collider in hitColliders)
         {
-            if(collider.gameObject.CompareTag("Car"))
+            if (collider.gameObject.CompareTag("Car"))
             {
                 numbeOfPlayer++;
             }
         }
         Debug.Log(numbeOfPlayer);
-        if(numbeOfPlayer == multiplayerManager.players.Count)
+        if (numbeOfPlayer == MultiplayerManager.Instance.players.Count)
         {
-            gameManager.ChangeMenu();
+            GameManager.Instance.ChangeMenu();
             GetComponent<Collider>().enabled = false;
         }
-        
     }
 }

@@ -569,6 +569,7 @@ GameObject:
   - component: {fileID: 1353451897015624882}
   - component: {fileID: 8351692593727493842}
   - component: {fileID: -2923950036466502857}
+  - component: {fileID: 6857082026848131161}
   m_Layer: 0
   m_Name: Voiture
   m_TagString: Car
@@ -724,11 +725,71 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: d2a06e32-7475-40a2-977b-f22343017899
     m_ActionName: 'Car/Accelerating[/Keyboard/upArrow]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8351692593727493842}
+        m_TargetAssemblyTypeName: CarMovementPhysics, Assembly-CSharp
+        m_MethodName: SetTurnInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 655efdff-6aa1-48e2-8f63-e1d8cfa9ed04
+    m_ActionName: 'MenuinTimeAM/Turn[/Keyboard/a,/Keyboard/d,/DualShock4GamepadHID/dpad/left,/DualShock4GamepadHID/dpad/right,/DualShock4GamepadHID/leftStick/x,/Keyboard/leftArrow,/Keyboard/rightArrow]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8351692593727493842}
+        m_TargetAssemblyTypeName: CarMovementPhysics, Assembly-CSharp
+        m_MethodName: SetIsAccelerating
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 20f0cec0-95f8-4ace-a1de-a4fac71cdda8
+    m_ActionName: 'MenuinTimeAM/Accelerate[/Keyboard/upArrow,/DualShock4GamepadHID/rightTrigger,/Keyboard/shift,/Keyboard/w]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6857082026848131161}
+        m_TargetAssemblyTypeName: PlayerLogic, Assembly-CSharp
+        m_MethodName: Leave
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c2debce1-e1b8-4979-8275-59640721f618
+    m_ActionName: MenuinTimeAM/Leave
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Car
+  m_DefaultActionMap: MenuinTimeAM
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &6857082026848131161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7326527532483379056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c8897acf9ce48c41a47e1da0f232ab3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7803300709291911737
 GameObject:
   m_ObjectHideFlags: 0

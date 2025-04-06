@@ -24,7 +24,7 @@ public partial class @CarInput: IInputActionCollection2, IDisposable
     ""name"": ""CarInput"",
     ""maps"": [
         {
-            ""name"": ""Car"",
+            ""name"": ""VroominTimeAM"",
             ""id"": ""8ebb5754-0417-4f56-a5d7-0ee1ec78af87"",
             ""actions"": [
                 {
@@ -37,7 +37,7 @@ public partial class @CarInput: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Accelerating"",
+                    ""name"": ""Accelerate"",
                     ""type"": ""Value"",
                     ""id"": ""d2a06e32-7475-40a2-977b-f22343017899"",
                     ""expectedControlType"": ""Axis"",
@@ -164,7 +164,7 @@ public partial class @CarInput: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Accelerating"",
+                    ""action"": ""Accelerate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -175,7 +175,7 @@ public partial class @CarInput: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Accelerating"",
+                    ""action"": ""Accelerate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -186,7 +186,7 @@ public partial class @CarInput: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Accelerating"",
+                    ""action"": ""Accelerate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -197,7 +197,218 @@ public partial class @CarInput: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Accelerating"",
+                    ""action"": ""Accelerate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""MenuinTimeAM"",
+            ""id"": ""92fc6ad6-012c-48b1-be89-1f1be350d5fd"",
+            ""actions"": [
+                {
+                    ""name"": ""Turn"",
+                    ""type"": ""Value"",
+                    ""id"": ""655efdff-6aa1-48e2-8f63-e1d8cfa9ed04"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Accelerate"",
+                    ""type"": ""Value"",
+                    ""id"": ""20f0cec0-95f8-4ace-a1de-a4fac71cdda8"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Leave"",
+                    ""type"": ""Button"",
+                    ""id"": ""c2debce1-e1b8-4979-8275-59640721f618"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Hold(duration=3)"",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""1c7b82dd-9149-4a47-8e10-a7bca943cb94"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Turn"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""537e8b9d-9567-4a94-a39c-52ae8edaa1f9"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Turn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""9b2e80dc-607f-492e-973a-082456ca378b"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Turn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""4c95da5a-1382-4771-bcc0-2e1d0cfd6fd8"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Turn"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""fe6f1b23-f5ee-4e1d-8a38-48c14e075e8c"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Turn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""11e415b0-25ae-4a4a-b2df-49863228b6d5"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Turn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""03d6ffc5-83d9-4dd7-9fc1-5cbc9e1a8c04"",
+                    ""path"": ""<Gamepad>/leftStick/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Turn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""d51f36ab-7625-4572-9632-482eb49606eb"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Turn"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""bb44b346-efdb-4805-accf-c6fe9e6d4e9f"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Turn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""38ab9dd2-01cd-4a35-a26a-9582fab95c8b"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Turn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""22c40898-49ec-47c2-91f8-e16647eb6d98"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Accelerate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""edcb03fd-5422-4e85-bba4-21b9b20c1004"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Accelerate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d2a5a144-1a46-4fd6-ae48-fda5d37a805c"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Accelerate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""955d4f50-261c-4d91-a4b8-3a43c9baeb5f"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Accelerate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b97f721f-afc9-4ce8-a824-5620d4e5ca49"",
+                    ""path"": ""<Keyboard>/b"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Leave"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0b28cfea-e4bb-4e1f-b00f-1b3cea3087a9"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Leave"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -234,15 +445,21 @@ public partial class @CarInput: IInputActionCollection2, IDisposable
         }
     ]
 }");
-        // Car
-        m_Car = asset.FindActionMap("Car", throwIfNotFound: true);
-        m_Car_Turn = m_Car.FindAction("Turn", throwIfNotFound: true);
-        m_Car_Accelerating = m_Car.FindAction("Accelerating", throwIfNotFound: true);
+        // VroominTimeAM
+        m_VroominTimeAM = asset.FindActionMap("VroominTimeAM", throwIfNotFound: true);
+        m_VroominTimeAM_Turn = m_VroominTimeAM.FindAction("Turn", throwIfNotFound: true);
+        m_VroominTimeAM_Accelerate = m_VroominTimeAM.FindAction("Accelerate", throwIfNotFound: true);
+        // MenuinTimeAM
+        m_MenuinTimeAM = asset.FindActionMap("MenuinTimeAM", throwIfNotFound: true);
+        m_MenuinTimeAM_Turn = m_MenuinTimeAM.FindAction("Turn", throwIfNotFound: true);
+        m_MenuinTimeAM_Accelerate = m_MenuinTimeAM.FindAction("Accelerate", throwIfNotFound: true);
+        m_MenuinTimeAM_Leave = m_MenuinTimeAM.FindAction("Leave", throwIfNotFound: true);
     }
 
     ~@CarInput()
     {
-        UnityEngine.Debug.Assert(!m_Car.enabled, "This will cause a leak and performance issues, CarInput.Car.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_VroominTimeAM.enabled, "This will cause a leak and performance issues, CarInput.VroominTimeAM.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_MenuinTimeAM.enabled, "This will cause a leak and performance issues, CarInput.MenuinTimeAM.Disable() has not been called.");
     }
 
     public void Dispose()
@@ -301,59 +518,121 @@ public partial class @CarInput: IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // Car
-    private readonly InputActionMap m_Car;
-    private List<ICarActions> m_CarActionsCallbackInterfaces = new List<ICarActions>();
-    private readonly InputAction m_Car_Turn;
-    private readonly InputAction m_Car_Accelerating;
-    public struct CarActions
+    // VroominTimeAM
+    private readonly InputActionMap m_VroominTimeAM;
+    private List<IVroominTimeAMActions> m_VroominTimeAMActionsCallbackInterfaces = new List<IVroominTimeAMActions>();
+    private readonly InputAction m_VroominTimeAM_Turn;
+    private readonly InputAction m_VroominTimeAM_Accelerate;
+    public struct VroominTimeAMActions
     {
         private @CarInput m_Wrapper;
-        public CarActions(@CarInput wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Turn => m_Wrapper.m_Car_Turn;
-        public InputAction @Accelerating => m_Wrapper.m_Car_Accelerating;
-        public InputActionMap Get() { return m_Wrapper.m_Car; }
+        public VroominTimeAMActions(@CarInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Turn => m_Wrapper.m_VroominTimeAM_Turn;
+        public InputAction @Accelerate => m_Wrapper.m_VroominTimeAM_Accelerate;
+        public InputActionMap Get() { return m_Wrapper.m_VroominTimeAM; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(CarActions set) { return set.Get(); }
-        public void AddCallbacks(ICarActions instance)
+        public static implicit operator InputActionMap(VroominTimeAMActions set) { return set.Get(); }
+        public void AddCallbacks(IVroominTimeAMActions instance)
         {
-            if (instance == null || m_Wrapper.m_CarActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_CarActionsCallbackInterfaces.Add(instance);
+            if (instance == null || m_Wrapper.m_VroominTimeAMActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_VroominTimeAMActionsCallbackInterfaces.Add(instance);
             @Turn.started += instance.OnTurn;
             @Turn.performed += instance.OnTurn;
             @Turn.canceled += instance.OnTurn;
-            @Accelerating.started += instance.OnAccelerating;
-            @Accelerating.performed += instance.OnAccelerating;
-            @Accelerating.canceled += instance.OnAccelerating;
+            @Accelerate.started += instance.OnAccelerate;
+            @Accelerate.performed += instance.OnAccelerate;
+            @Accelerate.canceled += instance.OnAccelerate;
         }
 
-        private void UnregisterCallbacks(ICarActions instance)
+        private void UnregisterCallbacks(IVroominTimeAMActions instance)
         {
             @Turn.started -= instance.OnTurn;
             @Turn.performed -= instance.OnTurn;
             @Turn.canceled -= instance.OnTurn;
-            @Accelerating.started -= instance.OnAccelerating;
-            @Accelerating.performed -= instance.OnAccelerating;
-            @Accelerating.canceled -= instance.OnAccelerating;
+            @Accelerate.started -= instance.OnAccelerate;
+            @Accelerate.performed -= instance.OnAccelerate;
+            @Accelerate.canceled -= instance.OnAccelerate;
         }
 
-        public void RemoveCallbacks(ICarActions instance)
+        public void RemoveCallbacks(IVroominTimeAMActions instance)
         {
-            if (m_Wrapper.m_CarActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_VroominTimeAMActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
-        public void SetCallbacks(ICarActions instance)
+        public void SetCallbacks(IVroominTimeAMActions instance)
         {
-            foreach (var item in m_Wrapper.m_CarActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_VroominTimeAMActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_CarActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_VroominTimeAMActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
-    public CarActions @Car => new CarActions(this);
+    public VroominTimeAMActions @VroominTimeAM => new VroominTimeAMActions(this);
+
+    // MenuinTimeAM
+    private readonly InputActionMap m_MenuinTimeAM;
+    private List<IMenuinTimeAMActions> m_MenuinTimeAMActionsCallbackInterfaces = new List<IMenuinTimeAMActions>();
+    private readonly InputAction m_MenuinTimeAM_Turn;
+    private readonly InputAction m_MenuinTimeAM_Accelerate;
+    private readonly InputAction m_MenuinTimeAM_Leave;
+    public struct MenuinTimeAMActions
+    {
+        private @CarInput m_Wrapper;
+        public MenuinTimeAMActions(@CarInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Turn => m_Wrapper.m_MenuinTimeAM_Turn;
+        public InputAction @Accelerate => m_Wrapper.m_MenuinTimeAM_Accelerate;
+        public InputAction @Leave => m_Wrapper.m_MenuinTimeAM_Leave;
+        public InputActionMap Get() { return m_Wrapper.m_MenuinTimeAM; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(MenuinTimeAMActions set) { return set.Get(); }
+        public void AddCallbacks(IMenuinTimeAMActions instance)
+        {
+            if (instance == null || m_Wrapper.m_MenuinTimeAMActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_MenuinTimeAMActionsCallbackInterfaces.Add(instance);
+            @Turn.started += instance.OnTurn;
+            @Turn.performed += instance.OnTurn;
+            @Turn.canceled += instance.OnTurn;
+            @Accelerate.started += instance.OnAccelerate;
+            @Accelerate.performed += instance.OnAccelerate;
+            @Accelerate.canceled += instance.OnAccelerate;
+            @Leave.started += instance.OnLeave;
+            @Leave.performed += instance.OnLeave;
+            @Leave.canceled += instance.OnLeave;
+        }
+
+        private void UnregisterCallbacks(IMenuinTimeAMActions instance)
+        {
+            @Turn.started -= instance.OnTurn;
+            @Turn.performed -= instance.OnTurn;
+            @Turn.canceled -= instance.OnTurn;
+            @Accelerate.started -= instance.OnAccelerate;
+            @Accelerate.performed -= instance.OnAccelerate;
+            @Accelerate.canceled -= instance.OnAccelerate;
+            @Leave.started -= instance.OnLeave;
+            @Leave.performed -= instance.OnLeave;
+            @Leave.canceled -= instance.OnLeave;
+        }
+
+        public void RemoveCallbacks(IMenuinTimeAMActions instance)
+        {
+            if (m_Wrapper.m_MenuinTimeAMActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IMenuinTimeAMActions instance)
+        {
+            foreach (var item in m_Wrapper.m_MenuinTimeAMActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_MenuinTimeAMActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public MenuinTimeAMActions @MenuinTimeAM => new MenuinTimeAMActions(this);
     private int m_ClavierSourisSchemeIndex = -1;
     public InputControlScheme ClavierSourisScheme
     {
@@ -372,9 +651,15 @@ public partial class @CarInput: IInputActionCollection2, IDisposable
             return asset.controlSchemes[m_ManettesSchemeIndex];
         }
     }
-    public interface ICarActions
+    public interface IVroominTimeAMActions
     {
         void OnTurn(InputAction.CallbackContext context);
-        void OnAccelerating(InputAction.CallbackContext context);
+        void OnAccelerate(InputAction.CallbackContext context);
+    }
+    public interface IMenuinTimeAMActions
+    {
+        void OnTurn(InputAction.CallbackContext context);
+        void OnAccelerate(InputAction.CallbackContext context);
+        void OnLeave(InputAction.CallbackContext context);
     }
 }
