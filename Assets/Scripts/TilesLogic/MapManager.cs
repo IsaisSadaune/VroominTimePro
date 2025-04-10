@@ -6,11 +6,12 @@ public class MapManager : MonoBehaviour
     public static MapManager Instance => instance;
 
 
-    public Tiles[,] Map { get; private set; } = new Tiles[10, 10];
+    public int[,] Map { get; private set; } = new int[10, 10];
     public Vector2Int position = new(0, 0);
     [SerializeField] private MapVisuals visuals;
+    [field:SerializeField] public BlocList BlocList { get; private set; }
 
-    private Tile actualTile;
+    [field:SerializeField] public int ActiveTile1x1 { get; private set; }
 
 
     private void Awake()
@@ -26,17 +27,24 @@ public class MapManager : MonoBehaviour
         }
         DontDestroyOnLoad(this.gameObject);
 
+        CreateMap();
+        ChangeActiveTileToBlue();
+    }
+
+    private void CreateMap()
+    {
+
         //création de la map
         for (int i = 0; i < 10; i++)
         {
             for (int j = 0; j < 10; j++)
             {
-                Map[i, j] = Tiles.startingBloc;
+                Map[i, j] = 4;
             }
         }
 
-        Map[0, 0] = Tiles.depart;
-        Map[9, 9] = Tiles.arrivee;
+        Map[0, 0] = 1;
+        Map[9, 9] = 0;
         visuals.SetVisual();
     }
 
@@ -67,22 +75,18 @@ public class MapManager : MonoBehaviour
         visuals.ApplyMovement();
     }
 
-    [ContextMenu("left")]
     public void Left()
     {
         Deplacement("left");
     }
-    [ContextMenu("right")]
     public void Right()
     {
         Deplacement("right");
     }
-    [ContextMenu("up")]
     public void Up()
     {
         Deplacement("up");
     }
-    [ContextMenu("down")]
     public void Down()
     {
         Deplacement("down");
@@ -91,27 +95,40 @@ public class MapManager : MonoBehaviour
     [ContextMenu("placeTile")]
     public void PlaceTile()
     {
-        if (Map[position.x, position.y] == Tiles.depart ||
-            Map[position.x, position.y] == Tiles.arrivee) Debug.Log("pas possible");
+        if (Map[position.x, position.y] == 0 ||
+            Map[position.x, position.y] == 1) Debug.Log("pas possible");
         else
         {
-            Map[position.x, position.y] = Tiles.placedBloc;
+            Map[position.x, position.y] = ActiveTile1x1;
             visuals.ApplyPlacement();
         }
     }
 
-    public void SetActiveTile(Tile t)
+    public void ChangeActiveTile(int id)
     {
-        actualTile = t;
+        ActiveTile1x1 = id;
+        visuals.ApplyChangeTile();
     }
 
+    [ContextMenu("Setup Pink Tile")]
+    public void ChangeActiveTileToPink()
+    {
+        ChangeActiveTile(2);
+    }
 
-}
-
-public enum Tiles
-{
-    depart,
-    arrivee,
-    startingBloc,
-    placedBloc,
+    [ContextMenu("Setup Blue Tile")]
+    public void ChangeActiveTileToBlue()
+    {
+        ChangeActiveTile(3);
+    }
+    [ContextMenu("Rotate Right")]
+    public void RotateRight()
+    {
+        visuals.ApplyRotationRight();
+    }
+    [ContextMenu("Rotate Left")]
+    public void RotateLeft()
+    {
+        visuals.ApplyRotationLeft();
+    }
 }
