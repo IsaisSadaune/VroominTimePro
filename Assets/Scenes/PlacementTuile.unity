@@ -2543,7 +2543,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   position: {x: 1, y: 1}
   visuals: {fileID: 1876427884}
-  <blocList>k__BackingField: {fileID: 738463479}
+  <BlocList>k__BackingField: {fileID: 738463479}
   <ActiveTile1x1>k__BackingField: 0
 --- !u!4 &1876427883
 Transform:
