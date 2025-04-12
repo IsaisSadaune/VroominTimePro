@@ -3,7 +3,22 @@ using System.Collections.Generic;
 
 public class BlocList : MonoBehaviour
 {
-    [field: SerializeField] public List<VisualBloc> Blocs { get; private set; }
+    public static BlocList blocList = null;
+    public static BlocList AllBlocsList  => blocList;
+
+    private void Awake()
+    {
+        if (blocList != null && blocList != this)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+        else
+        {
+            blocList = this;
+        }
+    }
+        [field: SerializeField] public List<VisualBloc> Blocs { get; private set; }
 
     public VisualBloc GetBloc(int id)
     {
@@ -14,5 +29,4 @@ public class BlocList : MonoBehaviour
         Debug.Log("id inconnu");
         return Blocs[0];
     }
-
 }
