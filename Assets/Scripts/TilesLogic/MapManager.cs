@@ -8,8 +8,9 @@ public class MapManager : MonoBehaviour
 
     public VisualBloc[,] Map { get; private set; } = new VisualBloc[10, 10];
     public Vector2Int position = new(0, 0);
+    public int rotation = 0;
     [SerializeField] private MapVisuals visuals;
-    [field:SerializeField] public VisualTile ActiveTile { get; private set; }
+    [field: SerializeField] public VisualTile ActiveTile { get; private set; }
 
 
     private void Awake()
@@ -78,17 +79,39 @@ public class MapManager : MonoBehaviour
     [ContextMenu("placeTile")]
     public void PlaceTile()
     {
-        if (Map[position.x, position.y].id == 0 ||
-            Map[position.x, position.y].id == 1 ) Debug.Log("pas possible");
-        else
+
+        for (int i = 0; i < ActiveTile.blocs.Count; i++)
         {
-            for(int i=0;i<ActiveTile.blocs.Count;i++)
+            if (ActiveTile.position[i] + position == new Vector2Int(0, 0)
+                || ActiveTile.position[i] + position == new Vector2Int(9, 9))
             {
-                Map[ActiveTile.position[i].x, ActiveTile.position[i].y] = ActiveTile.blocs[i];
-                visuals.ApplyPlacement(
-                    position.x + ActiveTile.position[i].x, 
-                    position.y + ActiveTile.position[i].y, 
-                    ActiveTile.blocs[i].bloc);
+                Debug.Log("erreur");
+                //break;
+            }
+            else
+            {
+                int _xCoordonate =ActiveTile.position[i].x;
+                int _yCoordonate =ActiveTile.position[i].y;
+                int _pivot;
+                //verifier si on peut appliquer la rotation à la logique
+                //si on peut appliquer la rotation aux coordonnées
+                for (int x = 0; x < rotation; x++)
+                {
+                    _pivot = _xCoordonate;
+                    _xCoordonate = _yCoordonate;
+                    _yCoordonate = -_pivot;
+                }
+                _xCoordonate += position.x;
+                _yCoordonate += position.y;
+
+                if (_xCoordonate < Map.GetLength(0) && _yCoordonate < Map.GetLength(1) && _xCoordonate >= 0 && _yCoordonate >= 0)
+                {
+                    Map[ActiveTile.position[i].x, ActiveTile.position[i].y] = ActiveTile.blocs[i];
+                    visuals.ApplyPlacement(
+                        _xCoordonate,
+                        _yCoordonate,
+                        ActiveTile.blocs[i].bloc);
+                }
             }
         }
     }
@@ -110,10 +133,12 @@ public class MapManager : MonoBehaviour
     }
     public void RotateRight()
     {
+        rotation = (rotation + 1) % 4;
         visuals.ApplyRotationRight();
     }
     public void RotateLeft()
     {
+        rotation = (rotation - 1) % 4;
         visuals.ApplyRotationLeft();
     }
     public void Left()

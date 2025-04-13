@@ -11,8 +11,6 @@ public class MapVisuals : MonoBehaviour
 
 
     private List<GameObject> selectedTile = new();
-    //private GameObject selectedBloc;
-
 
     private GameObject[,] visualMap = new GameObject[10, 10];
 
@@ -40,6 +38,10 @@ public class MapVisuals : MonoBehaviour
     {
         MoveCursor();
         MoveActiveTile();
+        for (int i = 0; i < Instance.rotation; i++)
+        {
+            ApplyRotationRight();
+        }
     }
     public void ApplyChangeTile()
     {
