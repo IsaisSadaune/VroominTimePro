@@ -30,24 +30,44 @@ public class PrefabChildExtractor : EditorWindow
 
     }
 
+    //LOGIQUE DE SCRIPTABLE
+
     private void CreateChildPrefab(GameObject prefab)
     {
         GameObject instance = (GameObject)PrefabUtility.InstantiatePrefab(prefab);
 
         string prefabPath = AssetDatabase.GetAssetPath(prefab);
         string folderPath = Path.GetDirectoryName(prefabPath);
+        string Chemin = Path.Combine(folderPath, $"{prefab.name}_Tile.asset");
+
 
         VisualTile tileObject = ScriptableObject.CreateInstance<VisualTile>();
-        string Chemin = Path.Combine(folderPath, $"{prefab.name}_Tile.asset");
+
+
         for (int i = 0; i < instance.transform.childCount; i++)
         {
             Transform child = instance.transform.GetChild(i);
+            string assetPath = Path.Combine(folderPath, $"{child.name.Trim()}_Data.asset");
+
+            VisualBloc existingSO = AssetDatabase.LoadAssetAtPath<VisualBloc>(assetPath);
+
             VisualBloc so = ScriptableObject.CreateInstance<VisualBloc>();
-            string assetPath = Path.Combine(folderPath, $"{child.name}_Data.asset");
+
             GameObject childInstance = child.gameObject;
+
             GameObject sourcePrefab = (GameObject)PrefabUtility.GetCorrespondingObjectFromSource(childInstance);
-            so.bloc = sourcePrefab;
-            AssetDatabase.CreateAsset(so, assetPath);
+
+            if (existingSO != null)
+            {
+                so = existingSO;
+            }
+            else
+            {
+                so = ScriptableObject.CreateInstance<VisualBloc>();
+                so.bloc = sourcePrefab;
+                AssetDatabase.CreateAsset(so, assetPath);
+            }
+
             tileObject.blocs.Add(so);
             Vector2Int positionBloc = new Vector2Int(Mathf.RoundToInt(child.position.x), Mathf.RoundToInt(child.position.z));
             tileObject.position.Add(positionBloc);
