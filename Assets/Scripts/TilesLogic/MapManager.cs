@@ -138,7 +138,8 @@ public class MapManager : MonoBehaviour
     }
     public void RotateLeft()
     {
-        rotation = (rotation - 1) % 4;
+        
+        rotation = ((rotation - 1) % 4) < 0 ? 3 : (rotation - 1) % 4;
         visuals.ApplyRotationLeft();
     }
     public void Left()
