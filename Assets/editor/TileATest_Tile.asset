@@ -10,12 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 191dd8a304508cb4896e311a078e97c6, type: 3}
-  m_Name: TestTile1x2
+  m_Name: TileATest_Tile
   m_EditorClassIdentifier: 
   blocs:
-  - {fileID: 11400000, guid: 2097fc75363ee5a4ca6c69e93dba106b, type: 2}
-  - {fileID: 11400000, guid: 2097fc75363ee5a4ca6c69e93dba106b, type: 2}
+  - {fileID: 11400000, guid: 33607e649d0153e4cbb1fed6aa9e8652, type: 2}
+  - {fileID: 11400000, guid: 38035f87e2dabd146a83903a188cabd5, type: 2}
+  - {fileID: 11400000, guid: 46a92e82044ab5c489595ba73146f701, type: 2}
   position:
   - {x: 0, y: 0}
+  - {x: 0, y: 1}
   - {x: 1, y: 0}
-  rotation: 0000000002000000
+  rotation: 000000000000000000000000
