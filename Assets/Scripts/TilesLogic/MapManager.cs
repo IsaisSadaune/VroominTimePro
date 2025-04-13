@@ -2,16 +2,15 @@ using UnityEngine;
 
 public class MapManager : MonoBehaviour
 {
+    //Singleton
     public static MapManager instance = null;
     public static MapManager Instance => instance;
 
-
-    public int[,] Map { get; private set; } = new int[10, 10];
+    public VisualBloc[,] Map { get; private set; } = new VisualBloc[10, 10];
     public Vector2Int position = new(0, 0);
+    public int rotation = 0;
     [SerializeField] private MapVisuals visuals;
-    [field:SerializeField] public BlocList BlocList { get; private set; }
-
-    [field:SerializeField] public int ActiveTile1x1 { get; private set; }
+    [field: SerializeField] public VisualTile ActiveTile { get; private set; }
 
 
     private void Awake()
@@ -28,7 +27,6 @@ public class MapManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
 
         CreateMap();
-        ChangeActiveTileToBlue();
     }
 
     private void CreateMap()
@@ -39,12 +37,16 @@ public class MapManager : MonoBehaviour
         {
             for (int j = 0; j < 10; j++)
             {
-                Map[i, j] = 4;
+                Map[i, j] = BlocList.blocList.GetBloc(4);
             }
         }
 
-        Map[0, 0] = 1;
-        Map[9, 9] = 0;
+        Map[0, 0] = BlocList.blocList.GetBloc(1);
+        Map[9, 9] = BlocList.blocList.GetBloc(0);
+
+
+        //ActiveTile = TileList.tileList.Tiles[1];
+
         visuals.SetVisual();
     }
 
@@ -74,7 +76,72 @@ public class MapManager : MonoBehaviour
         }
         visuals.ApplyMovement();
     }
+    [ContextMenu("placeTile")]
+    public void PlaceTile()
+    {
 
+        for (int i = 0; i < ActiveTile.blocs.Count; i++)
+        {
+            if (ActiveTile.position[i] + position == new Vector2Int(0, 0)
+                || ActiveTile.position[i] + position == new Vector2Int(9, 9))
+            {
+                Debug.Log("erreur");
+                //break;
+            }
+            else
+            {
+                int _xCoordonate =ActiveTile.position[i].x;
+                int _yCoordonate =ActiveTile.position[i].y;
+                int _pivot;
+                //verifier si on peut appliquer la rotation à la logique
+                //si on peut appliquer la rotation aux coordonnées
+                for (int x = 0; x < rotation; x++)
+                {
+                    _pivot = _xCoordonate;
+                    _xCoordonate = _yCoordonate;
+                    _yCoordonate = -_pivot;
+                }
+                _xCoordonate += position.x;
+                _yCoordonate += position.y;
+
+                if (_xCoordonate < Map.GetLength(0) && _yCoordonate < Map.GetLength(1) && _xCoordonate >= 0 && _yCoordonate >= 0)
+                {
+                    Map[ActiveTile.position[i].x, ActiveTile.position[i].y] = ActiveTile.blocs[i];
+                    visuals.ApplyPlacement(
+                        _xCoordonate,
+                        _yCoordonate,
+                        ActiveTile.blocs[i].bloc);
+                }
+            }
+        }
+    }
+
+    public void ChangeActiveTile(VisualTile id)
+    {
+        ActiveTile = id;
+        visuals.ApplyChangeTile();
+    }
+    [ContextMenu("Setup Pink Tile")]
+    public void ChangeActiveTileToPink()
+    {
+        ChangeActiveTile(TileList.tileList.Tiles[0]);
+    }
+    [ContextMenu("Setup 1x2 Tile")]
+    public void ChangeActiveTileTo1x2()
+    {
+        ChangeActiveTile(TileList.tileList.Tiles[1]);
+    }
+    public void RotateRight()
+    {
+        rotation = (rotation + 1) % 4;
+        visuals.ApplyRotationRight();
+    }
+    public void RotateLeft()
+    {
+        
+        rotation = ((rotation - 1) % 4) < 0 ? 3 : (rotation - 1) % 4;
+        visuals.ApplyRotationLeft();
+    }
     public void Left()
     {
         Deplacement("left");
@@ -90,45 +157,5 @@ public class MapManager : MonoBehaviour
     public void Down()
     {
         Deplacement("down");
-    }
-
-    [ContextMenu("placeTile")]
-    public void PlaceTile()
-    {
-        if (Map[position.x, position.y] == 0 ||
-            Map[position.x, position.y] == 1) Debug.Log("pas possible");
-        else
-        {
-            Map[position.x, position.y] = ActiveTile1x1;
-            visuals.ApplyPlacement();
-        }
-    }
-
-    public void ChangeActiveTile(int id)
-    {
-        ActiveTile1x1 = id;
-        visuals.ApplyChangeTile();
-    }
-
-    [ContextMenu("Setup Pink Tile")]
-    public void ChangeActiveTileToPink()
-    {
-        ChangeActiveTile(2);
-    }
-
-    [ContextMenu("Setup Blue Tile")]
-    public void ChangeActiveTileToBlue()
-    {
-        ChangeActiveTile(3);
-    }
-    [ContextMenu("Rotate Right")]
-    public void RotateRight()
-    {
-        visuals.ApplyRotationRight();
-    }
-    [ContextMenu("Rotate Left")]
-    public void RotateLeft()
-    {
-        visuals.ApplyRotationLeft();
     }
 }
