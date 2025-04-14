@@ -651,6 +651,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelSelection
       objectReference: {fileID: 0}
+    - target: {fileID: 7293559623587468134, guid: a73ba379173be3d409fcdbfe5c12e7f7, type: 3}
+      propertyPath: sceneName
+      value: CourseDeBase
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

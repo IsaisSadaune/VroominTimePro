@@ -18,11 +18,10 @@ public class PlayerLogic : MonoBehaviour
 
     
 
-    void Start()
+    void Awake()
     {
         multiplayer = MultiplayerManager.Instance;
-        GetComponent<PlayerLogic>();
-        
+
     }
 
     // Update is called once per frame

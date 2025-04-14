@@ -4,6 +4,7 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System;
+using UnityEngine.SceneManagement;
 
 public class MultiplayerManager : MonoBehaviour
 {
@@ -32,17 +33,26 @@ public class MultiplayerManager : MonoBehaviour
         }
         DontDestroyOnLoad(this.gameObject);
         playerInputManager = GetComponent<PlayerInputManager>();
+        SceneManager.sceneLoaded += StartSceneVroomin;
     }
 
-    // Update is called once per frame
-    void Update()
+  
+    private void StartSceneVroomin(Scene scene, LoadSceneMode mode)
     {
-        
+        SpawnAllPlayers();
 
     }
 
+    private void SpawnAllPlayers()
+    {
+        foreach (GameObject car in players)
+        {
+            car.GetComponent<CarMovementPhysics>().SpawnPlayer();
+        }
+        StartCoroutine(DisablePlayer(2));
+    }
     
-
+    
 
     public void ChangeMenu(GameObject oldMenu, GameObject newMenu)
     {

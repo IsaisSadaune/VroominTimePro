@@ -2,7 +2,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System;
-using static UnityEditor.Experimental.GraphView.GraphView;
+using UnityEngine.SceneManagement;
 public class CarMovementPhysics : MonoBehaviour
 {
     [Header("Statistics")]
@@ -75,22 +75,31 @@ public class CarMovementPhysics : MonoBehaviour
 
     private void Awake()
     {
-
         multiplayer = MultiplayerManager.Instance;
         multiplayer.players.Add(gameObject);
+        DontDestroyOnLoad(this.gameObject);
+
     }
 
     void Start()
     {
-
         moveDirection = transform.forward;
         rb = GetComponent<Rigidbody>();
         maxSpeed = speed;
-        Vector3 spawnPoint = multiplayer.spawnPoint[multiplayer.players.IndexOf(gameObject)].position;
-        transform.position = spawnPoint + new Vector3(0, 0.23f, 0);
+        SpawnPlayer();
     }
 
-    
+    public void SpawnPlayer()
+    {
+        Vector3 spawnPoint = multiplayer.spawnPoint[multiplayer.players.IndexOf(gameObject)].position;
+        transform.position = spawnPoint + new Vector3(0, 0.23f, 0);
+        rb.linearVelocity = Vector3.zero;
+        isAccelerating = 0;
+
+    }
+
+
+
     void Update()    
     { 
         rb.linearVelocity = moveDirection * speedActu;

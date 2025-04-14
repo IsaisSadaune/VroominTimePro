@@ -1,7 +1,7 @@
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject menu1;
@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
             instance = this;
         }
         DontDestroyOnLoad(this.gameObject);
+
     }
     private void Start()
     {
@@ -39,5 +40,10 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void GoToVroominScene(string sceneToLoad)
+    {
+        SceneManager.LoadScene(sceneToLoad);
     }
 }
