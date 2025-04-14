@@ -2,6 +2,8 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using System;
+using System.Collections;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject menu1;
@@ -32,6 +34,7 @@ public class GameManager : MonoBehaviour
     public void ChangeMenu()
     {
         StartCoroutine(multiplayerManager.DisablePlayer(2));
+        StartCoroutine(multiplayerManager.DisableJoining(2));
         menu1.transform.DOMove(new Vector3(0, -48, 0), 1.3f).SetEase(Ease.InBack);
         menu2.transform.DOMove(new Vector3(0, 0, 0), 2).SetEase(Ease.OutQuad);
 
@@ -42,8 +45,22 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public void GoToVroominScene(string sceneToLoad)
+ 
+    public void StartDecompte()
     {
-        SceneManager.LoadScene(sceneToLoad);
+        StartCoroutine(Decompte());
+        StartCoroutine(multiplayerManager.DisablePlayer(3));
+
+    }
+
+    private IEnumerator Decompte()
+    {
+        Debug.Log(3);
+        yield return new WaitForSeconds(1);
+        Debug.Log(2);
+        yield return new WaitForSeconds(1);
+        Debug.Log(1);
+        yield return new WaitForSeconds(1);
+        Debug.Log("GO !");
     }
 }

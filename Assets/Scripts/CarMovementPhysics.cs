@@ -75,9 +75,7 @@ public class CarMovementPhysics : MonoBehaviour
 
     private void Awake()
     {
-        multiplayer = MultiplayerManager.Instance;
-        multiplayer.players.Add(gameObject);
-        DontDestroyOnLoad(this.gameObject);
+       
 
     }
 
@@ -86,15 +84,16 @@ public class CarMovementPhysics : MonoBehaviour
         moveDirection = transform.forward;
         rb = GetComponent<Rigidbody>();
         maxSpeed = speed;
-        SpawnPlayer();
     }
 
-    public void SpawnPlayer()
+    public void SpawnPlayer(Transform transformToCopy)
     {
-        Vector3 spawnPoint = multiplayer.spawnPoint[multiplayer.players.IndexOf(gameObject)].position;
-        transform.position = spawnPoint + new Vector3(0, 0.23f, 0);
+       
+        transform.position = transformToCopy.position+Vector3.up/5;
+        transform.rotation = transformToCopy.rotation;
         rb.linearVelocity = Vector3.zero;
         isAccelerating = 0;
+        speedActu = 0;
 
     }
 

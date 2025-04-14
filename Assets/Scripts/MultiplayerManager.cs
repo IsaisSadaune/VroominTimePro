@@ -18,7 +18,7 @@ public class MultiplayerManager : MonoBehaviour
     public List<Transform> spawnPoint;
     public bool settingUpPlayer = true;
     public float timer;
-    private PlayerInputManager playerInputManager;
+    public PlayerInputManager playerInputManager;
 
     void Awake()
     {
@@ -33,48 +33,66 @@ public class MultiplayerManager : MonoBehaviour
         }
         DontDestroyOnLoad(this.gameObject);
         playerInputManager = GetComponent<PlayerInputManager>();
-        SceneManager.sceneLoaded += StartSceneVroomin;
+        
     }
 
-  
-    private void StartSceneVroomin(Scene scene, LoadSceneMode mode)
+
+
+    private void Start()
     {
-        SpawnAllPlayers();
-
+        
     }
 
-    private void SpawnAllPlayers()
+    public void SpawnAllPlayers()
     {
         foreach (GameObject car in players)
         {
-            car.GetComponent<CarMovementPhysics>().SpawnPlayer();
+            SpawnSpecificPlayer(car);
         }
-        StartCoroutine(DisablePlayer(2));
     }
-    
-    
+
+    public void SpawnSpecificPlayer(GameObject car)
+    {
+
+        car.GetComponent<CarMovementPhysics>().SpawnPlayer(spawnPoint[players.IndexOf(car)]);
+    }
+
 
     public void ChangeMenu(GameObject oldMenu, GameObject newMenu)
     {
         StartCoroutine(DisablePlayer(2));
         oldMenu.transform.DOMove(new Vector3(0, -48, 0), 1.3f).SetEase(Ease.InBack);
         newMenu.transform.DOMove(new Vector3(0, 0, 0), 2).SetEase(Ease.OutQuad);
-
     }
+
+
 
     public IEnumerator DisablePlayer(float waitTime)
     {
+        foreach (GameObject car in players)
+        {
+            car.GetComponent<PlayerInput>().enabled = false;
+        }
+        yield return new WaitForSeconds(waitTime);
+        foreach (GameObject car in players)
+        {
+            car.GetComponent<PlayerInput>().enabled = true;
+        }
+
+    }
+    public IEnumerator DisableJoining(float waitTime)
+    {
         playerInputManager.DisableJoining();
-        foreach (GameObject car in players)
-        {
-            car.GetComponent<PlayerInput>().DeactivateInput();
-        }
-        yield return new WaitForSeconds(2);
-        foreach (GameObject car in players)
-        {
-            car.GetComponent<PlayerInput>().ActivateInput();
-        }
+        yield return new WaitForSeconds(waitTime);
         playerInputManager.EnableJoining();
 
     }
+    public void SwitchPlayersToVroominTime()
+    {
+        foreach (GameObject car in players)
+        {
+            car.GetComponent<PlayerInput>().SwitchCurrentActionMap("VroominTimeAM");
+        }
+    }
+
 }

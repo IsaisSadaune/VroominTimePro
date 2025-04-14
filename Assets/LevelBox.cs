@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 public class LevelBox : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -34,10 +35,9 @@ public class LevelBox : MonoBehaviour
                 numbeOfPlayer++;
             }
         }
-        Debug.Log(numbeOfPlayer);
-        if (numbeOfPlayer == MultiplayerManager.Instance.players.Count)
+        if (numbeOfPlayer == MultiplayerManager.Instance.players.Count && numbeOfPlayer >0)
         {
-            GameManager.Instance.GoToVroominScene(sceneName);
+            SceneManager.LoadScene(sceneName);
            
         }
     }

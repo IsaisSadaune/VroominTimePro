@@ -32,11 +32,11 @@ public class StartGameButton : MonoBehaviour
                 numbeOfPlayer++;
             }
         }
-        Debug.Log(numbeOfPlayer);
-        if (numbeOfPlayer == MultiplayerManager.Instance.players.Count)
+        if (numbeOfPlayer > 0 && numbeOfPlayer == MultiplayerManager.Instance.players.Count)
         {
             GameManager.Instance.ChangeMenu();
             GetComponent<Collider>().enabled = false;
         }
+
     }
 }

@@ -777,7 +777,7 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: f074f92f-b3af-4ece-a710-42d7aba6cb42
     m_ActionName: 'TileinTime/Left[/Keyboard/z,/Keyboard/s,/Keyboard/q,/Keyboard/d]'
-  m_NeverAutoSwitchControlSchemes: 0
+  m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: MenuinTimeAM
   m_SplitScreenIndex: -1

@@ -21,9 +21,14 @@ public class PlayerLogic : MonoBehaviour
     void Awake()
     {
         multiplayer = MultiplayerManager.Instance;
-
+        multiplayer.players.Add(gameObject);
+        DontDestroyOnLoad(this.gameObject);
     }
 
+    private void Start()
+    {
+        multiplayer.SpawnSpecificPlayer(gameObject);
+    }
     // Update is called once per frame
     void Update()
     {
