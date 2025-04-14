@@ -26,12 +26,12 @@ public class MapVisuals : MonoBehaviour
         SetActiveTile();
         SetCursor();
     }
-    public void ApplyPlacement(int p_x, int p_y, GameObject p_bloc)
+    public void ApplyPlacement(int p_x, int p_y, GameObject p_bloc, int rotation)
     {
         if (p_x < visualMap.GetLength(0) && p_y < visualMap.GetLength(1))
         {
             Destroy(visualMap[p_x, p_y]);
-            visualMap[p_x, p_y] = Instantiate(p_bloc, new Vector3(p_x, 0, p_y), p_bloc.transform.rotation, parentTuiles);
+            visualMap[p_x, p_y] = Instantiate(p_bloc, new Vector3(p_x, 0, p_y), Quaternion.Euler(0,90*rotation,0), parentTuiles);
         }
     }
     public void ApplyMovement()
@@ -87,13 +87,15 @@ public class MapVisuals : MonoBehaviour
 
     public void ApplyRotationRight()
     {
+
         for (int i = 0; i < selectedTile.Count; i++)
         {
+            selectedTile[i].transform.rotation = Quaternion.identity;
             selectedTile[i].transform.position = new Vector3(
                 (selectedTile[i].transform.position.z - Instance.position.y) + Instance.position.x,
                 0.1f,
                 -(selectedTile[i].transform.position.x - Instance.position.x) + Instance.position.y);
-            selectedTile[i].transform.Rotate(0, 90, 0);
+            selectedTile[i].transform.Rotate(0, 90 * Instance.rotation, 0);
         }
 
     }
@@ -101,11 +103,12 @@ public class MapVisuals : MonoBehaviour
     {
         for (int i = 0; i < selectedTile.Count; i++)
         {
+            selectedTile[i].transform.rotation = Quaternion.identity;
             selectedTile[i].transform.position = new Vector3(
                 -(selectedTile[i].transform.position.z - Instance.position.y) + Instance.position.x,
                 0.1f,
                 (selectedTile[i].transform.position.x - Instance.position.x) + Instance.position.y);
-            selectedTile[i].transform.Rotate(0, -90, 0);
+            selectedTile[i].transform.Rotate(0, 90 * Instance.rotation, 0);
         }
     }
 

@@ -85,8 +85,7 @@ public class MapManager : MonoBehaviour
             if (ActiveTile.position[i] + position == new Vector2Int(0, 0)
                 || ActiveTile.position[i] + position == new Vector2Int(9, 9))
             {
-                Debug.Log("erreur");
-                //break;
+                Debug.Log("erreur en position "+ ActiveTile.position[i] + position);
             }
             else
             {
@@ -110,7 +109,8 @@ public class MapManager : MonoBehaviour
                     visuals.ApplyPlacement(
                         _xCoordonate,
                         _yCoordonate,
-                        ActiveTile.blocs[i].bloc);
+                        ActiveTile.blocs[i].bloc,
+                        rotation);
                 }
             }
         }
@@ -133,13 +133,15 @@ public class MapManager : MonoBehaviour
     }
     public void RotateRight()
     {
-        rotation = (rotation + 1) % 4;
+        rotation++;
+        if (rotation > 3) rotation = 0;
         visuals.ApplyRotationRight();
     }
     public void RotateLeft()
     {
         
-        rotation = ((rotation - 1) % 4) < 0 ? 3 : (rotation - 1) % 4;
+        rotation--;
+        if (rotation < 0) rotation = 3;
         visuals.ApplyRotationLeft();
     }
     public void Left()
