@@ -144,7 +144,7 @@ Transform:
   m_GameObject: {fileID: 347473893}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.3714783, y: 1.367952, z: -1.3290446}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2589,6 +2589,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   position: {x: 1, y: 1}
+  rotation: 0
   visuals: {fileID: 1876427884}
   <ActiveTile>k__BackingField: {fileID: 11400000, guid: d5d06211c3bfe5c4ebbf5ff30ec6fe73, type: 2}
 --- !u!4 &1876427883
