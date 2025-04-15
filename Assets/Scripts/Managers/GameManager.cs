@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject menu1;
@@ -12,7 +13,11 @@ public class GameManager : MonoBehaviour
     private static GameManager instance = null;
     public static GameManager Instance => instance;
     private MultiplayerManager multiplayerManager;
+    public Dictionary<GameObject, float> playersTimer = new Dictionary<GameObject, float>();
+    public Dictionary<GameObject, int> playersScore;
 
+    private bool timerRunning;
+    private float raceTimer;
     void Awake()
     {
         if (instance != null && instance != this)
@@ -42,7 +47,11 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(timerRunning)
+        {
+            raceTimer += Time.deltaTime;
+
+        }
     }
 
  
@@ -62,5 +71,14 @@ public class GameManager : MonoBehaviour
         Debug.Log(1);
         yield return new WaitForSeconds(1);
         Debug.Log("GO !");
+        raceTimer = 0;
+        timerRunning = true;
     }
+
+    public void AddPlayerToTimer(GameObject player)
+    {
+        playersTimer.Add(player, raceTimer);
+    }
+
+
 }

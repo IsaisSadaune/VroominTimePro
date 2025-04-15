@@ -1,5 +1,8 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
+using System.Collections;
+using System;
 
 public class LevelManager : MonoBehaviour
 {
@@ -28,9 +31,9 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     public void GoToRace()
     {
-        multi.SwitchPlayersToVroominTime();
+       
         multi.playerInputManager.DisableJoining();
-        gameManager.StartDecompte();
+        StartRound();  
     }
 
     private void StartSceneVroomin(Scene scene, LoadSceneMode mode)
@@ -52,4 +55,18 @@ public class LevelManager : MonoBehaviour
         
     }
 
+    public void StartRound()
+    {
+        multi.SwitchPlayersToVroominTime();
+        gameManager.StartDecompte();
+
+    }
+
+    public void EndRound()
+    {
+       foreach(var line in gameManager.playersTimer)
+        {
+            Debug.Log($"Player{multi.players.IndexOf(line.Key)+1} : {line.Value}");
+        }
+    }
 }

@@ -117,7 +117,7 @@ public class CarMovementPhysics : MonoBehaviour
             rb.AddForce(collision.contacts[0].normal * 10);
           
             GameObject choc = Instantiate(ChocVFX, collision.contacts[0].point, Quaternion.identity);
-            choc.transform.LookAt(choc.transform.position + collision.contacts[1].normal);
+            choc.transform.LookAt(choc.transform.position + collision.contacts[0].normal);
         }
         buffer = bufferTiming;
     }
