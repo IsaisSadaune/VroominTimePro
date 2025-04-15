@@ -41,8 +41,15 @@ public class LevelManager : MonoBehaviour
         {
             GoToRace();
         }
-
+        else
+        {
+            GoToMenu();
+        }
     }
 
+    public void GoToMenu()
+    {
+        
+    }
 
 }

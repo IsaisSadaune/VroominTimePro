@@ -5,6 +5,8 @@ public class PlayerLogic : MonoBehaviour
 {
     
     private MultiplayerManager multiplayer;
+    private PlayerInput carInput;
+    private CarMovementPhysics physicsScript;
     public void Leave(InputAction.CallbackContext ctx)
     {
         if (ctx.performed)
@@ -22,17 +24,48 @@ public class PlayerLogic : MonoBehaviour
     {
         multiplayer = MultiplayerManager.Instance;
         multiplayer.players.Add(gameObject);
+        carInput = GetComponent<PlayerInput>();
+        physicsScript = GetComponent<CarMovementPhysics>();
+
+
         DontDestroyOnLoad(this.gameObject);
-        GetComponent<PlayerInput>().neverAutoSwitchControlSchemes = true;
+        DisableAllMaps();
     }
 
     private void Start()
     {
-        multiplayer.SpawnSpecificPlayer(gameObject);
+        SpawnPlayer(multiplayer.spawnPoint[multiplayer.players.IndexOf(gameObject)]);
+        carInput.SwitchCurrentActionMap("MenuinTimeAM");
+
+    }
+
+  
+
+    public void SpawnPlayer(Transform transformToCopy)
+    {
+
+        transform.position = transformToCopy.position + Vector3.up / 5;
+        transform.rotation = transformToCopy.rotation;
+        GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
+        physicsScript.isAccelerating = 0;
+        physicsScript.speedActu = 0;
+    }
+    public void DisableAllMaps()
+    {
+        foreach (var map in carInput.actions.actionMaps)
+        {
+
+            map.Disable();
+        }
     }
     // Update is called once per frame
     void Update()
     {
-        
+
+    }
+
+    public void oui(InputAction.CallbackContext ctx)
+    {
+        Debug.Log("lancé");
     }
 }

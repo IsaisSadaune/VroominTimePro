@@ -47,15 +47,11 @@ public class MultiplayerManager : MonoBehaviour
     {
         foreach (GameObject car in players)
         {
-            SpawnSpecificPlayer(car);
+            car.GetComponent<PlayerLogic>().SpawnPlayer(spawnPoint[players.IndexOf(car)]);
         }
     }
 
-    public void SpawnSpecificPlayer(GameObject car)
-    {
-
-        car.GetComponent<CarMovementPhysics>().SpawnPlayer(spawnPoint[players.IndexOf(car)]);
-    }
+   
 
 
     public void ChangeMenu(GameObject oldMenu, GameObject newMenu)
@@ -69,16 +65,14 @@ public class MultiplayerManager : MonoBehaviour
 
     public IEnumerator DisablePlayer(float waitTime)
     {
-        string currentMap = players[0].GetComponent<PlayerInput>();
         foreach (GameObject car in players)
         {
-            car.GetComponent<PlayerInput>().SwitchCurrentActionMap("Vide");
+            car.GetComponent<PlayerInput>().DeactivateInput();
         }
         yield return new WaitForSeconds(waitTime);
         foreach (GameObject car in players)
         {
-            car.GetComponent<PlayerInput>().SwitchCurrentActionMap(currentMap);
-
+            car.GetComponent<PlayerInput>().ActivateInput();
         }
 
     }

@@ -48,9 +48,9 @@ public class CarMovementPhysics : MonoBehaviour
     private Vector3 moveDirection;
     private float buffer;
     private float TurnInput; //the value of the input used for turning [-1,1]
-    private float isAccelerating;
+    public float isAccelerating;
     private Rigidbody rb;
-    private float speedActu = 0;
+    public float speedActu = 0;
     private GameObject e;
     private MultiplayerManager multiplayer;
     
@@ -86,16 +86,7 @@ public class CarMovementPhysics : MonoBehaviour
         maxSpeed = speed;
     }
 
-    public void SpawnPlayer(Transform transformToCopy)
-    {
-       
-        transform.position = transformToCopy.position+Vector3.up/5;
-        transform.rotation = transformToCopy.rotation;
-        rb.linearVelocity = Vector3.zero;
-        isAccelerating = 0;
-        speedActu = 0;
-
-    }
+  
 
 
 
