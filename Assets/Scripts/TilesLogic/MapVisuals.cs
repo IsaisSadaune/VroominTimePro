@@ -26,12 +26,12 @@ public class MapVisuals : MonoBehaviour
         SetActiveTile();
         SetCursor();
     }
-    public void ApplyPlacement(int p_x, int p_y, GameObject p_bloc, int rotation)
+    public void ApplyPlacement(int p_x, int p_y, GameObject p_bloc, int rotation, int rotationClasse)
     {
         if (p_x < visualMap.GetLength(0) && p_y < visualMap.GetLength(1))
         {
             Destroy(visualMap[p_x, p_y]);
-            visualMap[p_x, p_y] = Instantiate(p_bloc, new Vector3(p_x, 0, p_y), Quaternion.Euler(0,90*rotation,0), parentTuiles);
+            visualMap[p_x, p_y] = Instantiate(p_bloc, new Vector3(p_x, 0, p_y), Quaternion.Euler(0,90*rotation + rotationClasse, 0), parentTuiles);
         }
     }
     public void ApplyMovement()
@@ -70,7 +70,7 @@ public class MapVisuals : MonoBehaviour
         {
             selectedTile.Add(Instantiate(Instance.ActiveTile.blocs[i].bloc,
                 new Vector3(Instance.position.x + Instance.ActiveTile.position[i].x, 0.1f, Instance.position.y + Instance.ActiveTile.position[i].y),
-                Quaternion.identity,
+                Quaternion.Euler(0, Instance.ActiveTile.rotation[i],0),
                 parentTuiles));
         }
     }
@@ -95,7 +95,7 @@ public class MapVisuals : MonoBehaviour
                 (selectedTile[i].transform.position.z - Instance.position.y) + Instance.position.x,
                 0.1f,
                 -(selectedTile[i].transform.position.x - Instance.position.x) + Instance.position.y);
-            selectedTile[i].transform.Rotate(0, 90 * Instance.rotation, 0);
+            selectedTile[i].transform.Rotate(0, 90 * Instance.rotation + Instance.ActiveTile.rotation[i], 0);
         }
 
     }
@@ -108,7 +108,7 @@ public class MapVisuals : MonoBehaviour
                 -(selectedTile[i].transform.position.z - Instance.position.y) + Instance.position.x,
                 0.1f,
                 (selectedTile[i].transform.position.x - Instance.position.x) + Instance.position.y);
-            selectedTile[i].transform.Rotate(0, 90 * Instance.rotation, 0);
+            selectedTile[i].transform.Rotate(0, 90 * Instance.rotation + Instance.ActiveTile.rotation[i], 0);
         }
     }
 

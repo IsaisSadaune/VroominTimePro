@@ -110,7 +110,8 @@ public class MapManager : MonoBehaviour
                         _xCoordonate,
                         _yCoordonate,
                         ActiveTile.blocs[i].bloc,
-                        rotation);
+                        rotation,
+                        ActiveTile.rotation[i]);
                 }
             }
         }
