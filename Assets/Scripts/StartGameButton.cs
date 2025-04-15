@@ -28,7 +28,7 @@ public class StartGameButton : MonoBehaviour
         int numbeOfPlayer = 0;
         foreach (Collider collider in hitColliders)
         {
-            if (collider.gameObject.CompareTag("Car"))
+            if (collider.gameObject.CompareTag("Car") && collider.gameObject != leavingPlayer)
             {
                 numbeOfPlayer++;
             }
