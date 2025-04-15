@@ -10,7 +10,7 @@ public class PlayerLogic : MonoBehaviour
         if (ctx.performed)
         {
             multiplayer.players.Remove(gameObject);
-            multiplayer.PlayerLeaveEvent();
+            multiplayer.PlayerLeaveEvent(gameObject);
             Destroy(gameObject);
             
         }

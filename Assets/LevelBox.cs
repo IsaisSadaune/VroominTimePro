@@ -13,12 +13,7 @@ public class LevelBox : MonoBehaviour
     }
 
     // Update is called once per frame
-    void OnDrawGizmos()
-    {
-        // Draw a yellow sphere at the transform's position
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawCube(transform.position,scaleBox);
-    }
+  
     private void OnTriggerEnter(Collider other)
     {
         CheckForCarOnLevel();
@@ -35,10 +30,26 @@ public class LevelBox : MonoBehaviour
                 numbeOfPlayer++;
             }
         }
-        if (numbeOfPlayer == MultiplayerManager.Instance.players.Count && numbeOfPlayer >0)
+        if (numbeOfPlayer > 0 && numbeOfPlayer == MultiplayerManager.Instance.players.Count)
         {
             SceneManager.LoadScene(sceneName);
-           
+        }
+    }
+
+    private void CheckForCarOnLevel(GameObject leavingPlayer)
+    {
+        Collider[] hitColliders = Physics.OverlapBox(transform.position, scaleBox);
+        int numbeOfPlayer = 0;
+        foreach (Collider collider in hitColliders)
+        {
+            if (collider.gameObject.CompareTag("Car") && collider.gameObject != leavingPlayer)
+            {
+                numbeOfPlayer++;
+            }
+        }
+        if (numbeOfPlayer > 0 && numbeOfPlayer == MultiplayerManager.Instance.players.Count)
+        {
+            SceneManager.LoadScene(sceneName);
         }
     }
 }

@@ -11,7 +11,7 @@ public class MultiplayerManager : MonoBehaviour
     private static MultiplayerManager instance = null;
     public static MultiplayerManager Instance => instance;
 
-    public delegate void LeaveHandler();
+    public delegate void LeaveHandler(GameObject leavingPlayer);
     public LeaveHandler PlayerLeaveEvent;
 
     public List<GameObject> players;

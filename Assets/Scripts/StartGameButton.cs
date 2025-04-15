@@ -1,5 +1,6 @@
 using System.Globalization;
 using System.Threading;
+using NUnit.Framework.Constraints;
 using UnityEngine;
 
 public class StartGameButton : MonoBehaviour
@@ -17,11 +18,11 @@ public class StartGameButton : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-       CheckForStartGame();
+       CheckForStartGame(null);
         
     }
 
-    private void CheckForStartGame()
+    private void CheckForStartGame(GameObject leavingPlayer)
     {
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, 2.2f);
         int numbeOfPlayer = 0;
