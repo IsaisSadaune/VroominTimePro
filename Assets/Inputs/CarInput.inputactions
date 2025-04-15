@@ -474,6 +474,34 @@
                     "isPartOfComposite": true
                 }
             ]
+        },
+        {
+            "name": "Vide",
+            "id": "a81e0570-a5eb-4de4-a530-44b9d3cd0c24",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "240684bd-a119-4499-9ba4-7c092a89b3d5",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "551cd147-0222-44be-a5d7-12bcbe9286b9",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

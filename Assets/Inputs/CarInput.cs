@@ -496,6 +496,34 @@ public partial class @CarInput: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 }
             ]
+        },
+        {
+            ""name"": ""Vide"",
+            ""id"": ""a81e0570-a5eb-4de4-a530-44b9d3cd0c24"",
+            ""actions"": [
+                {
+                    ""name"": ""New action"",
+                    ""type"": ""Button"",
+                    ""id"": ""240684bd-a119-4499-9ba4-7c092a89b3d5"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""551cd147-0222-44be-a5d7-12bcbe9286b9"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""New action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -540,6 +568,9 @@ public partial class @CarInput: IInputActionCollection2, IDisposable
         // TileinTime
         m_TileinTime = asset.FindActionMap("TileinTime", throwIfNotFound: true);
         m_TileinTime_Left = m_TileinTime.FindAction("Left", throwIfNotFound: true);
+        // Vide
+        m_Vide = asset.FindActionMap("Vide", throwIfNotFound: true);
+        m_Vide_Newaction = m_Vide.FindAction("New action", throwIfNotFound: true);
     }
 
     ~@CarInput()
@@ -547,6 +578,7 @@ public partial class @CarInput: IInputActionCollection2, IDisposable
         UnityEngine.Debug.Assert(!m_VroominTimeAM.enabled, "This will cause a leak and performance issues, CarInput.VroominTimeAM.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_MenuinTimeAM.enabled, "This will cause a leak and performance issues, CarInput.MenuinTimeAM.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_TileinTime.enabled, "This will cause a leak and performance issues, CarInput.TileinTime.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Vide.enabled, "This will cause a leak and performance issues, CarInput.Vide.Disable() has not been called.");
     }
 
     public void Dispose()
@@ -766,6 +798,52 @@ public partial class @CarInput: IInputActionCollection2, IDisposable
         }
     }
     public TileinTimeActions @TileinTime => new TileinTimeActions(this);
+
+    // Vide
+    private readonly InputActionMap m_Vide;
+    private List<IVideActions> m_VideActionsCallbackInterfaces = new List<IVideActions>();
+    private readonly InputAction m_Vide_Newaction;
+    public struct VideActions
+    {
+        private @CarInput m_Wrapper;
+        public VideActions(@CarInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Newaction => m_Wrapper.m_Vide_Newaction;
+        public InputActionMap Get() { return m_Wrapper.m_Vide; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(VideActions set) { return set.Get(); }
+        public void AddCallbacks(IVideActions instance)
+        {
+            if (instance == null || m_Wrapper.m_VideActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_VideActionsCallbackInterfaces.Add(instance);
+            @Newaction.started += instance.OnNewaction;
+            @Newaction.performed += instance.OnNewaction;
+            @Newaction.canceled += instance.OnNewaction;
+        }
+
+        private void UnregisterCallbacks(IVideActions instance)
+        {
+            @Newaction.started -= instance.OnNewaction;
+            @Newaction.performed -= instance.OnNewaction;
+            @Newaction.canceled -= instance.OnNewaction;
+        }
+
+        public void RemoveCallbacks(IVideActions instance)
+        {
+            if (m_Wrapper.m_VideActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IVideActions instance)
+        {
+            foreach (var item in m_Wrapper.m_VideActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_VideActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public VideActions @Vide => new VideActions(this);
     private int m_ClavierSourisSchemeIndex = -1;
     public InputControlScheme ClavierSourisScheme
     {
@@ -798,5 +876,9 @@ public partial class @CarInput: IInputActionCollection2, IDisposable
     public interface ITileinTimeActions
     {
         void OnLeft(InputAction.CallbackContext context);
+    }
+    public interface IVideActions
+    {
+        void OnNewaction(InputAction.CallbackContext context);
     }
 }

@@ -23,6 +23,7 @@ public class PlayerLogic : MonoBehaviour
         multiplayer = MultiplayerManager.Instance;
         multiplayer.players.Add(gameObject);
         DontDestroyOnLoad(this.gameObject);
+        GetComponent<PlayerInput>().neverAutoSwitchControlSchemes = true;
     }
 
     private void Start()

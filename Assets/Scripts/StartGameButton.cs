@@ -36,7 +36,7 @@ public class StartGameButton : MonoBehaviour
         if (numbeOfPlayer > 0 && numbeOfPlayer == MultiplayerManager.Instance.players.Count)
         {
             GameManager.Instance.ChangeMenu();
-            GetComponent<Collider>().enabled = false;
+            enabled = false;
         }
 
     }

@@ -69,19 +69,22 @@ public class MultiplayerManager : MonoBehaviour
 
     public IEnumerator DisablePlayer(float waitTime)
     {
+        string currentMap = players[0].GetComponent<PlayerInput>();
         foreach (GameObject car in players)
         {
-            car.GetComponent<PlayerInput>().enabled = false;
+            car.GetComponent<PlayerInput>().SwitchCurrentActionMap("Vide");
         }
         yield return new WaitForSeconds(waitTime);
         foreach (GameObject car in players)
         {
-            car.GetComponent<PlayerInput>().enabled = true;
+            car.GetComponent<PlayerInput>().SwitchCurrentActionMap(currentMap);
+
         }
 
     }
     public IEnumerator DisableJoining(float waitTime)
     {
+
         playerInputManager.DisableJoining();
         yield return new WaitForSeconds(waitTime);
         playerInputManager.EnableJoining();
