@@ -13,11 +13,13 @@ MonoBehaviour:
   m_Name: TestRotation
   m_EditorClassIdentifier: 
   blocs:
-  - {fileID: 11400000, guid: 0c4996b6d60220c44b68493dbad78890, type: 2}
-  - {fileID: 11400000, guid: 0c4996b6d60220c44b68493dbad78890, type: 2}
-  - {fileID: 11400000, guid: 0c4996b6d60220c44b68493dbad78890, type: 2}
+  - {fileID: 11400000, guid: 2097fc75363ee5a4ca6c69e93dba106b, type: 2}
+  - {fileID: 11400000, guid: 2097fc75363ee5a4ca6c69e93dba106b, type: 2}
+  - {fileID: 11400000, guid: 2097fc75363ee5a4ca6c69e93dba106b, type: 2}
+  - {fileID: 11400000, guid: 2097fc75363ee5a4ca6c69e93dba106b, type: 2}
   position:
   - {x: 0, y: 0}
   - {x: 1, y: 0}
-  - {x: 0, y: 1}
-  rotation: 5a000000b40000000e010000
+  - {x: 2, y: 0}
+  - {x: 3, y: 0}
+  rotation: 000000005a000000b40000000e010000
