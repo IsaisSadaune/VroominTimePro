@@ -789,13 +789,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: cb2e0629-9554-47b6-a2a2-cf6b7c9fb9ff
-    m_ActionName: 'Vide/New action[/Keyboard/space]'
+    m_ActionId: aec0e464-9521-4df7-bfab-c465f147d40b
+    m_ActionName: 'TileinTime/Confirm[/Keyboard/anyKey,/DualShock4GamepadHID/buttonSouth]'
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6857082026848131161}
         m_TargetAssemblyTypeName: PlayerLogic, Assembly-CSharp
-        m_MethodName: SetPlayerReady
+        m_MethodName: Up
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -805,8 +805,88 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: aec0e464-9521-4df7-bfab-c465f147d40b
-    m_ActionName: 'TileinTime/Confirm[/Keyboard/anyKey,/DualShock4GamepadHID/buttonSouth]'
+    m_ActionId: a80b002e-edf3-4682-931b-455449fe50b3
+    m_ActionName: 'TileinTime/MoveUp[/DualShock4GamepadHID/dpad/up,/Keyboard/w]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6857082026848131161}
+        m_TargetAssemblyTypeName: PlayerLogic, Assembly-CSharp
+        m_MethodName: Right
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: b1657826-ceb0-4b41-93f2-f5423645d451
+    m_ActionName: 'TileinTime/MoveRight[/DualShock4GamepadHID/dpad/right,/Keyboard/d]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6857082026848131161}
+        m_TargetAssemblyTypeName: PlayerLogic, Assembly-CSharp
+        m_MethodName: Down
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 4cc9381a-f83a-4131-b225-603fb4ff61f4
+    m_ActionName: 'TileinTime/MoveDown[/Keyboard/s,/DualShock4GamepadHID/dpad/down]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6857082026848131161}
+        m_TargetAssemblyTypeName: PlayerLogic, Assembly-CSharp
+        m_MethodName: Left
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: bcc00d4c-fbd9-4b0c-b851-e4a5450e0272
+    m_ActionName: 'TileinTime/MoveLeft[/Keyboard/a,/DualShock4GamepadHID/dpad/left]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6857082026848131161}
+        m_TargetAssemblyTypeName: PlayerLogic, Assembly-CSharp
+        m_MethodName: RotateLeft
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 886674ea-c45d-4b78-b28f-4043cfc68df7
+    m_ActionName: 'TileinTime/RotateLeft[/DualShock4GamepadHID/leftShoulder,/Keyboard/q]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6857082026848131161}
+        m_TargetAssemblyTypeName: PlayerLogic, Assembly-CSharp
+        m_MethodName: RotateRight
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: fe1fcee9-2a71-4bf4-8a05-b3196743396d
+    m_ActionName: 'TileinTime/RotateRight[/DualShock4GamepadHID/rightShoulder,/Keyboard/e]'
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: MenuinTimeAM

@@ -70,9 +70,55 @@ public class PlayerLogic : MonoBehaviour
         if(ctx.started)
         {
             Debug.Log("ready");
+            MapManager.Instance.PlaceTile();
             GameManager.Instance.AddReadyPlayer();
 
         }
+    }
 
+    public void RotateRight(InputAction.CallbackContext ctx)
+    {
+        if ((ctx.started))
+        {
+        MapManager.Instance.RotateRight();
+
+        }
+    }
+    public void RotateLeft(InputAction.CallbackContext ctx)
+    {
+        if (ctx.started)
+        {
+            MapManager.Instance.RotateLeft();
+        }
+    }
+    public void Left(InputAction.CallbackContext ctx)
+    {
+        if ((ctx.started))
+        {
+            MapManager.Instance.Left();
+        }
+
+    }
+    public void Right(InputAction.CallbackContext ctx)
+    {
+        if (ctx.started)
+        {
+            MapManager.Instance.Right();
+        }
+    }
+    public void Up(InputAction.CallbackContext ctx)
+    {
+        if ((ctx.started))
+        {
+            MapManager.Instance.Up();
+        }
+
+    }
+    public void Down(InputAction.CallbackContext ctx)
+    {
+        if ((ctx.started))
+        {
+            MapManager.Instance.Down();
+        }
     }
 }

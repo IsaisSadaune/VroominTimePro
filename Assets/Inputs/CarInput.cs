@@ -426,13 +426,67 @@ public partial class @CarInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MoveUp"",
+                    ""type"": ""Button"",
+                    ""id"": ""a80b002e-edf3-4682-931b-455449fe50b3"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MoveRight"",
+                    ""type"": ""Button"",
+                    ""id"": ""b1657826-ceb0-4b41-93f2-f5423645d451"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MoveDown"",
+                    ""type"": ""Button"",
+                    ""id"": ""4cc9381a-f83a-4131-b225-603fb4ff61f4"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MoveLeft"",
+                    ""type"": ""Button"",
+                    ""id"": ""bcc00d4c-fbd9-4b0c-b851-e4a5450e0272"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RotateLeft"",
+                    ""type"": ""Button"",
+                    ""id"": ""886674ea-c45d-4b78-b28f-4043cfc68df7"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RotateRight"",
+                    ""type"": ""Button"",
+                    ""id"": ""fe1fcee9-2a71-4bf4-8a05-b3196743396d"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
                 {
                     ""name"": """",
                     ""id"": ""81dbd393-5dc2-4e39-8fe3-226af4659b27"",
-                    ""path"": ""<Keyboard>/anyKey"",
+                    ""path"": ""<Keyboard>/f"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -450,32 +504,136 @@ public partial class @CarInput: IInputActionCollection2, IDisposable
                     ""action"": ""Confirm"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                }
-            ]
-        },
-        {
-            ""name"": ""Vide"",
-            ""id"": ""91addce0-e3c4-46b6-8f75-8a2032bda68e"",
-            ""actions"": [
-                {
-                    ""name"": ""New action"",
-                    ""type"": ""Button"",
-                    ""id"": ""cb2e0629-9554-47b6-a2a2-cf6b7c9fb9ff"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                }
-            ],
-            ""bindings"": [
+                },
                 {
                     ""name"": """",
-                    ""id"": ""53a90bf9-16b4-4e68-bbe4-7c2b6375c5ef"",
-                    ""path"": ""<Keyboard>/space"",
+                    ""id"": ""8630f287-ced4-43cc-a287-ba5cd9f93824"",
+                    ""path"": ""<Gamepad>/dpad/up"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""New action"",
+                    ""action"": ""MoveUp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""76b6881d-088d-4f90-a6e2-f789f31cb1a8"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveUp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bac315a1-07f2-4d89-bc7d-d9037722a74c"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6ff967b2-58f6-4f98-be18-c2fa3e6ddbb3"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e3f5e134-84ed-4b20-a8e2-b6fa0b6492cd"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""63b26740-7df1-4d73-80b9-21cec02d6d88"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e0186c3a-545e-4d39-9bec-5cbc4f274197"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2d4218da-985b-4b40-a96f-1447460fd522"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3d593668-8704-4d33-9e5f-3971d2284ec4"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RotateLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6f6ef0bf-f6e4-48f8-bff6-101136ffbc23"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RotateLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""77377ea7-810a-4cb6-822d-ff7353381709"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RotateRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""64023383-b5dd-4325-93bc-37f217579c20"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RotateRight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -524,9 +682,12 @@ public partial class @CarInput: IInputActionCollection2, IDisposable
         // TileinTime
         m_TileinTime = asset.FindActionMap("TileinTime", throwIfNotFound: true);
         m_TileinTime_Confirm = m_TileinTime.FindAction("Confirm", throwIfNotFound: true);
-        // Vide
-        m_Vide = asset.FindActionMap("Vide", throwIfNotFound: true);
-        m_Vide_Newaction = m_Vide.FindAction("New action", throwIfNotFound: true);
+        m_TileinTime_MoveUp = m_TileinTime.FindAction("MoveUp", throwIfNotFound: true);
+        m_TileinTime_MoveRight = m_TileinTime.FindAction("MoveRight", throwIfNotFound: true);
+        m_TileinTime_MoveDown = m_TileinTime.FindAction("MoveDown", throwIfNotFound: true);
+        m_TileinTime_MoveLeft = m_TileinTime.FindAction("MoveLeft", throwIfNotFound: true);
+        m_TileinTime_RotateLeft = m_TileinTime.FindAction("RotateLeft", throwIfNotFound: true);
+        m_TileinTime_RotateRight = m_TileinTime.FindAction("RotateRight", throwIfNotFound: true);
     }
 
     ~@CarInput()
@@ -534,7 +695,6 @@ public partial class @CarInput: IInputActionCollection2, IDisposable
         UnityEngine.Debug.Assert(!m_VroominTimeAM.enabled, "This will cause a leak and performance issues, CarInput.VroominTimeAM.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_MenuinTimeAM.enabled, "This will cause a leak and performance issues, CarInput.MenuinTimeAM.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_TileinTime.enabled, "This will cause a leak and performance issues, CarInput.TileinTime.Disable() has not been called.");
-        UnityEngine.Debug.Assert(!m_Vide.enabled, "This will cause a leak and performance issues, CarInput.Vide.Disable() has not been called.");
     }
 
     public void Dispose()
@@ -713,11 +873,23 @@ public partial class @CarInput: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_TileinTime;
     private List<ITileinTimeActions> m_TileinTimeActionsCallbackInterfaces = new List<ITileinTimeActions>();
     private readonly InputAction m_TileinTime_Confirm;
+    private readonly InputAction m_TileinTime_MoveUp;
+    private readonly InputAction m_TileinTime_MoveRight;
+    private readonly InputAction m_TileinTime_MoveDown;
+    private readonly InputAction m_TileinTime_MoveLeft;
+    private readonly InputAction m_TileinTime_RotateLeft;
+    private readonly InputAction m_TileinTime_RotateRight;
     public struct TileinTimeActions
     {
         private @CarInput m_Wrapper;
         public TileinTimeActions(@CarInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Confirm => m_Wrapper.m_TileinTime_Confirm;
+        public InputAction @MoveUp => m_Wrapper.m_TileinTime_MoveUp;
+        public InputAction @MoveRight => m_Wrapper.m_TileinTime_MoveRight;
+        public InputAction @MoveDown => m_Wrapper.m_TileinTime_MoveDown;
+        public InputAction @MoveLeft => m_Wrapper.m_TileinTime_MoveLeft;
+        public InputAction @RotateLeft => m_Wrapper.m_TileinTime_RotateLeft;
+        public InputAction @RotateRight => m_Wrapper.m_TileinTime_RotateRight;
         public InputActionMap Get() { return m_Wrapper.m_TileinTime; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -730,6 +902,24 @@ public partial class @CarInput: IInputActionCollection2, IDisposable
             @Confirm.started += instance.OnConfirm;
             @Confirm.performed += instance.OnConfirm;
             @Confirm.canceled += instance.OnConfirm;
+            @MoveUp.started += instance.OnMoveUp;
+            @MoveUp.performed += instance.OnMoveUp;
+            @MoveUp.canceled += instance.OnMoveUp;
+            @MoveRight.started += instance.OnMoveRight;
+            @MoveRight.performed += instance.OnMoveRight;
+            @MoveRight.canceled += instance.OnMoveRight;
+            @MoveDown.started += instance.OnMoveDown;
+            @MoveDown.performed += instance.OnMoveDown;
+            @MoveDown.canceled += instance.OnMoveDown;
+            @MoveLeft.started += instance.OnMoveLeft;
+            @MoveLeft.performed += instance.OnMoveLeft;
+            @MoveLeft.canceled += instance.OnMoveLeft;
+            @RotateLeft.started += instance.OnRotateLeft;
+            @RotateLeft.performed += instance.OnRotateLeft;
+            @RotateLeft.canceled += instance.OnRotateLeft;
+            @RotateRight.started += instance.OnRotateRight;
+            @RotateRight.performed += instance.OnRotateRight;
+            @RotateRight.canceled += instance.OnRotateRight;
         }
 
         private void UnregisterCallbacks(ITileinTimeActions instance)
@@ -737,6 +927,24 @@ public partial class @CarInput: IInputActionCollection2, IDisposable
             @Confirm.started -= instance.OnConfirm;
             @Confirm.performed -= instance.OnConfirm;
             @Confirm.canceled -= instance.OnConfirm;
+            @MoveUp.started -= instance.OnMoveUp;
+            @MoveUp.performed -= instance.OnMoveUp;
+            @MoveUp.canceled -= instance.OnMoveUp;
+            @MoveRight.started -= instance.OnMoveRight;
+            @MoveRight.performed -= instance.OnMoveRight;
+            @MoveRight.canceled -= instance.OnMoveRight;
+            @MoveDown.started -= instance.OnMoveDown;
+            @MoveDown.performed -= instance.OnMoveDown;
+            @MoveDown.canceled -= instance.OnMoveDown;
+            @MoveLeft.started -= instance.OnMoveLeft;
+            @MoveLeft.performed -= instance.OnMoveLeft;
+            @MoveLeft.canceled -= instance.OnMoveLeft;
+            @RotateLeft.started -= instance.OnRotateLeft;
+            @RotateLeft.performed -= instance.OnRotateLeft;
+            @RotateLeft.canceled -= instance.OnRotateLeft;
+            @RotateRight.started -= instance.OnRotateRight;
+            @RotateRight.performed -= instance.OnRotateRight;
+            @RotateRight.canceled -= instance.OnRotateRight;
         }
 
         public void RemoveCallbacks(ITileinTimeActions instance)
@@ -754,52 +962,6 @@ public partial class @CarInput: IInputActionCollection2, IDisposable
         }
     }
     public TileinTimeActions @TileinTime => new TileinTimeActions(this);
-
-    // Vide
-    private readonly InputActionMap m_Vide;
-    private List<IVideActions> m_VideActionsCallbackInterfaces = new List<IVideActions>();
-    private readonly InputAction m_Vide_Newaction;
-    public struct VideActions
-    {
-        private @CarInput m_Wrapper;
-        public VideActions(@CarInput wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Newaction => m_Wrapper.m_Vide_Newaction;
-        public InputActionMap Get() { return m_Wrapper.m_Vide; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(VideActions set) { return set.Get(); }
-        public void AddCallbacks(IVideActions instance)
-        {
-            if (instance == null || m_Wrapper.m_VideActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_VideActionsCallbackInterfaces.Add(instance);
-            @Newaction.started += instance.OnNewaction;
-            @Newaction.performed += instance.OnNewaction;
-            @Newaction.canceled += instance.OnNewaction;
-        }
-
-        private void UnregisterCallbacks(IVideActions instance)
-        {
-            @Newaction.started -= instance.OnNewaction;
-            @Newaction.performed -= instance.OnNewaction;
-            @Newaction.canceled -= instance.OnNewaction;
-        }
-
-        public void RemoveCallbacks(IVideActions instance)
-        {
-            if (m_Wrapper.m_VideActionsCallbackInterfaces.Remove(instance))
-                UnregisterCallbacks(instance);
-        }
-
-        public void SetCallbacks(IVideActions instance)
-        {
-            foreach (var item in m_Wrapper.m_VideActionsCallbackInterfaces)
-                UnregisterCallbacks(item);
-            m_Wrapper.m_VideActionsCallbackInterfaces.Clear();
-            AddCallbacks(instance);
-        }
-    }
-    public VideActions @Vide => new VideActions(this);
     private int m_ClavierSourisSchemeIndex = -1;
     public InputControlScheme ClavierSourisScheme
     {
@@ -832,9 +994,11 @@ public partial class @CarInput: IInputActionCollection2, IDisposable
     public interface ITileinTimeActions
     {
         void OnConfirm(InputAction.CallbackContext context);
-    }
-    public interface IVideActions
-    {
-        void OnNewaction(InputAction.CallbackContext context);
+        void OnMoveUp(InputAction.CallbackContext context);
+        void OnMoveRight(InputAction.CallbackContext context);
+        void OnMoveDown(InputAction.CallbackContext context);
+        void OnMoveLeft(InputAction.CallbackContext context);
+        void OnRotateLeft(InputAction.CallbackContext context);
+        void OnRotateRight(InputAction.CallbackContext context);
     }
 }

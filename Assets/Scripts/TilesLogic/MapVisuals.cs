@@ -13,6 +13,10 @@ public class MapVisuals : MonoBehaviour
     private List<GameObject> selectedTile = new();
 
     private GameObject[,] visualMap = new GameObject[10, 10];
+    private void Awake()
+    {
+        DontDestroyOnLoad(this);
+    }
 
     public void SetVisual()
     {
@@ -112,6 +116,12 @@ public class MapVisuals : MonoBehaviour
         }
     }
 
-
+    public void GetParentTile()
+    {
+        if(!parentTuiles)
+        {
+            parentTuiles = Instantiate(new GameObject()).transform;
+        }
+    }
 }
 

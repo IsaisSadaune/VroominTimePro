@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Courses/CourseDeBase.unity
     guid: 91d81b59ab7afbe4ba96e0cc920f8a3d
   - enabled: 1
-    path: Assets/Scenes/TestControles.unity
+    path: Assets/Scenes/MainMenu.unity
     guid: 7728a053d11a536448835b6d93870f55
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: ed0e88f6ba164824aa045a8ef8f292bc, type: 2}

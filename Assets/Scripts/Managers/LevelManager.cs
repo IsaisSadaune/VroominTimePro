@@ -11,6 +11,8 @@ public class LevelManager : MonoBehaviour
 
     private MultiplayerManager multi;
     private GameManager gameManager;
+
+    [SerializeField] private MapVisuals visuals;
     void Awake()
     {
         if (instance != null && instance != this)
@@ -31,15 +33,16 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     public void GoToRace()
     {
-       
+        MapManager.Instance.CreateMap();
         multi.playerInputManager.DisableJoining();
-        gameManager.StartTileinTime();  
+        gameManager.StartTileinTime();
+        visuals.GetParentTile();
     }
 
     private void StartSceneVroomin(Scene scene, LoadSceneMode mode)
     {
 
-        if (scene.name != "TestControles")
+        if (scene.name != "MainMenu")
         {
             GoToRace();
         }

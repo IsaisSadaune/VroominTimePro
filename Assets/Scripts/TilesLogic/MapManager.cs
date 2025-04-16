@@ -26,10 +26,10 @@ public class MapManager : MonoBehaviour
         }
         DontDestroyOnLoad(this.gameObject);
 
-        CreateMap();
+      
     }
 
-    private void CreateMap()
+    public void CreateMap()
     {
 
         //création de la map
@@ -161,4 +161,6 @@ public class MapManager : MonoBehaviour
     {
         Deplacement("down");
     }
+
+ 
 }

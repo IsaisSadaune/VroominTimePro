@@ -15,7 +15,7 @@ public class MultiplayerManager : MonoBehaviour
     public LeaveHandler PlayerLeaveEvent;
 
     public List<GameObject> players;
-    public List<Transform> spawnPoint;
+    public List<Transform> spawnPoint ;
     public bool settingUpPlayer = true;
     public float timer;
     public PlayerInputManager playerInputManager;
