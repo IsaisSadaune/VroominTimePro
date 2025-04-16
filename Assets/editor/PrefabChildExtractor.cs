@@ -54,7 +54,7 @@ public class PrefabChildExtractor : EditorWindow
             VisualBloc so = ScriptableObject.CreateInstance<VisualBloc>();
 
             GameObject childInstance = child.gameObject;
-            int rotationAmount = Mathf.RoundToInt(childInstance.transform.rotation.eulerAngles.y/90);
+            int rotationAmount = Mathf.RoundToInt(childInstance.transform.rotation.eulerAngles.y);
 
             GameObject sourcePrefab = (GameObject)PrefabUtility.GetCorrespondingObjectFromSource(childInstance);
 

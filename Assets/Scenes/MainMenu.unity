@@ -588,6 +588,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MapManager
       objectReference: {fileID: 0}
+    - target: {fileID: 7566454673144618439, guid: aac6ace6de15e8f409e29dd24f9049dd, type: 3}
+      propertyPath: <ActiveTile>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 1afc27b9aaa062046b9fba4a5e77ce01, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
