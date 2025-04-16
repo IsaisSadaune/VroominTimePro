@@ -15,9 +15,9 @@ MonoBehaviour:
   blocs:
   - {fileID: 11400000, guid: 5a9820d5a48f1f641a82b82d3eed9a5d, type: 2}
   - {fileID: 11400000, guid: 38035f87e2dabd146a83903a188cabd5, type: 2}
-  - {fileID: 11400000, guid: 33607e649d0153e4cbb1fed6aa9e8652, type: 2}
+  - {fileID: 11400000, guid: 38035f87e2dabd146a83903a188cabd5, type: 2}
   position:
   - {x: 0, y: 0}
   - {x: 0, y: 1}
   - {x: 1, y: 0}
-  rotation: 000000000000000000000000
+  rotation: 020000000000000001000000

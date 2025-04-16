@@ -54,6 +54,7 @@ public class PrefabChildExtractor : EditorWindow
             VisualBloc so = ScriptableObject.CreateInstance<VisualBloc>();
 
             GameObject childInstance = child.gameObject;
+            int rotationAmount = Mathf.RoundToInt(childInstance.transform.rotation.eulerAngles.y/90);
 
             GameObject sourcePrefab = (GameObject)PrefabUtility.GetCorrespondingObjectFromSource(childInstance);
 
@@ -71,7 +72,7 @@ public class PrefabChildExtractor : EditorWindow
             tileObject.blocs.Add(so);
             Vector2Int positionBloc = new Vector2Int(Mathf.RoundToInt(child.position.x), Mathf.RoundToInt(child.position.z));
             tileObject.position.Add(positionBloc);
-            tileObject.rotation.Add(0);
+            tileObject.rotation.Add(rotationAmount);
 
         }
 
