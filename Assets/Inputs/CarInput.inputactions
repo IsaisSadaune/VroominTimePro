@@ -397,81 +397,65 @@
             "id": "812b5286-cc96-4ae6-b519-8fa31a05ef98",
             "actions": [
                 {
-                    "name": "Left",
-                    "type": "Value",
-                    "id": "f074f92f-b3af-4ece-a710-42d7aba6cb42",
-                    "expectedControlType": "Vector2",
+                    "name": "Confirm",
+                    "type": "Button",
+                    "id": "aec0e464-9521-4df7-bfab-c465f147d40b",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": true
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
                 {
                     "name": "",
-                    "id": "16e93933-2510-4d65-90cc-c5fcc7fc8cc2",
-                    "path": "",
+                    "id": "81dbd393-5dc2-4e39-8fe3-226af4659b27",
+                    "path": "<Keyboard>/anyKey",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Left",
+                    "action": "Confirm",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "2D Vector",
-                    "id": "fbc969a2-4d9f-4ac5-8444-e0d8c70ea6e5",
-                    "path": "2DVector",
+                    "name": "",
+                    "id": "cf8b2447-5b49-4ae0-9b6a-f0be90a66dec",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Left",
-                    "isComposite": true,
+                    "action": "Confirm",
+                    "isComposite": false,
                     "isPartOfComposite": false
-                },
+                }
+            ]
+        },
+        {
+            "name": "Vide",
+            "id": "91addce0-e3c4-46b6-8f75-8a2032bda68e",
+            "actions": [
                 {
-                    "name": "up",
-                    "id": "fcf609df-1c86-447d-a705-f290d1124db8",
-                    "path": "<Keyboard>/z",
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "cb2e0629-9554-47b6-a2a2-cf6b7c9fb9ff",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "53a90bf9-16b4-4e68-bbe4-7c2b6375c5ef",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Left",
+                    "action": "New action",
                     "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "33ec9bd4-97e3-4a2d-bfdb-dfe9e56bf8d5",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Left",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "50e3dd57-945a-4622-97b9-2e6fb1938063",
-                    "path": "<Keyboard>/q",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Left",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "61c0fddd-ebdd-45d3-a143-4e774dcc1c74",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Left",
-                    "isComposite": false,
-                    "isPartOfComposite": true
+                    "isPartOfComposite": false
                 }
             ]
         }
@@ -488,7 +472,7 @@
                 },
                 {
                     "devicePath": "<Mouse>",
-                    "isOptional": false,
+                    "isOptional": true,
                     "isOR": false
                 }
             ]

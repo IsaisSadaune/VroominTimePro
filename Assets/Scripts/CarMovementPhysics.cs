@@ -2,7 +2,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System;
-using static UnityEditor.Experimental.GraphView.GraphView;
+using UnityEngine.SceneManagement;
 public class CarMovementPhysics : MonoBehaviour
 {
     [Header("Statistics")]
@@ -48,9 +48,9 @@ public class CarMovementPhysics : MonoBehaviour
     private Vector3 moveDirection;
     private float buffer;
     private float TurnInput; //the value of the input used for turning [-1,1]
-    private float isAccelerating;
+    public float isAccelerating;
     private Rigidbody rb;
-    private float speedActu = 0;
+    public float speedActu = 0;
     private GameObject e;
     private MultiplayerManager multiplayer;
     
@@ -75,22 +75,21 @@ public class CarMovementPhysics : MonoBehaviour
 
     private void Awake()
     {
+       
 
-        multiplayer = MultiplayerManager.Instance;
-        multiplayer.players.Add(gameObject);
     }
 
     void Start()
     {
-
         moveDirection = transform.forward;
         rb = GetComponent<Rigidbody>();
         maxSpeed = speed;
-        Vector3 spawnPoint = multiplayer.spawnPoint[multiplayer.players.IndexOf(gameObject)].position;
-        transform.position = spawnPoint + new Vector3(0, 0.23f, 0);
     }
 
-    
+  
+
+
+
     void Update()    
     { 
         rb.linearVelocity = moveDirection * speedActu;
@@ -118,7 +117,7 @@ public class CarMovementPhysics : MonoBehaviour
             rb.AddForce(collision.contacts[0].normal * 10);
           
             GameObject choc = Instantiate(ChocVFX, collision.contacts[0].point, Quaternion.identity);
-            choc.transform.LookAt(choc.transform.position + collision.contacts[1].normal);
+            choc.transform.LookAt(choc.transform.position + collision.contacts[0].normal);
         }
         buffer = bufferTiming;
     }

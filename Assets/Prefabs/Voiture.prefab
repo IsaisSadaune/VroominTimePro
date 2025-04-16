@@ -633,7 +633,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7326527532483379056}
-  m_Material: {fileID: 13400000, guid: 78428acda47ee304a93a03a5dc8219a0, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -668,6 +668,8 @@ MonoBehaviour:
   maxDriftAngle: 65
   ChocVFX: {fileID: 6049994839898122673, guid: 1ccf157ebc52be141b66f8c8c1140905, type: 3}
   speedLost: 65
+  isAccelerating: 0
+  speedActu: 0
 --- !u!114 &-2923950036466502857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -773,7 +775,39 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: c2debce1-e1b8-4979-8275-59640721f618
     m_ActionName: MenuinTimeAM/Leave
-  m_NeverAutoSwitchControlSchemes: 0
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6857082026848131161}
+        m_TargetAssemblyTypeName: PlayerLogic, Assembly-CSharp
+        m_MethodName: SetPlayerReady
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: cb2e0629-9554-47b6-a2a2-cf6b7c9fb9ff
+    m_ActionName: 'Vide/New action[/Keyboard/space]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6857082026848131161}
+        m_TargetAssemblyTypeName: PlayerLogic, Assembly-CSharp
+        m_MethodName: SetPlayerReady
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: aec0e464-9521-4df7-bfab-c465f147d40b
+    m_ActionName: 'TileinTime/Confirm[/Keyboard/anyKey,/DualShock4GamepadHID/buttonSouth]'
+  m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: MenuinTimeAM
   m_SplitScreenIndex: -1
