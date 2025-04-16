@@ -36,8 +36,6 @@ public class MultiplayerManager : MonoBehaviour
         
     }
 
-
-
     private void Start()
     {
         
@@ -51,16 +49,12 @@ public class MultiplayerManager : MonoBehaviour
         }
     }
 
-   
-
-
     public void ChangeMenu(GameObject oldMenu, GameObject newMenu)
     {
         StartCoroutine(DisablePlayer(2));
         oldMenu.transform.DOMove(new Vector3(0, -48, 0), 1.3f).SetEase(Ease.InBack);
         newMenu.transform.DOMove(new Vector3(0, 0, 0), 2).SetEase(Ease.OutQuad);
     }
-
 
 
     public IEnumerator DisablePlayer(float waitTime)
@@ -84,11 +78,12 @@ public class MultiplayerManager : MonoBehaviour
         playerInputManager.EnableJoining();
          
     }
-    public void SwitchPlayersToVroominTime()
+    public void SwitchPlayersActionMap(string actionMapName)
     {
         foreach (GameObject car in players)
         {
-            car.GetComponent<PlayerInput>().SwitchCurrentActionMap("VroominTimeAM");
+
+            car.GetComponent<PlayerInput>().SwitchCurrentActionMap(actionMapName);
         }
     }
 

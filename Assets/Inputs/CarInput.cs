@@ -419,18 +419,9 @@ public partial class @CarInput: IInputActionCollection2, IDisposable
             ""id"": ""812b5286-cc96-4ae6-b519-8fa31a05ef98"",
             ""actions"": [
                 {
-                    ""name"": ""Left"",
-                    ""type"": ""Value"",
-                    ""id"": ""f074f92f-b3af-4ece-a710-42d7aba6cb42"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""Debug"",
+                    ""name"": ""Confirm"",
                     ""type"": ""Button"",
-                    ""id"": ""ed16c32b-b6eb-4ca3-98af-7746745df3b4"",
+                    ""id"": ""aec0e464-9521-4df7-bfab-c465f147d40b"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -440,89 +431,23 @@ public partial class @CarInput: IInputActionCollection2, IDisposable
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""16e93933-2510-4d65-90cc-c5fcc7fc8cc2"",
-                    ""path"": """",
+                    ""id"": ""81dbd393-5dc2-4e39-8fe3-226af4659b27"",
+                    ""path"": ""<Keyboard>/anyKey"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Left"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""2D Vector"",
-                    ""id"": ""fbc969a2-4d9f-4ac5-8444-e0d8c70ea6e5"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Left"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""fcf609df-1c86-447d-a705-f290d1124db8"",
-                    ""path"": ""<Keyboard>/z"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Left"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""33ec9bd4-97e3-4a2d-bfdb-dfe9e56bf8d5"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Left"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""50e3dd57-945a-4622-97b9-2e6fb1938063"",
-                    ""path"": ""<Keyboard>/q"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Left"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""61c0fddd-ebdd-45d3-a143-4e774dcc1c74"",
-                    ""path"": ""<Keyboard>/d"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Left"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""88f3ce26-e00d-4e26-98d0-86c9151cae95"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Debug"",
+                    ""action"": ""Confirm"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""0b738ab4-ac57-49a7-85f8-7660667926ce"",
-                    ""path"": ""<Keyboard>/space"",
+                    ""id"": ""cf8b2447-5b49-4ae0-9b6a-f0be90a66dec"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Debug"",
+                    ""action"": ""Confirm"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -598,8 +523,7 @@ public partial class @CarInput: IInputActionCollection2, IDisposable
         m_MenuinTimeAM_Leave = m_MenuinTimeAM.FindAction("Leave", throwIfNotFound: true);
         // TileinTime
         m_TileinTime = asset.FindActionMap("TileinTime", throwIfNotFound: true);
-        m_TileinTime_Left = m_TileinTime.FindAction("Left", throwIfNotFound: true);
-        m_TileinTime_Debug = m_TileinTime.FindAction("Debug", throwIfNotFound: true);
+        m_TileinTime_Confirm = m_TileinTime.FindAction("Confirm", throwIfNotFound: true);
         // Vide
         m_Vide = asset.FindActionMap("Vide", throwIfNotFound: true);
         m_Vide_Newaction = m_Vide.FindAction("New action", throwIfNotFound: true);
@@ -788,14 +712,12 @@ public partial class @CarInput: IInputActionCollection2, IDisposable
     // TileinTime
     private readonly InputActionMap m_TileinTime;
     private List<ITileinTimeActions> m_TileinTimeActionsCallbackInterfaces = new List<ITileinTimeActions>();
-    private readonly InputAction m_TileinTime_Left;
-    private readonly InputAction m_TileinTime_Debug;
+    private readonly InputAction m_TileinTime_Confirm;
     public struct TileinTimeActions
     {
         private @CarInput m_Wrapper;
         public TileinTimeActions(@CarInput wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Left => m_Wrapper.m_TileinTime_Left;
-        public InputAction @Debug => m_Wrapper.m_TileinTime_Debug;
+        public InputAction @Confirm => m_Wrapper.m_TileinTime_Confirm;
         public InputActionMap Get() { return m_Wrapper.m_TileinTime; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -805,22 +727,16 @@ public partial class @CarInput: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_TileinTimeActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_TileinTimeActionsCallbackInterfaces.Add(instance);
-            @Left.started += instance.OnLeft;
-            @Left.performed += instance.OnLeft;
-            @Left.canceled += instance.OnLeft;
-            @Debug.started += instance.OnDebug;
-            @Debug.performed += instance.OnDebug;
-            @Debug.canceled += instance.OnDebug;
+            @Confirm.started += instance.OnConfirm;
+            @Confirm.performed += instance.OnConfirm;
+            @Confirm.canceled += instance.OnConfirm;
         }
 
         private void UnregisterCallbacks(ITileinTimeActions instance)
         {
-            @Left.started -= instance.OnLeft;
-            @Left.performed -= instance.OnLeft;
-            @Left.canceled -= instance.OnLeft;
-            @Debug.started -= instance.OnDebug;
-            @Debug.performed -= instance.OnDebug;
-            @Debug.canceled -= instance.OnDebug;
+            @Confirm.started -= instance.OnConfirm;
+            @Confirm.performed -= instance.OnConfirm;
+            @Confirm.canceled -= instance.OnConfirm;
         }
 
         public void RemoveCallbacks(ITileinTimeActions instance)
@@ -915,8 +831,7 @@ public partial class @CarInput: IInputActionCollection2, IDisposable
     }
     public interface ITileinTimeActions
     {
-        void OnLeft(InputAction.CallbackContext context);
-        void OnDebug(InputAction.CallbackContext context);
+        void OnConfirm(InputAction.CallbackContext context);
     }
     public interface IVideActions
     {

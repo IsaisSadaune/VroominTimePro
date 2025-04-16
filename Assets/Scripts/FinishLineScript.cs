@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class FinishLineScript : MonoBehaviour
 {
@@ -14,12 +15,17 @@ public class FinishLineScript : MonoBehaviour
     {
         if(other.CompareTag("Car"))
         {
-            gameManager.AddPlayerToTimer(other.gameObject);
+            playerFinishLine(other.gameObject);
         }
         if(gameManager.playersTimer.Count == MultiplayerManager.Instance.players.Count)
         {
-            LevelManager.Instance.EndRound();  
+            GameManager.Instance.EndRound();  
         }
     }
-    
+
+    private void playerFinishLine(GameObject player)
+    {
+        gameManager.AddPlayerToTimer(player);
+    }
+
 }

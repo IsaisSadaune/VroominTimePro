@@ -7,6 +7,7 @@ public class PlayerLogic : MonoBehaviour
     private MultiplayerManager multiplayer;
     private PlayerInput carInput;
     private CarMovementPhysics physicsScript;
+
     public void Leave(InputAction.CallbackContext ctx)
     {
         if (ctx.performed)
@@ -64,8 +65,14 @@ public class PlayerLogic : MonoBehaviour
 
     }
 
-    public void oui(InputAction.CallbackContext ctx)
+    public void SetPlayerReady(InputAction.CallbackContext ctx)
     {
-        Debug.Log("lancé");
+        if(ctx.started)
+        {
+            Debug.Log("ready");
+            GameManager.Instance.AddReadyPlayer();
+
+        }
+
     }
 }

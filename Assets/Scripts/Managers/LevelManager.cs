@@ -33,12 +33,11 @@ public class LevelManager : MonoBehaviour
     {
        
         multi.playerInputManager.DisableJoining();
-        StartRound();  
+        gameManager.StartTileinTime();  
     }
 
     private void StartSceneVroomin(Scene scene, LoadSceneMode mode)
     {
-        multi.SpawnAllPlayers();
 
         if (scene.name != "TestControles")
         {
@@ -55,18 +54,5 @@ public class LevelManager : MonoBehaviour
         
     }
 
-    public void StartRound()
-    {
-        multi.SwitchPlayersToVroominTime();
-        gameManager.StartDecompte();
-
-    }
-
-    public void EndRound()
-    {
-       foreach(var line in gameManager.playersTimer)
-        {
-            Debug.Log($"Player{multi.players.IndexOf(line.Key)+1} : {line.Value}");
-        }
-    }
+    
 }

@@ -668,6 +668,8 @@ MonoBehaviour:
   maxDriftAngle: 65
   ChocVFX: {fileID: 6049994839898122673, guid: 1ccf157ebc52be141b66f8c8c1140905, type: 3}
   speedLost: 65
+  isAccelerating: 0
+  speedActu: 0
 --- !u!114 &-2923950036466502857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -774,30 +776,10 @@ MonoBehaviour:
     m_ActionId: c2debce1-e1b8-4979-8275-59640721f618
     m_ActionName: MenuinTimeAM/Leave
   - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: f074f92f-b3af-4ece-a710-42d7aba6cb42
-    m_ActionName: 'TileinTime/Left[/Keyboard/z,/Keyboard/s,/Keyboard/q,/Keyboard/d]'
-  - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6857082026848131161}
         m_TargetAssemblyTypeName: PlayerLogic, Assembly-CSharp
-        m_MethodName: oui
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: ed16c32b-b6eb-4ca3-98af-7746745df3b4
-    m_ActionName: 'TileinTime/Debug[/Keyboard/space]'
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6857082026848131161}
-        m_TargetAssemblyTypeName: PlayerLogic, Assembly-CSharp
-        m_MethodName: oui
+        m_MethodName: SetPlayerReady
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -809,6 +791,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: cb2e0629-9554-47b6-a2a2-cf6b7c9fb9ff
     m_ActionName: 'Vide/New action[/Keyboard/space]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6857082026848131161}
+        m_TargetAssemblyTypeName: PlayerLogic, Assembly-CSharp
+        m_MethodName: SetPlayerReady
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: aec0e464-9521-4df7-bfab-c465f147d40b
+    m_ActionName: 'TileinTime/Confirm[/Keyboard/anyKey,/DualShock4GamepadHID/buttonSouth]'
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: MenuinTimeAM
@@ -826,7 +824,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c8897acf9ce48c41a47e1da0f232ab3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  carInput: {fileID: 0}
 --- !u!1 &7803300709291911737
 GameObject:
   m_ObjectHideFlags: 0
