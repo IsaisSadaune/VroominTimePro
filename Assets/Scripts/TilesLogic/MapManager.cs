@@ -124,10 +124,8 @@ public class MapManager : MonoBehaviour
             _xCoordonate += player.Position.x;
             _yCoordonate += player.Position.y;
 
-            // /!\ PRENDRE EN COMPTE LA ROTATION DANS CE IF, CA CREE UN BUG ET PERMET DE REMPLACER ALORS QUE CA DEVRAIT PAS/!\
             //placer la ligne de départ et d'arrivée dans le code
-            if (new Vector2Int(_xCoordonate, _yCoordonate) == new Vector2Int(0, 0)
-                || new Vector2Int(_xCoordonate, _yCoordonate) == new Vector2Int(9, 9))
+            if (!IsPositionLegit(new Vector2Int(_xCoordonate, _yCoordonate), new Vector2Int(0,0), new Vector2Int(9,9)))
             {
                 Debug.Log("erreur en position " + player.ActiveTile.position[i] + player.Position);
             }
@@ -144,11 +142,19 @@ public class MapManager : MonoBehaviour
         }
     }
 
+    public bool IsPositionLegit(Vector2Int position, List<Vector2Int> positionStart, List<Vector2Int> positionEnd) => !positionStart.Contains(position) && !positionEnd.Contains(position);
+    public bool IsPositionLegit(Vector2Int position, Vector2Int positionStart, Vector2Int positionEnd) => positionStart != position && positionEnd != position;
+
     //public void ChangeActiveTile(VisualTile id, int player)
     //{
     //    ActiveTile[player] = id;
     //    visuals.ApplyChangeTile(player);
     //}
+
+
+
+
+    //Ces scripts servent pour debug, c'est mieux de passer par la classe qu'un int
     public void RotateRight(int indexPlayer)
     {
         players[indexPlayer].Rotation++;
@@ -161,12 +167,10 @@ public class MapManager : MonoBehaviour
         if (players[indexPlayer].Rotation < 0) players[indexPlayer].Rotation = 3;
         visuals.ApplyRotationLeft(players[indexPlayer]);
     }
-
     public void PlaceTileInt(int indexPlayer)
     {
         PlaceTile(players[indexPlayer]);
     }
-
     public void Up(int indexPlayer)
     {
         Deplacement("up", players[indexPlayer]);

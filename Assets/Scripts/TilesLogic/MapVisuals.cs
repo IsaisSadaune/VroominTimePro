@@ -10,6 +10,8 @@ public class MapVisuals : MonoBehaviour
     [SerializeField] private List<GameObject> cursorPrefabs;
 
     private GameObject[,] visualMap = new GameObject[10, 10];
+
+    private List<PlayerVisuals> playerVisuals = new();
     private void Awake()
     {
         DontDestroyOnLoad(this);
@@ -29,6 +31,7 @@ public class MapVisuals : MonoBehaviour
         }
         for(int i=0; i< NBR_PLAYERS;i++)
         {
+            playerVisuals.Add(new());
             SetActiveTile(InstanceMapManager.players[i]);
             SetCursor(InstanceMapManager.players[i], cursorPrefabs[i]);
         }
@@ -57,7 +60,7 @@ public class MapVisuals : MonoBehaviour
     /// <param name="player">Index du joueur qui se déplace</param>
     public void ApplyMovement(Player player)
     {
-        MoveCursor(player);
+        MoveCursor(player.cursor, player.Position);
         MoveActiveTile(player);
         for (int i = 0; i < player.Rotation; i++)
         {
@@ -93,9 +96,9 @@ public class MapVisuals : MonoBehaviour
     /// Déplace le curseur vers la nouvelle position du joueur
     /// </summary>
     /// <param name="player">Index du joueur</param>
-    public void MoveCursor(Player player)
+    public void MoveCursor(GameObject cursor, Vector2Int position)
     {
-        player.cursor.transform.position = new Vector3(player.Position.x, 2, player.Position.y);
+        cursor.transform.position = new Vector3(position.x, 2, position.y);
     }
 
     /// <summary>
@@ -110,7 +113,13 @@ public class MapVisuals : MonoBehaviour
             Quaternion rotation = Quaternion.Euler(0, player.ActiveTile.rotation[i], 0);
             
             player.gameObjectTiles.Add(Instantiate(bloc, new Vector3(player.GetGlobalPositionX(i), 0.1f, player.GetGlobalPositionY(i)), rotation, parentTuiles));
+            //player.gameObjectTiles.Add(SetActiveBloc(bloc, player.Position, rotation, parentTuiles));
         }
+    }
+
+    private GameObject SetActiveBloc(GameObject bloc, Vector2Int position, Quaternion rotation, Transform parentTuile)
+    {
+        return Instantiate(bloc, new Vector3(position.x, 0.1f, position.y), rotation, parentTuiles);
     }
 
     /// <summary>
@@ -121,12 +130,15 @@ public class MapVisuals : MonoBehaviour
     {
         for (int i = 0; i < player.gameObjectTiles.Count; i++)
         {
-            player.gameObjectTiles[i].transform.position = new Vector3(
-                player.GetGlobalPositionX(i),
-                0.1f,
-                player.GetGlobalPositionY(i));
+            MoveActiveBloc(player.gameObjectTiles[i], new Vector2Int(player.GetGlobalPositionX(i), player.GetGlobalPositionY(i)));
         }
     }
+
+    private void MoveActiveBloc(GameObject bloc, Vector2Int position)
+    {
+        bloc.transform.position = new Vector3(position.x, 0.1f, position.y);
+    }
+
 
     /// <summary>
     /// Applique la rotation d'une tuile vers la droite
@@ -137,15 +149,24 @@ public class MapVisuals : MonoBehaviour
 
         for (int i = 0; i < player.gameObjectTiles.Count; i++)
         {
-            player.gameObjectTiles[i].transform.rotation = Quaternion.identity;
-            player.gameObjectTiles[i].transform.position = new Vector3(
-                (player.gameObjectTiles[i].transform.position.z - player.Position.y) + player.Position.x,
-                0.1f,
-                -(player.gameObjectTiles[i].transform.position.x - player.Position.x) + player.Position.y);
-            player.gameObjectTiles[i].transform.Rotate(0, 90 * player.Rotation + player.ActiveTile.rotation[i], 0);
-        }
 
+            ApplyRotationBlocRight(player.gameObjectTiles[i], player.Position, player.Rotation, player.ActiveTile.rotation[i]);
+        }
     }
+
+    private void ApplyRotationBlocRight(GameObject bloc, Vector2Int positionPlayer, int rotation, int rotationBase)
+    {
+        
+        bloc.transform.SetPositionAndRotation(new Vector3(
+                (bloc.transform.position.z - positionPlayer.y) + positionPlayer.x,
+                0.1f,
+                -(bloc.transform.position.x - positionPlayer.x) + positionPlayer.y), 
+            Quaternion.identity);
+
+        bloc.transform.Rotate(0, 90 * rotation + rotationBase, 0);
+    }
+
+
 
     /// <summary>
     /// Applique la rotation d'une tuile vers la gauche
@@ -155,14 +176,19 @@ public class MapVisuals : MonoBehaviour
     {
         for (int i = 0; i < player.gameObjectTiles.Count; i++)
         {
-            player.gameObjectTiles[i].transform.rotation = Quaternion.identity;
-            player.gameObjectTiles[i].transform.position = new Vector3(
-                -(player.gameObjectTiles[i].transform.position.z - player.Position.y) + player.Position.x,
-                0.1f,
-                (player.gameObjectTiles[i].transform.position.x - player.Position.x) + player.Position.y);
-            player.gameObjectTiles[i].transform.Rotate(0, 90 * player.Rotation + player.ActiveTile.rotation[i], 0);
+            ApplyRotationBlocLeft(player.gameObjectTiles[i], player.Position, player.Rotation, player.ActiveTile.rotation[i]);
         }
     }
+    private void ApplyRotationBlocLeft(GameObject bloc, Vector2Int positionPlayer, int rotation, int rotationBase)
+    {
+        bloc.transform.rotation = Quaternion.identity;
+        bloc.transform.position = new Vector3(
+            -(bloc.transform.position.z - positionPlayer.y) + positionPlayer.x,
+            0.1f,
+            (bloc.transform.position.x - positionPlayer.x) + positionPlayer.y);
+        bloc.transform.Rotate(0, 90 * rotation + rotationBase, 0);
+    }
+
 
     public void SetParentTile()
     {
