@@ -89,7 +89,7 @@ public class MapVisuals : MonoBehaviour
     }
     public void MoveActiveTile(int player)
     {
-        for (int i = 0; i < selectedTile.Count; i++)
+        for (int i = 0; i < selectedTile[player].Count; i++)
         {
             selectedTile[player][i].transform.position = new Vector3(
                 Instance.position[player].x + Instance.ActiveTile[player].position[i].x,
@@ -101,7 +101,7 @@ public class MapVisuals : MonoBehaviour
     public void ApplyRotationRight(int player)
     {
 
-        for (int i = 0; i < selectedTile.Count; i++)
+        for (int i = 0; i < selectedTile[player].Count; i++)
         {
             selectedTile[player][i].transform.rotation = Quaternion.identity;
             selectedTile[player][i].transform.position = new Vector3(
@@ -114,7 +114,7 @@ public class MapVisuals : MonoBehaviour
     }
     public void ApplyRotationLeft(int player)
     {
-        for (int i = 0; i < selectedTile.Count; i++)
+        for (int i = 0; i < selectedTile[player].Count; i++)
         {
             selectedTile[player][i].transform.rotation = Quaternion.identity;
             selectedTile[player][i].transform.position = new Vector3(

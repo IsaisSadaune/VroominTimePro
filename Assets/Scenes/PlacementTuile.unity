@@ -170,7 +170,7 @@ GameObject:
   - component: {fileID: 113838361}
   - component: {fileID: 113838360}
   m_Layer: 5
-  m_Name: Button
+  m_Name: up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -242,12 +242,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1876427882}
         m_TargetAssemblyTypeName: MapManager, Assembly-CSharp
-        m_MethodName: UpP2
-        m_Mode: 1
+        m_MethodName: Up
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -650,7 +650,7 @@ GameObject:
   - component: {fileID: 258856292}
   - component: {fileID: 258856291}
   m_Layer: 5
-  m_Name: Button (4)
+  m_Name: place
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -722,12 +722,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1876427882}
         m_TargetAssemblyTypeName: MapManager, Assembly-CSharp
-        m_MethodName: PlaceTileP2
-        m_Mode: 1
+        m_MethodName: PlaceTile
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -821,7 +821,7 @@ GameObject:
   - component: {fileID: 327154934}
   - component: {fileID: 327154933}
   m_Layer: 5
-  m_Name: Button (3)
+  m_Name: right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -894,11 +894,11 @@ MonoBehaviour:
       - m_Target: {fileID: 1876427882}
         m_TargetAssemblyTypeName: MapManager, Assembly-CSharp
         m_MethodName: Right
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -954,7 +954,7 @@ GameObject:
   - component: {fileID: 343353271}
   - component: {fileID: 343353270}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1027,11 +1027,11 @@ MonoBehaviour:
       - m_Target: {fileID: 1876427882}
         m_TargetAssemblyTypeName: MapManager, Assembly-CSharp
         m_MethodName: Left
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1390,7 +1390,7 @@ GameObject:
   - component: {fileID: 355810520}
   - component: {fileID: 355810519}
   m_Layer: 5
-  m_Name: Button
+  m_Name: up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1463,11 +1463,11 @@ MonoBehaviour:
       - m_Target: {fileID: 1876427882}
         m_TargetAssemblyTypeName: MapManager, Assembly-CSharp
         m_MethodName: Up
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1815,8 +1815,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1876427882}
         m_TargetAssemblyTypeName: MapManager, Assembly-CSharp
-        m_MethodName: LeftP1
-        m_Mode: 1
+        m_MethodName: Left
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2322,7 +2322,7 @@ GameObject:
   - component: {fileID: 630200349}
   - component: {fileID: 630200348}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2395,11 +2395,11 @@ MonoBehaviour:
       - m_Target: {fileID: 1876427882}
         m_TargetAssemblyTypeName: MapManager, Assembly-CSharp
         m_MethodName: Left
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2527,8 +2527,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1876427882}
         m_TargetAssemblyTypeName: MapManager, Assembly-CSharp
-        m_MethodName: UpP1
-        m_Mode: 1
+        m_MethodName: Up
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2588,7 +2588,7 @@ GameObject:
   - component: {fileID: 646734938}
   - component: {fileID: 646734937}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: down
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2661,11 +2661,11 @@ MonoBehaviour:
       - m_Target: {fileID: 1876427882}
         m_TargetAssemblyTypeName: MapManager, Assembly-CSharp
         m_MethodName: Down
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2857,7 +2857,7 @@ GameObject:
   - component: {fileID: 734109396}
   - component: {fileID: 734109395}
   m_Layer: 5
-  m_Name: Button (6)
+  m_Name: rotaright
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2930,11 +2930,11 @@ MonoBehaviour:
       - m_Target: {fileID: 1876427882}
         m_TargetAssemblyTypeName: MapManager, Assembly-CSharp
         m_MethodName: RotateRight
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -3207,7 +3207,7 @@ GameObject:
   - component: {fileID: 749853513}
   - component: {fileID: 749853512}
   m_Layer: 5
-  m_Name: Button (3)
+  m_Name: right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3280,11 +3280,11 @@ MonoBehaviour:
       - m_Target: {fileID: 1876427882}
         m_TargetAssemblyTypeName: MapManager, Assembly-CSharp
         m_MethodName: Right
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -3412,8 +3412,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1876427882}
         m_TargetAssemblyTypeName: MapManager, Assembly-CSharp
-        m_MethodName: DownP1
-        m_Mode: 1
+        m_MethodName: Down
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3473,7 +3473,7 @@ GameObject:
   - component: {fileID: 774318133}
   - component: {fileID: 774318132}
   m_Layer: 5
-  m_Name: Button (4)
+  m_Name: place
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3546,11 +3546,11 @@ MonoBehaviour:
       - m_Target: {fileID: 1876427882}
         m_TargetAssemblyTypeName: MapManager, Assembly-CSharp
         m_MethodName: PlaceTile
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -3717,8 +3717,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1876427882}
         m_TargetAssemblyTypeName: MapManager, Assembly-CSharp
-        m_MethodName: RotateLeftP1
-        m_Mode: 1
+        m_MethodName: RotateLeft
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3914,7 +3914,7 @@ GameObject:
   - component: {fileID: 896083865}
   - component: {fileID: 896083864}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: down
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3987,11 +3987,11 @@ MonoBehaviour:
       - m_Target: {fileID: 1876427882}
         m_TargetAssemblyTypeName: MapManager, Assembly-CSharp
         m_MethodName: Down
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -4183,7 +4183,7 @@ GameObject:
   - component: {fileID: 913289848}
   - component: {fileID: 913289847}
   m_Layer: 5
-  m_Name: Button (3)
+  m_Name: right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4255,12 +4255,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1876427882}
         m_TargetAssemblyTypeName: MapManager, Assembly-CSharp
-        m_MethodName: RightP2
-        m_Mode: 1
+        m_MethodName: Right
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -4316,7 +4316,7 @@ GameObject:
   - component: {fileID: 942992464}
   - component: {fileID: 942992463}
   m_Layer: 5
-  m_Name: Button (5)
+  m_Name: rotaleft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4389,11 +4389,11 @@ MonoBehaviour:
       - m_Target: {fileID: 1876427882}
         m_TargetAssemblyTypeName: MapManager, Assembly-CSharp
         m_MethodName: RotateLeft
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -4721,7 +4721,7 @@ GameObject:
   - component: {fileID: 1012467269}
   - component: {fileID: 1012467268}
   m_Layer: 5
-  m_Name: Button (5)
+  m_Name: rotaleft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4794,11 +4794,11 @@ MonoBehaviour:
       - m_Target: {fileID: 1876427882}
         m_TargetAssemblyTypeName: MapManager, Assembly-CSharp
         m_MethodName: RotateLeft
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -5058,7 +5058,7 @@ GameObject:
   - component: {fileID: 1083606703}
   - component: {fileID: 1083606702}
   m_Layer: 5
-  m_Name: Button (6)
+  m_Name: rotaright
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5130,12 +5130,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1876427882}
         m_TargetAssemblyTypeName: MapManager, Assembly-CSharp
-        m_MethodName: RotateRightP2
-        m_Mode: 1
+        m_MethodName: RotateRight
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -5228,7 +5228,7 @@ GameObject:
   - component: {fileID: 1233277635}
   - component: {fileID: 1233277634}
   m_Layer: 5
-  m_Name: Button (5)
+  m_Name: rotaleft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5300,12 +5300,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1876427882}
         m_TargetAssemblyTypeName: MapManager, Assembly-CSharp
-        m_MethodName: RotateLeftP2
-        m_Mode: 1
+        m_MethodName: RotateLeft
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -5433,8 +5433,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1876427882}
         m_TargetAssemblyTypeName: MapManager, Assembly-CSharp
-        m_MethodName: RotateRightP1
-        m_Mode: 1
+        m_MethodName: RotateRight
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5805,7 +5805,7 @@ GameObject:
   - component: {fileID: 1414799140}
   - component: {fileID: 1414799139}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: down
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5877,12 +5877,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1876427882}
         m_TargetAssemblyTypeName: MapManager, Assembly-CSharp
-        m_MethodName: DownP2
-        m_Mode: 1
+        m_MethodName: Down
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -6146,8 +6146,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1876427882}
         m_TargetAssemblyTypeName: MapManager, Assembly-CSharp
-        m_MethodName: RightP1
-        m_Mode: 1
+        m_MethodName: Right
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -6367,7 +6367,7 @@ GameObject:
   - component: {fileID: 1615912816}
   - component: {fileID: 1615912815}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6439,12 +6439,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1876427882}
         m_TargetAssemblyTypeName: MapManager, Assembly-CSharp
-        m_MethodName: LeftP2
-        m_Mode: 1
+        m_MethodName: Left
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -6844,8 +6844,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1876427882}
         m_TargetAssemblyTypeName: MapManager, Assembly-CSharp
-        m_MethodName: PlaceTileP1
-        m_Mode: 1
+        m_MethodName: PlaceTile
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -7594,7 +7594,7 @@ GameObject:
   - component: {fileID: 1801923867}
   - component: {fileID: 1801923866}
   m_Layer: 5
-  m_Name: Button (4)
+  m_Name: place
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7667,11 +7667,11 @@ MonoBehaviour:
       - m_Target: {fileID: 1876427882}
         m_TargetAssemblyTypeName: MapManager, Assembly-CSharp
         m_MethodName: PlaceTile
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -7874,7 +7874,7 @@ GameObject:
   - component: {fileID: 2010461772}
   - component: {fileID: 2010461771}
   m_Layer: 5
-  m_Name: Button
+  m_Name: up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7947,11 +7947,11 @@ MonoBehaviour:
       - m_Target: {fileID: 1876427882}
         m_TargetAssemblyTypeName: MapManager, Assembly-CSharp
         m_MethodName: Up
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -8630,7 +8630,7 @@ GameObject:
   - component: {fileID: 2135102738}
   - component: {fileID: 2135102737}
   m_Layer: 5
-  m_Name: Button (6)
+  m_Name: rotaright
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8703,11 +8703,11 @@ MonoBehaviour:
       - m_Target: {fileID: 1876427882}
         m_TargetAssemblyTypeName: MapManager, Assembly-CSharp
         m_MethodName: RotateRight
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -8817,19 +8817,19 @@ PrefabInstance:
     - target: {fileID: 7566454673144618439, guid: aac6ace6de15e8f409e29dd24f9049dd, type: 3}
       propertyPath: '<ActiveTile>k__BackingField.Array.data[0]'
       value: 
-      objectReference: {fileID: 11400000, guid: ba3ba685aa21fbb4a8f69d15dd12ef68, type: 2}
+      objectReference: {fileID: 11400000, guid: 9b3c6d586d3139745bc92db2dccbcade, type: 2}
     - target: {fileID: 7566454673144618439, guid: aac6ace6de15e8f409e29dd24f9049dd, type: 3}
       propertyPath: '<ActiveTile>k__BackingField.Array.data[1]'
       value: 
-      objectReference: {fileID: 11400000, guid: ba3ba685aa21fbb4a8f69d15dd12ef68, type: 2}
+      objectReference: {fileID: 11400000, guid: 9b3c6d586d3139745bc92db2dccbcade, type: 2}
     - target: {fileID: 7566454673144618439, guid: aac6ace6de15e8f409e29dd24f9049dd, type: 3}
       propertyPath: '<ActiveTile>k__BackingField.Array.data[2]'
       value: 
-      objectReference: {fileID: 11400000, guid: ba3ba685aa21fbb4a8f69d15dd12ef68, type: 2}
+      objectReference: {fileID: 11400000, guid: 9b3c6d586d3139745bc92db2dccbcade, type: 2}
     - target: {fileID: 7566454673144618439, guid: aac6ace6de15e8f409e29dd24f9049dd, type: 3}
       propertyPath: '<ActiveTile>k__BackingField.Array.data[3]'
       value: 
-      objectReference: {fileID: 11400000, guid: ba3ba685aa21fbb4a8f69d15dd12ef68, type: 2}
+      objectReference: {fileID: 11400000, guid: 9b3c6d586d3139745bc92db2dccbcade, type: 2}
     - target: {fileID: 8587715046257349634, guid: aac6ace6de15e8f409e29dd24f9049dd, type: 3}
       propertyPath: parentTuiles
       value: 
@@ -8841,19 +8841,19 @@ PrefabInstance:
     - target: {fileID: 8587715046257349634, guid: aac6ace6de15e8f409e29dd24f9049dd, type: 3}
       propertyPath: 'cursorPrefabs.Array.data[0]'
       value: 
-      objectReference: {fileID: 6071926154729764500, guid: b7743d20733a86548a21f44f54078fcf, type: 3}
+      objectReference: {fileID: 3371998602421230287, guid: dbdd6f23e89c07b429740776aafa4a1c, type: 3}
     - target: {fileID: 8587715046257349634, guid: aac6ace6de15e8f409e29dd24f9049dd, type: 3}
       propertyPath: 'cursorPrefabs.Array.data[1]'
       value: 
-      objectReference: {fileID: 6071926154729764500, guid: b7743d20733a86548a21f44f54078fcf, type: 3}
+      objectReference: {fileID: 3371998602421230287, guid: 8d3a6e20baf593d4a8771d22e0d9913d, type: 3}
     - target: {fileID: 8587715046257349634, guid: aac6ace6de15e8f409e29dd24f9049dd, type: 3}
       propertyPath: 'cursorPrefabs.Array.data[2]'
       value: 
-      objectReference: {fileID: 6071926154729764500, guid: b7743d20733a86548a21f44f54078fcf, type: 3}
+      objectReference: {fileID: 3371998602421230287, guid: d7fe69f2b82da1d4cbeba2444a6dd0c8, type: 3}
     - target: {fileID: 8587715046257349634, guid: aac6ace6de15e8f409e29dd24f9049dd, type: 3}
       propertyPath: 'cursorPrefabs.Array.data[3]'
       value: 
-      objectReference: {fileID: 6071926154729764500, guid: b7743d20733a86548a21f44f54078fcf, type: 3}
+      objectReference: {fileID: 3371998602421230287, guid: ddbff4ad57bb44d4f9f5847d930f0e09, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

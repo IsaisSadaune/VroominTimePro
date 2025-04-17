@@ -151,63 +151,21 @@ public class MapManager : MonoBehaviour
         if (rotation[player] < 0) rotation[player] = 3;
         visuals.ApplyRotationLeft(player);
     }
-    public void LeftP1()
+    public void Up(int player)
     {
-        Deplacement("left",0);
+        Deplacement("up", player);
     }
-    public void RightP1()
+    public void Down(int player)
     {
-        Deplacement("right",0);
+        Deplacement("down", player);
     }
-    public void UpP1()
+    public void Left(int player)
     {
-        Deplacement("up",0);
+        Deplacement("left", player);
     }
-    public void DownP1()
+    public void Right(int player)
     {
-        Deplacement("down",0);
+        Deplacement("right", player);
     }
-    public void RotateRightP1()
-    {
-        RotateRight(0);
-    }
-    public void RotateLeftP1()
-    {
-        RotateLeft(0);
-    }
-    public void PlaceTileP1()
-    {
-        PlaceTile(0);
-    }
-
-    public void LeftP2()
-    {
-        Deplacement("left",1);
-    }
-    public void RightP2()
-    {
-        Deplacement("right",1);
-    }
-    public void UpP2()
-    {
-        Deplacement("up",1);
-    }
-    public void DownP2()
-    {
-        Deplacement("down",1);
-    }
-    public void RotateRightP2()
-    {
-        RotateRight(1);
-    }
-    public void RotateLeftP2()
-    {
-        RotateLeft(1);
-    }
-    public void PlaceTileP2()
-    {
-        PlaceTile(1);
-    }
-
 
 }

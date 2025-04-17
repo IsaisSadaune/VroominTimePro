@@ -80,7 +80,7 @@ public class PlayerLogic : MonoBehaviour
     {
         if ((ctx.started))
         {
-        MapManager.Instance.RotateRightP1();
+        MapManager.Instance.RotateRight(0);
 
         }
     }
@@ -88,14 +88,14 @@ public class PlayerLogic : MonoBehaviour
     {
         if (ctx.started)
         {
-            MapManager.Instance.RotateLeftP1();
+            MapManager.Instance.RotateLeft(0);
         }
     }
     public void Left(InputAction.CallbackContext ctx)
     {
         if ((ctx.started))
         {
-            MapManager.Instance.LeftP1();
+            MapManager.Instance.Left(0);
         }
 
     }
@@ -103,14 +103,14 @@ public class PlayerLogic : MonoBehaviour
     {
         if (ctx.started)
         {
-            MapManager.Instance.RightP1();
+            MapManager.Instance.Right(0);
         }
     }
     public void Up(InputAction.CallbackContext ctx)
     {
         if ((ctx.started))
         {
-            MapManager.Instance.UpP1();
+            MapManager.Instance.Up(0);
         }
 
     }
@@ -118,7 +118,7 @@ public class PlayerLogic : MonoBehaviour
     {
         if ((ctx.started))
         {
-            MapManager.Instance.DownP1();
+            MapManager.Instance.Down(0);
         }
     }
 }
