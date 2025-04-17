@@ -8830,6 +8830,26 @@ PrefabInstance:
       propertyPath: '<ActiveTile>k__BackingField.Array.data[3]'
       value: 
       objectReference: {fileID: 11400000, guid: 9b3c6d586d3139745bc92db2dccbcade, type: 2}
+    - target: {fileID: 7566454673144618439, guid: aac6ace6de15e8f409e29dd24f9049dd, type: 3}
+      propertyPath: <TMPActiveTile>k__BackingField.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7566454673144618439, guid: aac6ace6de15e8f409e29dd24f9049dd, type: 3}
+      propertyPath: '<TMPActiveTile>k__BackingField.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: d5d06211c3bfe5c4ebbf5ff30ec6fe73, type: 2}
+    - target: {fileID: 7566454673144618439, guid: aac6ace6de15e8f409e29dd24f9049dd, type: 3}
+      propertyPath: '<TMPActiveTile>k__BackingField.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 058c8d5972bc4d44e89277b5d8b17969, type: 2}
+    - target: {fileID: 7566454673144618439, guid: aac6ace6de15e8f409e29dd24f9049dd, type: 3}
+      propertyPath: '<TMPActiveTile>k__BackingField.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 058c8d5972bc4d44e89277b5d8b17969, type: 2}
+    - target: {fileID: 7566454673144618439, guid: aac6ace6de15e8f409e29dd24f9049dd, type: 3}
+      propertyPath: '<TMPActiveTile>k__BackingField.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 058c8d5972bc4d44e89277b5d8b17969, type: 2}
     - target: {fileID: 8587715046257349634, guid: aac6ace6de15e8f409e29dd24f9049dd, type: 3}
       propertyPath: parentTuiles
       value: 

@@ -9,9 +9,6 @@ public class MapVisuals : MonoBehaviour
 
     [SerializeField] private List<GameObject> cursorPrefabs;
 
-    //tmp, à rendre propre apres
-    private List<List<GameObject>> selectedTile = new();
-
     private GameObject[,] visualMap = new GameObject[10, 10];
     private void Awake()
     {
@@ -32,7 +29,6 @@ public class MapVisuals : MonoBehaviour
         }
         for(int i=0; i< NBR_PLAYERS;i++)
         {
-            selectedTile.Add(new());
             SetActiveTile(InstanceMapManager.players[i]);
             SetCursor(InstanceMapManager.players[i], cursorPrefabs[i]);
         }
@@ -90,7 +86,7 @@ public class MapVisuals : MonoBehaviour
     /// <param name="player">Index du joueur</param>
     private void SetCursor(Player player, GameObject prefab)
     {
-        player.cursor =Instantiate(prefab, new Vector3(player.Position.x, 2, player.Position.y), Quaternion.identity);
+        player.cursor = Instantiate(prefab, new Vector3(player.Position.x, 2, player.Position.y), Quaternion.identity);
     }
 
     /// <summary>
@@ -111,13 +107,9 @@ public class MapVisuals : MonoBehaviour
         for (int i = 0; i < player.ActiveTile.blocs.Count; i++)
         {
             GameObject bloc = player.ActiveTile.blocs[i].bloc;
-
-            int positionX = player.Position.x + player.ActiveTile.position[i].x;
-            int positionZ = player.Position.y + player.ActiveTile.position[i].y;
-
             Quaternion rotation = Quaternion.Euler(0, player.ActiveTile.rotation[i], 0);
             
-            player.gameObjectTiles.Add(Instantiate(bloc, new Vector3(positionX, 0.1f, positionZ), rotation, parentTuiles));
+            player.gameObjectTiles.Add(Instantiate(bloc, new Vector3(player.GetGlobalPositionX(i), 0.1f, player.GetGlobalPositionY(i)), rotation, parentTuiles));
         }
     }
 
@@ -130,9 +122,9 @@ public class MapVisuals : MonoBehaviour
         for (int i = 0; i < player.gameObjectTiles.Count; i++)
         {
             player.gameObjectTiles[i].transform.position = new Vector3(
-                player.Position.x + player.ActiveTile.position[i].x,
+                player.GetGlobalPositionX(i),
                 0.1f,
-                player.Position.y + player.ActiveTile.position[i].y);
+                player.GetGlobalPositionY(i));
         }
     }
 
