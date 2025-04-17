@@ -16,7 +16,7 @@ public class MapManager : MonoBehaviour
     [field: SerializeField] public List<VisualTile> ActiveTile { get; private set; }
 
 
-    //tmp
+    //tmp, à lier avec le GameManager
     public const int NBR_PLAYERS = 4;
 
     private void Awake()
@@ -32,7 +32,7 @@ public class MapManager : MonoBehaviour
         }
         DontDestroyOnLoad(this.gameObject);
 
-        //remplacer 4 par le nombre de joueurs
+        
         for(int i=0;i<NBR_PLAYERS;i++)
         {
             rotation.Add(0);
@@ -43,7 +43,9 @@ public class MapManager : MonoBehaviour
         CreateMap();
         
     }
-
+    /// <summary>
+    /// Crée la map ainsi que le debut et la fin de la course.
+    /// </summary>
     public void CreateMap()
     {
 
@@ -59,12 +61,14 @@ public class MapManager : MonoBehaviour
         Map[0, 0] = BlocList.blocList.GetBloc(1);
         Map[9, 9] = BlocList.blocList.GetBloc(0);
 
-
-        //ActiveTile = TileList.tileList.Tiles[1];
-
         visuals.SetVisual();
     }
 
+    /// <summary>
+    /// Déplace le curseur du player dans la direction voulue
+    /// </summary>
+    /// <param name="direction">une direction parmi "left", "right", "up", "down"</param>
+    /// <param name="player">L'index du joueur voulu (entre 0 et 3)</param>
     private void Deplacement(string direction, int player)
     {
         int x = position[player].x;
@@ -93,6 +97,11 @@ public class MapManager : MonoBehaviour
         }
         visuals.ApplyMovement(player);
     }
+
+    /// <summary>
+    /// Place la tuile du joueur passé en parametre à l'emplacement position[player]
+    /// </summary>
+    /// <param name="player">L'index du joueur entre 0 et 3</param>
     [ContextMenu("placeTile")]
     public void PlaceTile(int player)
     {
@@ -133,11 +142,11 @@ public class MapManager : MonoBehaviour
         }
     }
 
-    public void ChangeActiveTile(VisualTile id, int player)
-    {
-        ActiveTile[player] = id;
-        visuals.ApplyChangeTile(player);
-    }
+    //public void ChangeActiveTile(VisualTile id, int player)
+    //{
+    //    ActiveTile[player] = id;
+    //    visuals.ApplyChangeTile(player);
+    //}
     public void RotateRight(int player)
     {
         rotation[player]++;
@@ -146,7 +155,6 @@ public class MapManager : MonoBehaviour
     }
     public void RotateLeft(int player)
     {
-
         rotation[player]--;
         if (rotation[player] < 0) rotation[player] = 3;
         visuals.ApplyRotationLeft(player);

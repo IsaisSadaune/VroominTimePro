@@ -19,6 +19,9 @@ public class MapVisuals : MonoBehaviour
         DontDestroyOnLoad(this);
     }
 
+    /// <summary>
+    /// Instantie les visuels nécessaires pour lancer la partie
+    /// </summary>
     public void SetVisual()
     {
         for (int i = 0; i < Instance.Map.GetLength(0); i++)
@@ -35,6 +38,15 @@ public class MapVisuals : MonoBehaviour
             SetCursor(i);
         }
     }
+
+    /// <summary>
+    /// Remplace une tuile sur la carte
+    /// </summary>
+    /// <param name="p_x">position X de la tuile à remplacer</param>
+    /// <param name="p_y">position Y de la tuile à remplacer</param>
+    /// <param name="p_bloc">le gameObject remplaçant</param>
+    /// <param name="rotation">la rotation de la tuile joueur (entre 0 et 3)</param>
+    /// <param name="rotationClasse">la rotation du scriptableObject entre 0,90,180 et 270°</param>
     public void ApplyPlacement(int p_x, int p_y, GameObject p_bloc, int rotation, int rotationClasse)
     {
         if (p_x < visualMap.GetLength(0) && p_y < visualMap.GetLength(1))
@@ -43,6 +55,11 @@ public class MapVisuals : MonoBehaviour
             visualMap[p_x, p_y] = Instantiate(p_bloc, new Vector3(p_x, 0, p_y), Quaternion.Euler(0,90*rotation + rotationClasse, 0), parentTuiles);
         }
     }
+
+    /// <summary>
+    /// Applique le mouvement provoqué par un joueur
+    /// </summary>
+    /// <param name="player">Index du joueur qui se déplace</param>
     public void ApplyMovement(int player)
     {
         MoveCursor(player);
@@ -52,27 +69,44 @@ public class MapVisuals : MonoBehaviour
             ApplyRotationRight(player);
         }
     }
-    public void ApplyChangeTile(int player)
-    {
-        if (selectedTile[player] != null)
-            for (int i = 0; i < selectedTile[player].Count; i++)
-            {
-                Destroy(selectedTile[player][i]);
-            }
-        selectedTile[player] = null;
-        SetActiveTile(player);
-    }
 
+    /// <summary>
+    /// Applique le changement de tuile d'un joueur
+    /// </summary>
+    /// <param name="player">Index du joueur</param>
+    //public void ApplyChangeTile(int player)
+    //{
+    //    if (selectedTile[player] != null)
+    //        for (int i = 0; i < selectedTile[player].Count; i++)
+    //        {
+    //            Destroy(selectedTile[player][i]);
+    //        }
+    //    selectedTile[player] = null;
+    //    SetActiveTile(player);
+    //}
 
+    /// <summary>
+    /// Instancie le curseur à la position du joueur
+    /// </summary>
+    /// <param name="player">Index du joueur</param>
     private void SetCursor(int player)
     {
         cursor.Add(Instantiate(cursorPrefabs[player], new Vector3(Instance.position[player].x, 2, Instance.position[player].y), Quaternion.identity));
     }
 
+    /// <summary>
+    /// Déplace le curseur vers la nouvelle position du joueur
+    /// </summary>
+    /// <param name="player">Index du joueur</param>
     public void MoveCursor(int player)
     {
         cursor[player].transform.position = new Vector3(Instance.position[player].x, 2, Instance.position[player].y);
     }
+
+    /// <summary>
+    /// Définit la tuile active d'un joueur
+    /// </summary>
+    /// <param name="player">Index du joueur</param>
     public void SetActiveTile(int player)
     {
         for (int i = 0; i < Instance.ActiveTile[player].blocs.Count; i++)
@@ -87,6 +121,11 @@ public class MapVisuals : MonoBehaviour
             selectedTile[player].Add(Instantiate(bloc, new Vector3(positionX, 0.1f, positionZ), rotation, parentTuiles));
         }
     }
+
+    /// <summary>
+    /// Applique le déplacement d'une tuile
+    /// </summary>
+    /// <param name="player">Index du joueur</param>
     public void MoveActiveTile(int player)
     {
         for (int i = 0; i < selectedTile[player].Count; i++)
@@ -98,6 +137,10 @@ public class MapVisuals : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Applique la rotation d'une tuile vers la droite
+    /// </summary>
+    /// <param name="player"></param>
     public void ApplyRotationRight(int player)
     {
 
@@ -112,6 +155,11 @@ public class MapVisuals : MonoBehaviour
         }
 
     }
+
+    /// <summary>
+    /// Applique la rotation d'une tuile vers la gauche
+    /// </summary>
+    /// <param name="player"></param>
     public void ApplyRotationLeft(int player)
     {
         for (int i = 0; i < selectedTile[player].Count; i++)
@@ -125,7 +173,7 @@ public class MapVisuals : MonoBehaviour
         }
     }
 
-    public void GetParentTile()
+    public void SetParentTile()
     {
         if(!parentTuiles)
         {

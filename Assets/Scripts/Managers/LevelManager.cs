@@ -36,7 +36,7 @@ public class LevelManager : MonoBehaviour
         MapManager.Instance.CreateMap();
         multi.playerInputManager.DisableJoining();
         gameManager.StartTileinTime();
-        visuals.GetParentTile();
+        visuals.SetParentTile();
     }
 
     private void StartSceneVroomin(Scene scene, LoadSceneMode mode)
