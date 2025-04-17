@@ -1,18 +1,19 @@
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class MapManager : MonoBehaviour
 {
     //Singleton
-    public static MapManager instance = null;
-    public static MapManager Instance => instance;
+    public static MapManager mapManager = null;
+    public static MapManager InstanceMapManager => mapManager;
 
+    [SerializeField] private MapVisuals visuals;
     public VisualBloc[,] Map { get; private set; } = new VisualBloc[10, 10];
 
+    public List<Player> players = new();
 
-    public List<Vector2Int> position = new();
-    public List<int> rotation = new();
-    [SerializeField] private MapVisuals visuals;
+
+
     [field: SerializeField] public List<VisualTile> ActiveTile { get; private set; }
 
 
@@ -21,27 +22,26 @@ public class MapManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance != null && instance != this)
+        if (mapManager != null && mapManager != this)
         {
             Destroy(this.gameObject);
             return;
         }
         else
         {
-            instance = this;
+            mapManager = this;
         }
         DontDestroyOnLoad(this.gameObject);
 
-        
-        for(int i=0;i<NBR_PLAYERS;i++)
+
+        for (int i = 0; i < NBR_PLAYERS; i++)
         {
-            rotation.Add(0);
-            position.Add(new Vector2Int(0, 0));
+            players.Add(new Player(ActiveTile[i], 0, new Vector2Int(0, 0)));
         }
 
         //tmp, placée ici pour debug
         CreateMap();
-        
+
     }
     /// <summary>
     /// Crée la map ainsi que le debut et la fin de la course.
@@ -69,26 +69,26 @@ public class MapManager : MonoBehaviour
     /// </summary>
     /// <param name="direction">une direction parmi "left", "right", "up", "down"</param>
     /// <param name="player">L'index du joueur voulu (entre 0 et 3)</param>
-    private void Deplacement(string direction, int player)
+    private void Deplacement(string direction, Player player)
     {
-        int x = position[player].x;
-        int y = position[player].y;
+        int x = player.Position.x;
+        int y = player.Position.y;
         switch (direction)
         {
             case "left":
-                if (position[player].x - 1 >= 0) position[player] = new Vector2Int(x-1, y);
+                if (player.Position.x - 1 >= 0) player.Position = new Vector2Int(x - 1, y);
                 else Debug.Log("feedback déplacement impossible");
                 break;
             case "right":
-                if (position[player].x + 1 <= 9) position[player] = new Vector2Int(x+1, y);
+                if (player.Position.x + 1 <= 9) player.Position = new Vector2Int(x + 1, y);
                 else Debug.Log("feedback déplacement impossible");
                 break;
             case "up":
-                if (position[player].y + 1 <= 9) position[player] = new Vector2Int(x, y+1);
+                if (player.Position.y + 1 <= 9) player.Position = new Vector2Int(x, y + 1);
                 else Debug.Log("feedback déplacement impossible");
                 break;
             case "down":
-                if (position[player].y - 1 >= 0) position[player] = new Vector2Int(x, y-1);
+                if (player.Position.y - 1 >= 0) player.Position = new Vector2Int(x, y - 1);
                 else Debug.Log("feedback déplacement impossible");
                 break;
             default:
@@ -103,40 +103,40 @@ public class MapManager : MonoBehaviour
     /// </summary>
     /// <param name="player">L'index du joueur entre 0 et 3</param>
     [ContextMenu("placeTile")]
-    public void PlaceTile(int player)
+    private void PlaceTile(Player player)
     {
 
-        for (int i = 0; i < ActiveTile[player].blocs.Count; i++)
+        for (int i = 0; i < player.ActiveTile.blocs.Count; i++)
         {
             // /!\ PRENDRE EN COMPTE LA ROTATION DANS CE IF ET LE TRANSFORMER EN FONCTION/!\
-            if (ActiveTile[player].position[i] + position[player] == new Vector2Int(0, 0)
-                || ActiveTile[player].position[i] + position[player] == new Vector2Int(9, 9))
+            if (player.ActiveTile.position[i] + player.Position == new Vector2Int(0, 0)
+                || player.ActiveTile.position[i] + player.Position == new Vector2Int(9, 9))
             {
-                Debug.Log("erreur en position "+ ActiveTile[player].position[i] + position);
+                Debug.Log("erreur en position " + player.ActiveTile.position[i] + player.Position);
             }
             else
             {
-                int _xCoordonate =ActiveTile[player].position[i].x;
-                int _yCoordonate =ActiveTile[player].position[i].y;
+                int _xCoordonate = player.ActiveTile.position[i].x;
+                int _yCoordonate = player.ActiveTile.position[i].y;
                 int _pivot;
-                for (int x = 0; x < rotation[player]; x++)
+                for (int x = 0; x < player.Rotation; x++)
                 {
                     _pivot = _xCoordonate;
                     _xCoordonate = _yCoordonate;
                     _yCoordonate = -_pivot;
                 }
-                _xCoordonate += position[player].x;
-                _yCoordonate += position[player].y;
+                _xCoordonate += player.Position.x;
+                _yCoordonate += player.Position.y;
 
                 if (_xCoordonate < Map.GetLength(0) && _yCoordonate < Map.GetLength(1) && _xCoordonate >= 0 && _yCoordonate >= 0)
                 {
-                    Map[ActiveTile[player].position[i].x, ActiveTile[player].position[i].y] = ActiveTile[player].blocs[i];
+                    Map[player.ActiveTile.position[i].x, player.ActiveTile.position[i].y] = player.ActiveTile.blocs[i];
                     visuals.ApplyPlacement(
                         _xCoordonate,
                         _yCoordonate,
-                        ActiveTile[player].blocs[i].bloc,
-                        rotation[player],
-                        ActiveTile[player].rotation[i]);
+                        player.ActiveTile.blocs[i].bloc,
+                        player.Rotation,
+                        player.ActiveTile.rotation[i]);
                 }
             }
         }
@@ -147,33 +147,38 @@ public class MapManager : MonoBehaviour
     //    ActiveTile[player] = id;
     //    visuals.ApplyChangeTile(player);
     //}
-    public void RotateRight(int player)
+    public void RotateRight(int indexPlayer)
     {
-        rotation[player]++;
-        if (rotation[player] > 3) rotation[player] = 0;
-        visuals.ApplyRotationRight(player);
+        players[indexPlayer].Rotation++;
+        if (players[indexPlayer].Rotation > 3) players[indexPlayer].Rotation = 0;
+        visuals.ApplyRotationRight(players[indexPlayer]);
     }
-    public void RotateLeft(int player)
+    public void RotateLeft(int indexPlayer)
     {
-        rotation[player]--;
-        if (rotation[player] < 0) rotation[player] = 3;
-        visuals.ApplyRotationLeft(player);
-    }
-    public void Up(int player)
-    {
-        Deplacement("up", player);
-    }
-    public void Down(int player)
-    {
-        Deplacement("down", player);
-    }
-    public void Left(int player)
-    {
-        Deplacement("left", player);
-    }
-    public void Right(int player)
-    {
-        Deplacement("right", player);
+        players[indexPlayer].Rotation--;
+        if (players[indexPlayer].Rotation < 0) players[indexPlayer].Rotation = 3;
+        visuals.ApplyRotationLeft(players[indexPlayer]);
     }
 
+    public void PlaceTileInt(int indexPlayer)
+    {
+        PlaceTile(players[indexPlayer]);
+    }
+
+    public void Up(int indexPlayer)
+    {
+        Deplacement("up", players[indexPlayer]);
+    }
+    public void Down(int indexPlayer)
+    {
+        Deplacement("down", players[indexPlayer]);
+    }
+    public void Left(int indexPlayer)
+    {
+        Deplacement("left", players[indexPlayer]);
+    }
+    public void Right(int indexPlayer)
+    {
+        Deplacement("right", players[indexPlayer]);
+    }
 }

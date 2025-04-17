@@ -722,7 +722,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1876427882}
         m_TargetAssemblyTypeName: MapManager, Assembly-CSharp
-        m_MethodName: PlaceTile
+        m_MethodName: PlaceTileInt
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3545,7 +3545,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1876427882}
         m_TargetAssemblyTypeName: MapManager, Assembly-CSharp
-        m_MethodName: PlaceTile
+        m_MethodName: PlaceTileInt
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6844,7 +6844,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1876427882}
         m_TargetAssemblyTypeName: MapManager, Assembly-CSharp
-        m_MethodName: PlaceTile
+        m_MethodName: PlaceTileInt
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7666,7 +7666,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1876427882}
         m_TargetAssemblyTypeName: MapManager, Assembly-CSharp
-        m_MethodName: PlaceTile
+        m_MethodName: PlaceTileInt
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

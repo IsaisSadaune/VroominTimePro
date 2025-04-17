@@ -8,7 +8,6 @@ public class MapVisuals : MonoBehaviour
     [SerializeField] private Transform parentTuiles;
 
     [SerializeField] private List<GameObject> cursorPrefabs;
-    private List<GameObject> cursor = new();
 
     //tmp, à rendre propre apres
     private List<List<GameObject>> selectedTile = new();
@@ -24,18 +23,18 @@ public class MapVisuals : MonoBehaviour
     /// </summary>
     public void SetVisual()
     {
-        for (int i = 0; i < Instance.Map.GetLength(0); i++)
+        for (int i = 0; i < InstanceMapManager.Map.GetLength(0); i++)
         {
-            for (int j = 0; j < Instance.Map.GetLength(1); j++)
+            for (int j = 0; j < InstanceMapManager.Map.GetLength(1); j++)
             {
-                visualMap[i, j] = Instantiate(Instance.Map[i, j].bloc, new Vector3(i, 0, j), Quaternion.identity, parentTuiles);
+                visualMap[i, j] = Instantiate(InstanceMapManager.Map[i, j].bloc, new Vector3(i, 0, j), Quaternion.identity, parentTuiles);
             }
         }
         for(int i=0; i< NBR_PLAYERS;i++)
         {
             selectedTile.Add(new());
-            SetActiveTile(i);
-            SetCursor(i);
+            SetActiveTile(InstanceMapManager.players[i]);
+            SetCursor(InstanceMapManager.players[i], cursorPrefabs[i]);
         }
     }
 
@@ -60,11 +59,11 @@ public class MapVisuals : MonoBehaviour
     /// Applique le mouvement provoqué par un joueur
     /// </summary>
     /// <param name="player">Index du joueur qui se déplace</param>
-    public void ApplyMovement(int player)
+    public void ApplyMovement(Player player)
     {
         MoveCursor(player);
         MoveActiveTile(player);
-        for (int i = 0; i < Instance.rotation[player]; i++)
+        for (int i = 0; i < player.Rotation; i++)
         {
             ApplyRotationRight(player);
         }
@@ -89,36 +88,36 @@ public class MapVisuals : MonoBehaviour
     /// Instancie le curseur à la position du joueur
     /// </summary>
     /// <param name="player">Index du joueur</param>
-    private void SetCursor(int player)
+    private void SetCursor(Player player, GameObject prefab)
     {
-        cursor.Add(Instantiate(cursorPrefabs[player], new Vector3(Instance.position[player].x, 2, Instance.position[player].y), Quaternion.identity));
+        player.cursor =Instantiate(prefab, new Vector3(player.Position.x, 2, player.Position.y), Quaternion.identity);
     }
 
     /// <summary>
     /// Déplace le curseur vers la nouvelle position du joueur
     /// </summary>
     /// <param name="player">Index du joueur</param>
-    public void MoveCursor(int player)
+    public void MoveCursor(Player player)
     {
-        cursor[player].transform.position = new Vector3(Instance.position[player].x, 2, Instance.position[player].y);
+        player.cursor.transform.position = new Vector3(player.Position.x, 2, player.Position.y);
     }
 
     /// <summary>
     /// Définit la tuile active d'un joueur
     /// </summary>
     /// <param name="player">Index du joueur</param>
-    public void SetActiveTile(int player)
+    public void SetActiveTile(Player player)
     {
-        for (int i = 0; i < Instance.ActiveTile[player].blocs.Count; i++)
+        for (int i = 0; i < player.ActiveTile.blocs.Count; i++)
         {
-            GameObject bloc = Instance.ActiveTile[player].blocs[i].bloc;
+            GameObject bloc = player.ActiveTile.blocs[i].bloc;
 
-            int positionX = Instance.position[player].x + Instance.ActiveTile[player].position[i].x;
-            int positionZ = Instance.position[player].y + Instance.ActiveTile[player].position[i].y;
+            int positionX = player.Position.x + player.ActiveTile.position[i].x;
+            int positionZ = player.Position.y + player.ActiveTile.position[i].y;
 
-            Quaternion rotation = Quaternion.Euler(0, Instance.ActiveTile[player].rotation[i], 0);
+            Quaternion rotation = Quaternion.Euler(0, player.ActiveTile.rotation[i], 0);
             
-            selectedTile[player].Add(Instantiate(bloc, new Vector3(positionX, 0.1f, positionZ), rotation, parentTuiles));
+            player.gameObjectTiles.Add(Instantiate(bloc, new Vector3(positionX, 0.1f, positionZ), rotation, parentTuiles));
         }
     }
 
@@ -126,14 +125,14 @@ public class MapVisuals : MonoBehaviour
     /// Applique le déplacement d'une tuile
     /// </summary>
     /// <param name="player">Index du joueur</param>
-    public void MoveActiveTile(int player)
+    public void MoveActiveTile(Player player)
     {
-        for (int i = 0; i < selectedTile[player].Count; i++)
+        for (int i = 0; i < player.gameObjectTiles.Count; i++)
         {
-            selectedTile[player][i].transform.position = new Vector3(
-                Instance.position[player].x + Instance.ActiveTile[player].position[i].x,
+            player.gameObjectTiles[i].transform.position = new Vector3(
+                player.Position.x + player.ActiveTile.position[i].x,
                 0.1f,
-                Instance.position[player].y + Instance.ActiveTile[player].position[i].y);
+                player.Position.y + player.ActiveTile.position[i].y);
         }
     }
 
@@ -141,17 +140,17 @@ public class MapVisuals : MonoBehaviour
     /// Applique la rotation d'une tuile vers la droite
     /// </summary>
     /// <param name="player"></param>
-    public void ApplyRotationRight(int player)
+    public void ApplyRotationRight(Player player)
     {
 
-        for (int i = 0; i < selectedTile[player].Count; i++)
+        for (int i = 0; i < player.gameObjectTiles.Count; i++)
         {
-            selectedTile[player][i].transform.rotation = Quaternion.identity;
-            selectedTile[player][i].transform.position = new Vector3(
-                (selectedTile[player][i].transform.position.z - Instance.position[player].y) + Instance.position[player].x,
+            player.gameObjectTiles[i].transform.rotation = Quaternion.identity;
+            player.gameObjectTiles[i].transform.position = new Vector3(
+                (player.gameObjectTiles[i].transform.position.z - player.Position.y) + player.Position.x,
                 0.1f,
-                -(selectedTile[player][i].transform.position.x - Instance.position[player].x) + Instance.position[player].y);
-            selectedTile[player][i].transform.Rotate(0, 90 * Instance.rotation[player] + Instance.ActiveTile[player].rotation[i], 0);
+                -(player.gameObjectTiles[i].transform.position.x - player.Position.x) + player.Position.y);
+            player.gameObjectTiles[i].transform.Rotate(0, 90 * player.Rotation + player.ActiveTile.rotation[i], 0);
         }
 
     }
@@ -160,16 +159,16 @@ public class MapVisuals : MonoBehaviour
     /// Applique la rotation d'une tuile vers la gauche
     /// </summary>
     /// <param name="player"></param>
-    public void ApplyRotationLeft(int player)
+    public void ApplyRotationLeft(Player player)
     {
-        for (int i = 0; i < selectedTile[player].Count; i++)
+        for (int i = 0; i < player.gameObjectTiles.Count; i++)
         {
-            selectedTile[player][i].transform.rotation = Quaternion.identity;
-            selectedTile[player][i].transform.position = new Vector3(
-                -(selectedTile[player][i].transform.position.z - Instance.position[player].y) + Instance.position[player].x,
+            player.gameObjectTiles[i].transform.rotation = Quaternion.identity;
+            player.gameObjectTiles[i].transform.position = new Vector3(
+                -(player.gameObjectTiles[i].transform.position.z - player.Position.y) + player.Position.x,
                 0.1f,
-                (selectedTile[player][i].transform.position.x - Instance.position[player].x) + Instance.position[player].y);
-            selectedTile[player][i].transform.Rotate(0, 90 * Instance.rotation[player] + Instance.ActiveTile[player].rotation[i], 0);
+                (player.gameObjectTiles[i].transform.position.x - player.Position.x) + player.Position.y);
+            player.gameObjectTiles[i].transform.Rotate(0, 90 * player.Rotation + player.ActiveTile.rotation[i], 0);
         }
     }
 
