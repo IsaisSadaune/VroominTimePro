@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class MapManager : MonoBehaviour
 {
@@ -7,11 +8,16 @@ public class MapManager : MonoBehaviour
     public static MapManager Instance => instance;
 
     public VisualBloc[,] Map { get; private set; } = new VisualBloc[10, 10];
-    public Vector2Int position = new(0, 0);
+
+
+    public List<Vector2Int> position = new();
     public int rotation = 0;
     [SerializeField] private MapVisuals visuals;
-    [field: SerializeField] public VisualTile ActiveTile { get; private set; }
+    [field: SerializeField] public List<VisualTile> ActiveTile { get; private set; }
 
+
+    //tmp
+    public const int NBR_PLAYERS = 4;
 
     private void Awake()
     {
@@ -26,7 +32,15 @@ public class MapManager : MonoBehaviour
         }
         DontDestroyOnLoad(this.gameObject);
 
-      
+        //remplacer 4 par le nombre de joueurs
+        for(int i=0;i<NBR_PLAYERS;i++)
+        {
+            position[i] = new Vector2Int(0, 0);
+        }
+
+        //tmp, placée ici pour debug
+        CreateMap();
+        
     }
 
     public void CreateMap()
@@ -50,116 +64,106 @@ public class MapManager : MonoBehaviour
         visuals.SetVisual();
     }
 
-    private void Deplacement(string direction)
+    private void Deplacement(string direction, int player)
     {
+        int x = position[player].x;
+        int y = position[player].x;
         switch (direction)
         {
             case "left":
-                if (position.x - 1 >= 0) position.x--;
+                if (position[player].x - 1 >= 0) position[player].Set(x-1,y);
                 else Debug.Log("feedback déplacement impossible");
                 break;
             case "right":
-                if (position.x + 1 <= 9) position.x++;
+                if (position[player].x + 1 <= 9) position[player].Set(x+1, y);
                 else Debug.Log("feedback déplacement impossible");
                 break;
             case "up":
-                if (position.y + 1 <= 9) position.y++;
+                if (position[player].y + 1 <= 9) position[player].Set(x, y+1);
                 else Debug.Log("feedback déplacement impossible");
                 break;
             case "down":
-                if (position.y - 1 >= 0) position.y--;
+                if (position[player].y - 1 >= 0) position[player].Set(x, y-1);
                 else Debug.Log("feedback déplacement impossible");
                 break;
             default:
                 Debug.Log("apprend à coder");
                 break;
         }
-        visuals.ApplyMovement();
+        visuals.ApplyMovement(player);
     }
     [ContextMenu("placeTile")]
-    public void PlaceTile()
+    public void PlaceTile(int player)
     {
 
-        for (int i = 0; i < ActiveTile.blocs.Count; i++)
+        for (int i = 0; i < ActiveTile[player].blocs.Count; i++)
         {
-            if (ActiveTile.position[i] + position == new Vector2Int(0, 0)
-                || ActiveTile.position[i] + position == new Vector2Int(9, 9))
+            if (ActiveTile[player].position[i] + position[player] == new Vector2Int(0, 0)
+                || ActiveTile[player].position[i] + position[player] == new Vector2Int(9, 9))
             {
-                Debug.Log("erreur en position "+ ActiveTile.position[i] + position);
+                Debug.Log("erreur en position "+ ActiveTile[player].position[i] + position);
             }
             else
             {
-                int _xCoordonate =ActiveTile.position[i].x;
-                int _yCoordonate =ActiveTile.position[i].y;
+                int _xCoordonate =ActiveTile[player].position[i].x;
+                int _yCoordonate =ActiveTile[player].position[i].y;
                 int _pivot;
-                //verifier si on peut appliquer la rotation à la logique
-                //si on peut appliquer la rotation aux coordonnées
                 for (int x = 0; x < rotation; x++)
                 {
                     _pivot = _xCoordonate;
                     _xCoordonate = _yCoordonate;
                     _yCoordonate = -_pivot;
                 }
-                _xCoordonate += position.x;
-                _yCoordonate += position.y;
+                _xCoordonate += position[player].x;
+                _yCoordonate += position[player].y;
 
                 if (_xCoordonate < Map.GetLength(0) && _yCoordonate < Map.GetLength(1) && _xCoordonate >= 0 && _yCoordonate >= 0)
                 {
-                    Map[ActiveTile.position[i].x, ActiveTile.position[i].y] = ActiveTile.blocs[i];
+                    Map[ActiveTile[player].position[i].x, ActiveTile[player].position[i].y] = ActiveTile[player].blocs[i];
                     visuals.ApplyPlacement(
                         _xCoordonate,
                         _yCoordonate,
-                        ActiveTile.blocs[i].bloc,
+                        ActiveTile[player].blocs[i].bloc,
                         rotation,
-                        ActiveTile.rotation[i]);
+                        ActiveTile[player].rotation[i]);
                 }
             }
         }
     }
 
-    public void ChangeActiveTile(VisualTile id)
+    public void ChangeActiveTile(VisualTile id, int player)
     {
-        ActiveTile = id;
+        ActiveTile[player] = id;
         visuals.ApplyChangeTile();
     }
-    [ContextMenu("Setup Pink Tile")]
-    public void ChangeActiveTileToPink()
-    {
-        ChangeActiveTile(TileList.tileList.Tiles[0]);
-    }
-    [ContextMenu("Setup 1x2 Tile")]
-    public void ChangeActiveTileTo1x2()
-    {
-        ChangeActiveTile(TileList.tileList.Tiles[1]);
-    }
-    public void RotateRight()
+    public void RotateRightP1()
     {
         rotation++;
         if (rotation > 3) rotation = 0;
-        visuals.ApplyRotationRight();
+        visuals.ApplyRotationRight(0);
     }
-    public void RotateLeft()
+    public void RotateLeftP1()
     {
         
         rotation--;
         if (rotation < 0) rotation = 3;
-        visuals.ApplyRotationLeft();
+        visuals.ApplyRotationLeft(0);
     }
-    public void Left()
+    public void LeftP1()
     {
-        Deplacement("left");
+        Deplacement("left",0);
     }
-    public void Right()
+    public void RightP1()
     {
-        Deplacement("right");
+        Deplacement("right",0);
     }
-    public void Up()
+    public void UpP1()
     {
-        Deplacement("up");
+        Deplacement("up",0);
     }
-    public void Down()
+    public void DownP1()
     {
-        Deplacement("down");
+        Deplacement("down",0);
     }
 
  
