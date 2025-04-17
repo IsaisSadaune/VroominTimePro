@@ -11,7 +11,7 @@ public class MapManager : MonoBehaviour
 
 
     public List<Vector2Int> position = new();
-    public int rotation = 0;
+    public List<int> rotation = new();
     [SerializeField] private MapVisuals visuals;
     [field: SerializeField] public List<VisualTile> ActiveTile { get; private set; }
 
@@ -35,7 +35,8 @@ public class MapManager : MonoBehaviour
         //remplacer 4 par le nombre de joueurs
         for(int i=0;i<NBR_PLAYERS;i++)
         {
-            position[i] = new Vector2Int(0, 0);
+            rotation.Add(0);
+            position.Add(new Vector2Int(0, 0));
         }
 
         //tmp, placée ici pour debug
@@ -67,23 +68,23 @@ public class MapManager : MonoBehaviour
     private void Deplacement(string direction, int player)
     {
         int x = position[player].x;
-        int y = position[player].x;
+        int y = position[player].y;
         switch (direction)
         {
             case "left":
-                if (position[player].x - 1 >= 0) position[player].Set(x-1,y);
+                if (position[player].x - 1 >= 0) position[player] = new Vector2Int(x-1, y);
                 else Debug.Log("feedback déplacement impossible");
                 break;
             case "right":
-                if (position[player].x + 1 <= 9) position[player].Set(x+1, y);
+                if (position[player].x + 1 <= 9) position[player] = new Vector2Int(x+1, y);
                 else Debug.Log("feedback déplacement impossible");
                 break;
             case "up":
-                if (position[player].y + 1 <= 9) position[player].Set(x, y+1);
+                if (position[player].y + 1 <= 9) position[player] = new Vector2Int(x, y+1);
                 else Debug.Log("feedback déplacement impossible");
                 break;
             case "down":
-                if (position[player].y - 1 >= 0) position[player].Set(x, y-1);
+                if (position[player].y - 1 >= 0) position[player] = new Vector2Int(x, y-1);
                 else Debug.Log("feedback déplacement impossible");
                 break;
             default:
@@ -98,6 +99,7 @@ public class MapManager : MonoBehaviour
 
         for (int i = 0; i < ActiveTile[player].blocs.Count; i++)
         {
+            // /!\ PRENDRE EN COMPTE LA ROTATION DANS CE IF ET LE TRANSFORMER EN FONCTION/!\
             if (ActiveTile[player].position[i] + position[player] == new Vector2Int(0, 0)
                 || ActiveTile[player].position[i] + position[player] == new Vector2Int(9, 9))
             {
@@ -108,7 +110,7 @@ public class MapManager : MonoBehaviour
                 int _xCoordonate =ActiveTile[player].position[i].x;
                 int _yCoordonate =ActiveTile[player].position[i].y;
                 int _pivot;
-                for (int x = 0; x < rotation; x++)
+                for (int x = 0; x < rotation[player]; x++)
                 {
                     _pivot = _xCoordonate;
                     _xCoordonate = _yCoordonate;
@@ -124,7 +126,7 @@ public class MapManager : MonoBehaviour
                         _xCoordonate,
                         _yCoordonate,
                         ActiveTile[player].blocs[i].bloc,
-                        rotation,
+                        rotation[player],
                         ActiveTile[player].rotation[i]);
                 }
             }
@@ -134,20 +136,20 @@ public class MapManager : MonoBehaviour
     public void ChangeActiveTile(VisualTile id, int player)
     {
         ActiveTile[player] = id;
-        visuals.ApplyChangeTile();
+        visuals.ApplyChangeTile(player);
     }
-    public void RotateRightP1()
+    public void RotateRight(int player)
     {
-        rotation++;
-        if (rotation > 3) rotation = 0;
-        visuals.ApplyRotationRight(0);
+        rotation[player]++;
+        if (rotation[player] > 3) rotation[player] = 0;
+        visuals.ApplyRotationRight(player);
     }
-    public void RotateLeftP1()
+    public void RotateLeft(int player)
     {
-        
-        rotation--;
-        if (rotation < 0) rotation = 3;
-        visuals.ApplyRotationLeft(0);
+
+        rotation[player]--;
+        if (rotation[player] < 0) rotation[player] = 3;
+        visuals.ApplyRotationLeft(player);
     }
     public void LeftP1()
     {
@@ -165,6 +167,47 @@ public class MapManager : MonoBehaviour
     {
         Deplacement("down",0);
     }
+    public void RotateRightP1()
+    {
+        RotateRight(0);
+    }
+    public void RotateLeftP1()
+    {
+        RotateLeft(0);
+    }
+    public void PlaceTileP1()
+    {
+        PlaceTile(0);
+    }
 
- 
+    public void LeftP2()
+    {
+        Deplacement("left",1);
+    }
+    public void RightP2()
+    {
+        Deplacement("right",1);
+    }
+    public void UpP2()
+    {
+        Deplacement("up",1);
+    }
+    public void DownP2()
+    {
+        Deplacement("down",1);
+    }
+    public void RotateRightP2()
+    {
+        RotateRight(1);
+    }
+    public void RotateLeftP2()
+    {
+        RotateLeft(1);
+    }
+    public void PlaceTileP2()
+    {
+        PlaceTile(1);
+    }
+
+
 }
