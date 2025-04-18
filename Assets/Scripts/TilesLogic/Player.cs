@@ -1,32 +1,27 @@
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class Player
 {
 
-    public Player(VisualTile activeTile, int rotation, Vector2Int position)
+    public Player(int id, VisualTile activeTile, int rotation, Vector2Int position)
     {
         ActiveTile = activeTile;
         Rotation = rotation;
-        this.Position = position;
+        Position = position;
+        Id = id;
     }
 
     public VisualTile ActiveTile { get; private set; }
     public int Rotation { get; set; }
     public Vector2Int Position { get; set; }
-
+    public int Id { get; private set; }
 
     //visuel, à bouger
     public GameObject cursor;
     public List<GameObject> gameObjectTiles = new();
 
 
-    public int GetGlobalPositionX(int index)
-    {
-        return Position.x + ActiveTile.position[index].x;
-    }
-    public int GetGlobalPositionY(int index)
-    {
-        return Position.y + ActiveTile.position[index].y;
-    }
+    public int GetGlobalPositionX(int index) => Position.x + ActiveTile.position[index].x;
+    public int GetGlobalPositionY(int index) => Position.y + ActiveTile.position[index].y;
 }

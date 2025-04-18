@@ -7,8 +7,10 @@ public class MapManager : MonoBehaviour
     public static MapManager mapManager = null;
     public static MapManager InstanceMapManager => mapManager;
 
-    [SerializeField] private MapVisuals visuals;
 
+
+
+    [SerializeField] private MapVisuals visuals;
     public List<Player> players = new();
 
 
@@ -39,7 +41,7 @@ public class MapManager : MonoBehaviour
 
         for (int i = 0; i < NBR_PLAYERS; i++)
         {
-            players.Add(new Player(TMPActiveTile[i], 0, new Vector2Int(0, 0)));
+            players.Add(new Player(i, TMPActiveTile[i], 0, new Vector2Int(0, 0)));
         }
 
         //tmp, placée ici pour debug

@@ -6,7 +6,6 @@ public class MapVisuals : MonoBehaviour
 {
 
     [SerializeField] private Transform parentTuiles;
-
     [SerializeField] private List<GameObject> cursorPrefabs;
 
     private GameObject[,] visualMap = new GameObject[10, 10];
@@ -17,9 +16,6 @@ public class MapVisuals : MonoBehaviour
         DontDestroyOnLoad(this);
     }
 
-    /// <summary>
-    /// Instantie les visuels nécessaires pour lancer la partie
-    /// </summary>
     public void SetVisual()
     {
         for (int i = 0; i < InstanceMapManager.Map.GetLength(0); i++)
@@ -31,7 +27,11 @@ public class MapVisuals : MonoBehaviour
         }
         for(int i=0; i< NBR_PLAYERS;i++)
         {
-            playerVisuals.Add(new());
+            playerVisuals.Add(new PlayerVisuals(
+                i,
+                Instantiate(cursorPrefabs[i], 
+                new Vector3(InstanceMapManager.players[i].Position.x, 2, InstanceMapManager.players[i].Position.y), 
+                Quaternion.identity)));
             SetActiveTile(InstanceMapManager.players[i]);
             SetCursor(InstanceMapManager.players[i], cursorPrefabs[i]);
         }
@@ -54,10 +54,6 @@ public class MapVisuals : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Applique le mouvement provoqué par un joueur
-    /// </summary>
-    /// <param name="player">Index du joueur qui se déplace</param>
     public void ApplyMovement(Player player)
     {
         MoveCursor(player.cursor, player.Position);
@@ -83,28 +79,17 @@ public class MapVisuals : MonoBehaviour
     //    SetActiveTile(player);
     //}
 
-    /// <summary>
-    /// Instancie le curseur à la position du joueur
-    /// </summary>
-    /// <param name="player">Index du joueur</param>
+ 
     private void SetCursor(Player player, GameObject prefab)
     {
         player.cursor = Instantiate(prefab, new Vector3(player.Position.x, 2, player.Position.y), Quaternion.identity);
     }
 
-    /// <summary>
-    /// Déplace le curseur vers la nouvelle position du joueur
-    /// </summary>
-    /// <param name="player">Index du joueur</param>
     public void MoveCursor(GameObject cursor, Vector2Int position)
     {
         cursor.transform.position = new Vector3(position.x, 2, position.y);
     }
 
-    /// <summary>
-    /// Définit la tuile active d'un joueur
-    /// </summary>
-    /// <param name="player">Index du joueur</param>
     public void SetActiveTile(Player player)
     {
         for (int i = 0; i < player.ActiveTile.blocs.Count; i++)
@@ -122,10 +107,6 @@ public class MapVisuals : MonoBehaviour
         return Instantiate(bloc, new Vector3(position.x, 0.1f, position.y), rotation, parentTuiles);
     }
 
-    /// <summary>
-    /// Applique le déplacement d'une tuile
-    /// </summary>
-    /// <param name="player">Index du joueur</param>
     public void MoveActiveTile(Player player)
     {
         for (int i = 0; i < player.gameObjectTiles.Count; i++)
@@ -140,10 +121,6 @@ public class MapVisuals : MonoBehaviour
     }
 
 
-    /// <summary>
-    /// Applique la rotation d'une tuile vers la droite
-    /// </summary>
-    /// <param name="player"></param>
     public void ApplyRotationRight(Player player)
     {
 
@@ -168,10 +145,6 @@ public class MapVisuals : MonoBehaviour
 
 
 
-    /// <summary>
-    /// Applique la rotation d'une tuile vers la gauche
-    /// </summary>
-    /// <param name="player"></param>
     public void ApplyRotationLeft(Player player)
     {
         for (int i = 0; i < player.gameObjectTiles.Count; i++)
