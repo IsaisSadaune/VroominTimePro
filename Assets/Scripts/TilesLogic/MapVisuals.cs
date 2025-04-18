@@ -16,22 +16,27 @@ public class MapVisuals : MonoBehaviour
         DontDestroyOnLoad(this);
     }
 
-    public void SetVisual()
+    public void SetMapVisual(GameObject[,] blocs, int lengthX, int lengthY)
     {
-        for (int i = 0; i < InstanceMapManager.Map.GetLength(0); i++)
+        for (int i = 0; i < lengthX; i++)
         {
-            for (int j = 0; j < InstanceMapManager.Map.GetLength(1); j++)
+            for (int j = 0; j < lengthY; j++)
             {
-                visualMap[i, j] = Instantiate(InstanceMapManager.Map[i, j].bloc, new Vector3(i, 0, j), Quaternion.identity, parentTuiles);
+                visualMap[i, j] = Instantiate(blocs[i,j], new Vector3(i, 0, j), Quaternion.identity, parentTuiles);
             }
         }
+    }
+
+    public void SetVisual()
+    {
         for(int i=0; i< NBR_PLAYERS;i++)
         {
-            playerVisuals.Add(new PlayerVisuals(
-                i,
-                Instantiate(cursorPrefabs[i], 
-                new Vector3(InstanceMapManager.players[i].Position.x, 2, InstanceMapManager.players[i].Position.y), 
-                Quaternion.identity)));
+            //playerVisuals.Add(new PlayerVisuals(
+            //    i,
+            //    Instantiate(cursorPrefabs[i], 
+            //    new Vector3(InstanceMapManager.players[i].Position.x, 2, InstanceMapManager.players[i].Position.y), 
+            //    Quaternion.identity)));
+
             SetActiveTile(InstanceMapManager.players[i]);
             SetCursor(InstanceMapManager.players[i], cursorPrefabs[i]);
         }

@@ -53,20 +53,25 @@ public class MapManager : MonoBehaviour
     /// </summary>
     public void CreateMap()
     {
-
+        GameObject[,] visuals = new GameObject[10,10];
         //création de la map
         for (int i = 0; i < 10; i++)
         {
             for (int j = 0; j < 10; j++)
             {
                 Map[i, j] = BlocList.blocList.GetBloc(4);
+                visuals[i,j] = BlocList.blocList.GetBloc(4).bloc;
             }
         }
 
         Map[0, 0] = BlocList.blocList.GetBloc(1);
         Map[9, 9] = BlocList.blocList.GetBloc(0);
 
-        visuals.SetVisual();
+        visuals[0,0] = BlocList.blocList.GetBloc(1).bloc;
+        visuals[9,9] = BlocList.blocList.GetBloc(4).bloc;
+
+        this.visuals.SetMapVisual(visuals, Map.GetLength(0), Map.GetLength(1));
+        this.visuals.SetVisual();
     }
 
     /// <summary>
