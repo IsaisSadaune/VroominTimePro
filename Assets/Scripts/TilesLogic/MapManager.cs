@@ -45,7 +45,7 @@ public class MapManager : MonoBehaviour
         }
         else
         {
-            for (int i = 0; i < NBR_PLAYERS; i++)
+            for (int i = 1; i <= NBR_PLAYERS; i++)
             {
                 players.Add(new Player(i, TMPActiveTile[i], 0, new Vector2Int(0, 0)));
             }
@@ -168,36 +168,54 @@ public class MapManager : MonoBehaviour
 
 
     //Ces scripts servent pour debug, c'est mieux de passer par la classe qu'un int
-    public void RotateRight(int indexPlayer)
+    public void RotateRight(int playerId)
     {
-        players[indexPlayer].Rotation++;
-        if (players[indexPlayer].Rotation > 3) players[indexPlayer].Rotation = 0;
-        visuals.ApplyRotationRight(players[indexPlayer]);
+        Player p = GetPlayerFromID(playerId, players);
+        p.Rotation++;
+        if (p.Rotation > 3) p.Rotation = 0;
+        visuals.ApplyRotationRight(p);
     }
-    public void RotateLeft(int indexPlayer)
+    public void RotateLeft(int playerId)
     {
-        players[indexPlayer].Rotation--;
-        if (players[indexPlayer].Rotation < 0) players[indexPlayer].Rotation = 3;
-        visuals.ApplyRotationLeft(players[indexPlayer]);
+        Player p = GetPlayerFromID(playerId, players);
+        p.Rotation--;
+        if (p.Rotation < 0) p.Rotation = 3;
+        visuals.ApplyRotationLeft(p);
     }
-    public void PlaceTileInt(int indexPlayer)
+    public void PlaceTileInt(int playerId)
     {
-        PlaceTile(players[indexPlayer]);
+        Player p = GetPlayerFromID(playerId, players);
+        PlaceTile(p);
     }
-    public void Up(int indexPlayer)
+    public void Up(int playerId)
     {
-        Deplacement("up", players[indexPlayer]);
+        Player p = GetPlayerFromID(playerId, players);
+        Deplacement("up", p);
     }
-    public void Down(int indexPlayer)
+    public void Down(int playerId)
     {
-        Deplacement("down", players[indexPlayer]);
+        Player p = GetPlayerFromID(playerId, players);
+        Deplacement("down", p);
     }
-    public void Left(int indexPlayer)
+    public void Left(int playerId)
     {
-        Deplacement("left", players[indexPlayer]);
+        Player p = GetPlayerFromID(playerId, players);
+        Deplacement("left", p);
     }
-    public void Right(int indexPlayer)
+    public void Right(int playerId)
     {
-        Deplacement("right", players[indexPlayer]);
+        Player p = GetPlayerFromID(playerId, players);
+        Deplacement("right", p);
+    }
+
+
+    public static Player GetPlayerFromID(int id, List<Player> players )
+    {
+        foreach(Player p in players)
+        {
+            if (p.Id == id) return p;
+        }
+        Debug.Log("erreur, aucun player avec l'ID "+id);
+        return null;
     }
 }
