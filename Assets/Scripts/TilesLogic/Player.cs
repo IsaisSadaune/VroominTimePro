@@ -24,4 +24,13 @@ public class Player
 
     public int GetGlobalPositionX(int index) => Position.x + ActiveTile.position[index].x;
     public int GetGlobalPositionY(int index) => Position.y + ActiveTile.position[index].y;
+
+    public void DesactivateCursor()
+    {
+        cursor.SetActive(false);
+    }
+    public void ActivateCursor()
+    {
+        cursor.SetActive(true);
+    }
 }

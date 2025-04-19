@@ -58,13 +58,14 @@ public class MapVisuals : MonoBehaviour
     /// <param name="p_bloc">le gameObject remplaçant</param>
     /// <param name="rotation">la rotation de la tuile joueur (entre 0 et 3)</param>
     /// <param name="rotationClasse">la rotation du scriptableObject entre 0,90,180 et 270°</param>
-    public void ApplyPlacement(int p_x, int p_y, GameObject p_bloc, int rotation, int rotationClasse)
+    public void ApplyPlacement(Player player, int p_x, int p_y, GameObject p_bloc, int rotation, int rotationClasse)
     {
         if (p_x < visualMap.GetLength(0) && p_y < visualMap.GetLength(1))
         {
             Destroy(visualMap[p_x, p_y]);
             visualMap[p_x, p_y] = Instantiate(p_bloc, new Vector3(p_x, 0, p_y), Quaternion.Euler(0,90*rotation + rotationClasse, 0), parentTuiles);
         }
+        player.DesactivateCursor();
     }
 
     /// <summary>

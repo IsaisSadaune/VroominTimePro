@@ -146,6 +146,7 @@ public class MapManager : MonoBehaviour
             {
                 Map[player.ActiveTile.position[i].x, player.ActiveTile.position[i].y] = player.ActiveTile.blocs[i];
                 visuals.ApplyPlacement(
+                    player,
                     _xCoordonate,
                     _yCoordonate,
                     player.ActiveTile.blocs[i].bloc,
