@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -23,7 +24,7 @@ public class MapManager : MonoBehaviour
 
 
     //tmp, à lier avec le GameManager
-    public const int NBR_PLAYERS = 4;
+    public const int NBR_PLAYERS = 1;
 
     private void Awake()
     {
@@ -38,37 +39,42 @@ public class MapManager : MonoBehaviour
         }
         DontDestroyOnLoad(this.gameObject);
 
-
-        for (int i = 0; i < NBR_PLAYERS; i++)
+        if (NBR_PLAYERS > 4 || NBR_PLAYERS < 1)
         {
-            players.Add(new Player(i, TMPActiveTile[i], 0, new Vector2Int(0, 0)));
+            throw new ArgumentOutOfRangeException("Nombre de joueurs invalide : " + NBR_PLAYERS);
         }
+        else
+        {
+            for (int i = 0; i < NBR_PLAYERS; i++)
+            {
+                players.Add(new Player(i, TMPActiveTile[i], 0, new Vector2Int(0, 0)));
+            }
 
-        //tmp, placée ici pour debug
-        CreateMap();
-
+            //tmp, placée ici pour debug
+            CreateMap();
+        }
     }
     /// <summary>
     /// Crée la map
     /// </summary>
     public void CreateMap()
     {
-        GameObject[,] visuals = new GameObject[10,10];
+        GameObject[,] visuals = new GameObject[10, 10];
         //création de la map
         for (int i = 0; i < 10; i++)
         {
             for (int j = 0; j < 10; j++)
             {
                 Map[i, j] = BlocList.blocList.GetBloc(4);
-                visuals[i,j] = BlocList.blocList.GetBloc(4).bloc;
+                visuals[i, j] = BlocList.blocList.GetBloc(4).bloc;
             }
         }
 
         Map[0, 0] = BlocList.blocList.GetBloc(1);
         Map[9, 9] = BlocList.blocList.GetBloc(0);
 
-        visuals[0,0] = BlocList.blocList.GetBloc(1).bloc;
-        visuals[9,9] = BlocList.blocList.GetBloc(4).bloc;
+        visuals[0, 0] = BlocList.blocList.GetBloc(1).bloc;
+        visuals[9, 9] = BlocList.blocList.GetBloc(0).bloc;
 
         this.visuals.SetMapVisual(visuals, Map.GetLength(0), Map.GetLength(1));
         this.visuals.SetVisual();
@@ -132,7 +138,7 @@ public class MapManager : MonoBehaviour
             _yCoordonate += player.Position.y;
 
             //placer la ligne de départ et d'arrivée dans le code
-            if (!IsPositionLegit(new Vector2Int(_xCoordonate, _yCoordonate), new Vector2Int(0,0), new Vector2Int(9,9)))
+            if (!IsPositionLegit(new Vector2Int(_xCoordonate, _yCoordonate), new Vector2Int(0, 0), new Vector2Int(9, 9)))
             {
                 Debug.Log("erreur en position " + player.ActiveTile.position[i] + player.Position);
             }
