@@ -49,7 +49,7 @@ public class MapManager : MonoBehaviour
 
     }
     /// <summary>
-    /// Crée la map ainsi que le debut et la fin de la course.
+    /// Crée la map
     /// </summary>
     public void CreateMap()
     {

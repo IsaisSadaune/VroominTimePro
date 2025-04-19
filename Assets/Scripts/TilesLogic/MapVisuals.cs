@@ -10,12 +10,17 @@ public class MapVisuals : MonoBehaviour
 
     private GameObject[,] visualMap = new GameObject[10, 10];
 
-    private List<PlayerVisuals> playerVisuals = new();
     private void Awake()
     {
         DontDestroyOnLoad(this);
     }
 
+    /// <summary>
+    /// Crée la map de gameObjects
+    /// </summary>
+    /// <param name="blocs">les gameObjects de la map</param>
+    /// <param name="lengthX">la taille X de la map</param>
+    /// <param name="lengthY">la taille Y de la map</param>
     public void SetMapVisual(GameObject[,] blocs, int lengthX, int lengthY)
     {
         for (int i = 0; i < lengthX; i++)
@@ -27,6 +32,9 @@ public class MapVisuals : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Crée une tuile active et un curseur pour chaque joueurs
+    /// </summary>
     public void SetVisual()
     {
         for(int i=0; i< NBR_PLAYERS;i++)
@@ -59,6 +67,10 @@ public class MapVisuals : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Déplace le curseur et la tuile d'un joueur
+    /// </summary>
+    /// <param name="player">le joueur qui doit être déplacé</param>
     public void ApplyMovement(Player player)
     {
         MoveCursor(player.cursor, player.Position);
@@ -69,32 +81,32 @@ public class MapVisuals : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Applique le changement de tuile d'un joueur
-    /// </summary>
-    /// <param name="player">Index du joueur</param>
-    //public void ApplyChangeTile(int player)
-    //{
-    //    if (selectedTile[player] != null)
-    //        for (int i = 0; i < selectedTile[player].Count; i++)
-    //        {
-    //            Destroy(selectedTile[player][i]);
-    //        }
-    //    selectedTile[player] = null;
-    //    SetActiveTile(player);
-    //}
 
- 
+    /// <summary>
+    /// Crée un curseur
+    /// </summary>
+    /// <param name="player">le joueur qui doit obtenir un curseur</param>
+    /// <param name="prefab">le gameObject du curseur</param>
     private void SetCursor(Player player, GameObject prefab)
     {
         player.cursor = Instantiate(prefab, new Vector3(player.Position.x, 2, player.Position.y), Quaternion.identity);
     }
 
+    /// <summary>
+    /// déplace le gameobject du curseur
+    /// </summary>
+    /// <param name="cursor">le curseur à déplacer</param>
+    /// <param name="position">la position ou est le curseur</param>
     public void MoveCursor(GameObject cursor, Vector2Int position)
     {
         cursor.transform.position = new Vector3(position.x, 2, position.y);
     }
 
+
+    /// <summary>
+    /// crée la tuile active d'un joueur
+    /// </summary>
+    /// <param name="player"></param>
     public void SetActiveTile(Player player)
     {
         for (int i = 0; i < player.ActiveTile.blocs.Count; i++)
@@ -126,6 +138,10 @@ public class MapVisuals : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// fait tourner tous les blocs d'un joueur de 90 degrés à droite
+    /// </summary>
+    /// <param name="player">le joueur dont la tuile doit tourner</param>
     public void ApplyRotationRight(Player player)
     {
 
@@ -136,6 +152,13 @@ public class MapVisuals : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// déplace un bloc à sa droite
+    /// </summary>
+    /// <param name="bloc">gameobject à tourner</param>
+    /// <param name="positionPlayer">position du point de pivot</param>
+    /// <param name="rotation">rotation actuelle du joueur : entre 0 et 3</param>
+    /// <param name="rotationBase">rotation de base du bloc : 0, 90, 180, 270</param>
     private void ApplyRotationBlocRight(GameObject bloc, Vector2Int positionPlayer, int rotation, int rotationBase)
     {
         
@@ -149,7 +172,10 @@ public class MapVisuals : MonoBehaviour
     }
 
 
-
+    /// <summary>
+    /// fait tourner tous les blocs d'un joueur de 90 degrés à gauche
+    /// </summary>
+    /// <param name="player">le joueur dont la tuile doit tourner</param>
     public void ApplyRotationLeft(Player player)
     {
         for (int i = 0; i < player.gameObjectTiles.Count; i++)
@@ -157,6 +183,14 @@ public class MapVisuals : MonoBehaviour
             ApplyRotationBlocLeft(player.gameObjectTiles[i], player.Position, player.Rotation, player.ActiveTile.rotation[i]);
         }
     }
+
+    /// <summary>
+    /// déplace un bloc à sa gauche
+    /// </summary>
+    /// <param name="bloc">gameobject à tourner</param>
+    /// <param name="positionPlayer">position du point de pivot</param>
+    /// <param name="rotation">rotation actuelle du joueur : entre 0 et 3</param>
+    /// <param name="rotationBase">rotation de base du bloc : 0, 90, 180, 270</param>
     private void ApplyRotationBlocLeft(GameObject bloc, Vector2Int positionPlayer, int rotation, int rotationBase)
     {
         bloc.transform.rotation = Quaternion.identity;
@@ -167,7 +201,9 @@ public class MapVisuals : MonoBehaviour
         bloc.transform.Rotate(0, 90 * rotation + rotationBase, 0);
     }
 
-
+    /// <summary>
+    /// Crée une tuile parent si elle n'existe pas
+    /// </summary>
     public void SetParentTile()
     {
         if(!parentTuiles)
