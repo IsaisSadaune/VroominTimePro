@@ -24,7 +24,7 @@ public class MapManager : MonoBehaviour
 
 
     //tmp, à lier avec le GameManager
-    public const int NBR_PLAYERS = 1;
+    public const int NBR_PLAYERS = 4;
 
     private void Awake()
     {
@@ -45,9 +45,9 @@ public class MapManager : MonoBehaviour
         }
         else
         {
-            for (int i = 1; i <= NBR_PLAYERS; i++)
+            for (int i = 0; i < NBR_PLAYERS; i++)
             {
-                players.Add(new Player(i, TMPActiveTile[i], 0, new Vector2Int(0, 0)));
+                players.Add(new Player(i+1, TMPActiveTile[i], 0, new Vector2Int(0, 0)));
             }
 
             //tmp, placée ici pour debug
