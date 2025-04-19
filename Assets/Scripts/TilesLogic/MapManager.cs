@@ -167,7 +167,6 @@ public class MapManager : MonoBehaviour
 
 
 
-    //Ces scripts servent pour debug, c'est mieux de passer par la classe qu'un int
     public void RotateRight(int playerId)
     {
         Player p = GetPlayerFromID(playerId, players);
