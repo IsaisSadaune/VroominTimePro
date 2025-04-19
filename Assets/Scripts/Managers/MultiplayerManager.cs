@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System;
 using UnityEngine.SceneManagement;
+using System.Runtime.ConstrainedExecution;
 
 public class MultiplayerManager : MonoBehaviour
 {
@@ -45,7 +46,7 @@ public class MultiplayerManager : MonoBehaviour
     {
         foreach (GameObject car in players)
         {
-            car.GetComponent<PlayerLogic>().SpawnPlayer(spawnPoint[players.IndexOf(car)]);
+            car.GetComponent<PlayerLogic>().SpawnPlayer(spawnPoint[players.IndexOf(car)]); 
         }
     }
 
@@ -80,10 +81,19 @@ public class MultiplayerManager : MonoBehaviour
     }
     public void SwitchPlayersActionMap(string actionMapName)
     {
-        foreach (GameObject car in players)
-        {
 
-            car.GetComponent<PlayerInput>().SwitchCurrentActionMap(actionMapName);
+        
+        foreach (GameObject car in players)
+        {   
+            if(car.GetComponent<PlayerInput>())
+            {
+                //car.GetComponent<PlayerInput>().SwitchCurrentActionMap(actionMapName);
+            }
+            else
+            {
+                Debug.Log("non");
+            }
+            //car.GetComponent<PlayerInput>().SwitchCurrentActionMap(actionMapName);
         }
     }
 

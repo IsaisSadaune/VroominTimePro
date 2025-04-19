@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player
+public class PlayerTile
 {
 
-    public Player(int id, VisualTile activeTile, int rotation, Vector2Int position)
+    public PlayerTile(int id, VisualTile activeTile, int rotation, Vector2Int position)
     {
         ActiveTile = activeTile;
         Rotation = rotation;
@@ -17,7 +17,6 @@ public class Player
     public Vector2Int Position { get; set; }
     public int Id { get; private set; }
 
-    //visuel, à bouger
     public GameObject cursor;
     public List<GameObject> gameObjectTiles = new();
 

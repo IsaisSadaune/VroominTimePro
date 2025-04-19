@@ -592,6 +592,38 @@ PrefabInstance:
       propertyPath: <ActiveTile>k__BackingField
       value: 
       objectReference: {fileID: 11400000, guid: 1afc27b9aaa062046b9fba4a5e77ce01, type: 2}
+    - target: {fileID: 7566454673144618439, guid: aac6ace6de15e8f409e29dd24f9049dd, type: 3}
+      propertyPath: <TMPActiveTile>k__BackingField.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7566454673144618439, guid: aac6ace6de15e8f409e29dd24f9049dd, type: 3}
+      propertyPath: '<TMPActiveTile>k__BackingField.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 6bad53dd69683674c97858d31156a631, type: 2}
+    - target: {fileID: 7566454673144618439, guid: aac6ace6de15e8f409e29dd24f9049dd, type: 3}
+      propertyPath: '<TMPActiveTile>k__BackingField.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: ba3ba685aa21fbb4a8f69d15dd12ef68, type: 2}
+    - target: {fileID: 8587715046257349634, guid: aac6ace6de15e8f409e29dd24f9049dd, type: 3}
+      propertyPath: cursorPrefabs.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8587715046257349634, guid: aac6ace6de15e8f409e29dd24f9049dd, type: 3}
+      propertyPath: 'cursorPrefabs.Array.data[0]'
+      value: 
+      objectReference: {fileID: 3371998602421230287, guid: dbdd6f23e89c07b429740776aafa4a1c, type: 3}
+    - target: {fileID: 8587715046257349634, guid: aac6ace6de15e8f409e29dd24f9049dd, type: 3}
+      propertyPath: 'cursorPrefabs.Array.data[1]'
+      value: 
+      objectReference: {fileID: 3371998602421230287, guid: 8d3a6e20baf593d4a8771d22e0d9913d, type: 3}
+    - target: {fileID: 8587715046257349634, guid: aac6ace6de15e8f409e29dd24f9049dd, type: 3}
+      propertyPath: 'cursorPrefabs.Array.data[2]'
+      value: 
+      objectReference: {fileID: 3371998602421230287, guid: d7fe69f2b82da1d4cbeba2444a6dd0c8, type: 3}
+    - target: {fileID: 8587715046257349634, guid: aac6ace6de15e8f409e29dd24f9049dd, type: 3}
+      propertyPath: 'cursorPrefabs.Array.data[3]'
+      value: 
+      objectReference: {fileID: 3371998602421230287, guid: ddbff4ad57bb44d4f9f5847d930f0e09, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

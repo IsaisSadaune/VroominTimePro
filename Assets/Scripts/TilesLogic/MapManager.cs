@@ -12,7 +12,7 @@ public class MapManager : MonoBehaviour
 
 
     [SerializeField] private MapVisuals visuals;
-    public List<Player> players = new();
+    public List<PlayerTile> players = new();
 
 
     //ne doit pas être défini comme ça dans la version finale. Doit être lié avec l'écran de choix de map
@@ -24,7 +24,9 @@ public class MapManager : MonoBehaviour
 
 
     //tmp, à lier avec le GameManager
-    public const int NBR_PLAYERS = 4;
+
+    //public const int NBR_PLAYERS = 4;
+    private MultiplayerManager multi;
 
     private void Awake()
     {
@@ -39,21 +41,32 @@ public class MapManager : MonoBehaviour
         }
         DontDestroyOnLoad(this.gameObject);
 
-        if (NBR_PLAYERS > 4 || NBR_PLAYERS < 1)
+    }
+
+    private void Start()
+    {
+        multi = MultiplayerManager.Instance;
+    }
+
+    public void AddEveryPlayerTile()
+    {
+        if (multi.players.Count > 4 || multi.players.Count < 1)
         {
-            throw new ArgumentOutOfRangeException("Nombre de joueurs invalide : " + NBR_PLAYERS);
+            throw new ArgumentOutOfRangeException("Nombre de joueurs invalide : " + multi.players.Count);
         }
         else
         {
-            for (int i = 0; i < NBR_PLAYERS; i++)
+            for (int i = 0; i < multi.players.Count; i++)
             {
-                players.Add(new Player(i+1, TMPActiveTile[i], 0, new Vector2Int(0, 0)));
+                players.Add(new PlayerTile(i + 1, TMPActiveTile[i], 0, new Vector2Int(0, 0)));
             }
 
             //tmp, placée ici pour debug
-            CreateMap();
+           // CreateMap();
         }
     }
+
+
     /// <summary>
     /// Crée la map
     /// </summary>
@@ -85,7 +98,7 @@ public class MapManager : MonoBehaviour
     /// </summary>
     /// <param name="direction">une direction parmi "left", "right", "up", "down"</param>
     /// <param name="player">L'index du joueur voulu (entre 0 et 3)</param>
-    private void Deplacement(string direction, Player player)
+    private void Deplacement(string direction, PlayerTile player)
     {
         int x = player.Position.x;
         int y = player.Position.y;
@@ -119,7 +132,7 @@ public class MapManager : MonoBehaviour
     /// </summary>
     /// <param name="player">L'index du joueur entre 0 et 3</param>
     [ContextMenu("placeTile")]
-    private void PlaceTile(Player player)
+    private void PlaceTile(PlayerTile player)
     {
         int _pivot;
         int _yCoordonate;
@@ -173,48 +186,48 @@ public class MapManager : MonoBehaviour
 
     public void RotateRight(int playerId)
     {
-        Player p = GetPlayerFromID(playerId, players);
+        PlayerTile p = GetPlayerFromID(playerId, players);
         p.Rotation++;
         if (p.Rotation > 3) p.Rotation = 0;
         visuals.ApplyRotationRight(p);
     }
     public void RotateLeft(int playerId)
     {
-        Player p = GetPlayerFromID(playerId, players);
+        PlayerTile p = GetPlayerFromID(playerId, players);
         p.Rotation--;
         if (p.Rotation < 0) p.Rotation = 3;
         visuals.ApplyRotationLeft(p);
     }
     public void PlaceTileInt(int playerId)
     {
-        Player p = GetPlayerFromID(playerId, players);
+        PlayerTile p = GetPlayerFromID(playerId, players);
         PlaceTile(p);
     }
     public void Up(int playerId)
     {
-        Player p = GetPlayerFromID(playerId, players);
+        PlayerTile p = GetPlayerFromID(playerId, players);
         Deplacement("up", p);
     }
     public void Down(int playerId)
     {
-        Player p = GetPlayerFromID(playerId, players);
+        PlayerTile p = GetPlayerFromID(playerId, players);
         Deplacement("down", p);
     }
     public void Left(int playerId)
     {
-        Player p = GetPlayerFromID(playerId, players);
+        PlayerTile p = GetPlayerFromID(playerId, players);
         Deplacement("left", p);
     }
     public void Right(int playerId)
     {
-        Player p = GetPlayerFromID(playerId, players);
+        PlayerTile p = GetPlayerFromID(playerId, players);
         Deplacement("right", p);
     }
 
 
-    public static Player GetPlayerFromID(int id, List<Player> players )
+    public static PlayerTile GetPlayerFromID(int id, List<PlayerTile> players )
     {
-        foreach(Player p in players)
+        foreach(PlayerTile p in players)
         {
             if (p.Id == id) return p;
         }

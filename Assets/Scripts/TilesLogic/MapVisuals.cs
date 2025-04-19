@@ -37,7 +37,7 @@ public class MapVisuals : MonoBehaviour
     /// </summary>
     public void SetVisual()
     {
-        for(int i=0; i< NBR_PLAYERS;i++)
+        for(int i=0; i< MultiplayerManager.Instance.players.Count;i++)
         {
             //playerVisuals.Add(new PlayerVisuals(
             //    i,
@@ -72,7 +72,7 @@ public class MapVisuals : MonoBehaviour
     /// Déplace le curseur et la tuile d'un joueur
     /// </summary>
     /// <param name="player">le joueur qui doit être déplacé</param>
-    public void ApplyMovement(Player player)
+    public void ApplyMovement(PlayerTile player)
     {
         MoveCursor(player.cursor, player.Position);
         MoveActiveTile(player);
@@ -88,7 +88,7 @@ public class MapVisuals : MonoBehaviour
     /// </summary>
     /// <param name="player">le joueur qui doit obtenir un curseur</param>
     /// <param name="prefab">le gameObject du curseur</param>
-    private void SetCursor(Player player, GameObject prefab)
+    private void SetCursor(PlayerTile player, GameObject prefab)
     {
         player.cursor = Instantiate(prefab, new Vector3(player.Position.x, 2, player.Position.y), Quaternion.identity);
     }
@@ -108,7 +108,7 @@ public class MapVisuals : MonoBehaviour
     /// crée la tuile active d'un joueur
     /// </summary>
     /// <param name="player"></param>
-    public void SetActiveTile(Player player)
+    public void SetActiveTile(PlayerTile player)
     {
         for (int i = 0; i < player.ActiveTile.blocs.Count; i++)
         {
@@ -125,7 +125,7 @@ public class MapVisuals : MonoBehaviour
         return Instantiate(bloc, new Vector3(position.x, 0.1f, position.y), rotation, parentTuiles);
     }
 
-    public void MoveActiveTile(Player player)
+    public void MoveActiveTile(PlayerTile player)
     {
         for (int i = 0; i < player.gameObjectTiles.Count; i++)
         {
@@ -143,7 +143,7 @@ public class MapVisuals : MonoBehaviour
     /// fait tourner tous les blocs d'un joueur de 90 degrés à droite
     /// </summary>
     /// <param name="player">le joueur dont la tuile doit tourner</param>
-    public void ApplyRotationRight(Player player)
+    public void ApplyRotationRight(PlayerTile player)
     {
 
         for (int i = 0; i < player.gameObjectTiles.Count; i++)
@@ -177,7 +177,7 @@ public class MapVisuals : MonoBehaviour
     /// fait tourner tous les blocs d'un joueur de 90 degrés à gauche
     /// </summary>
     /// <param name="player">le joueur dont la tuile doit tourner</param>
-    public void ApplyRotationLeft(Player player)
+    public void ApplyRotationLeft(PlayerTile player)
     {
         for (int i = 0; i < player.gameObjectTiles.Count; i++)
         {

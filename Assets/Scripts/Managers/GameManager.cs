@@ -112,7 +112,7 @@ public class GameManager : MonoBehaviour
 
     public void StartTileinTime() 
     {
-        multiplayerManager.SpawnAllPlayers();
+        //multiplayerManager.SpawnAllPlayers();
         multiplayerManager.SwitchPlayersActionMap("TileinTime");
         Debug.Log("Mettez Vous Prêt");
         numberOfPlayerReady = 0;

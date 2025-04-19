@@ -33,10 +33,13 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     public void GoToRace()
     {
+        gameManager.StartTileinTime();
+
+        visuals.SetParentTile();
+
+        MapManager.InstanceMapManager.AddEveryPlayerTile();
         MapManager.InstanceMapManager.CreateMap();
         multi.playerInputManager.DisableJoining();
-        gameManager.StartTileinTime();
-        visuals.SetParentTile();
     }
 
     private void StartSceneVroomin(Scene scene, LoadSceneMode mode)
