@@ -146,7 +146,7 @@ public class MapManager : MonoBehaviour
             {
                 Map[player.ActiveTile.position[i].x, player.ActiveTile.position[i].y] = player.ActiveTile.blocs[i];
                 visuals.ApplyPlacement(
-                    player,
+                    player.cursor,
                     _xCoordonate,
                     _yCoordonate,
                     player.ActiveTile.blocs[i].bloc,
@@ -154,6 +154,9 @@ public class MapManager : MonoBehaviour
                     player.ActiveTile.rotation[i]);
             }
         }
+        visuals.DestroyActiveTile(player.gameObjectTiles);
+        player.DestroyActiveTile();
+        //joueur idjoueur a posé sa tuile
     }
 
     public bool IsPositionLegit(Vector2Int position, List<Vector2Int> positionStart, List<Vector2Int> positionEnd) => !positionStart.Contains(position) && !positionEnd.Contains(position);
