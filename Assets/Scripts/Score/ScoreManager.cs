@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using static Constantes;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class ScoreManager : MonoBehaviour
     //
 
     
-    public int Record { get; private set; } = Constantes.FIRST_RECORD_TO_BEAT;
+    public int Record { get; private set; } = FIRST_RECORD_TO_BEAT;
     private int idLastRecord = -1;
 
     private int numberOfRounds = 1;
@@ -30,7 +31,7 @@ public class ScoreManager : MonoBehaviour
     {
         if (PlayerScore.Count == 0)
         {
-            for (int i = 0; i < Constantes.NUMBER_OF_PLAYERS; i++)
+            for (int i = 0; i < NUMBER_OF_PLAYERS; i++)
             {
                 PlayerScore.Add(0);
                 PlayerTemps.Add(0);
@@ -52,15 +53,15 @@ public class ScoreManager : MonoBehaviour
 
     private void ApplyEndRound(List<int> orderPlayers)
     {
-        for (int i = 0; i < Constantes.NUMBER_OF_PLAYERS; i++)
+        for (int i = 0; i < NUMBER_OF_PLAYERS; i++)
         {
             PlayerScore[i] += ApplyPoints(orderPlayers[i]);
             PlayerScore[i] = Mathf.Round(PlayerScore[i]);
             if (RecordBeaten(i) && orderPlayers[i] == 1)
             {
-                PlayerScore[i] += Constantes.SCORE_RECORD_BEATEN;
+                PlayerScore[i] += SCORE_RECORD_BEATEN;
             }
-            if (PlayerScore[i] >= Constantes.WIN_POINTS_REQUIRED)
+            if (PlayerScore[i] >= WIN_POINTS_REQUIRED)
             {
                 someoneWon = true;
                 Debug.Log("player " + (i + 1) + " won !");
@@ -72,10 +73,10 @@ public class ScoreManager : MonoBehaviour
     {
         return orderArrived switch
         {
-            1 => Constantes.SCORE_FIRST * ApplyRoundScoreMulti(),
-            2 => Constantes.SCORE_SECOND * ApplyRoundScoreMulti(),
-            3 => Constantes.SCORE_THIRD * ApplyRoundScoreMulti(),
-            4 => Constantes.SCORE_FOURTH * ApplyRoundScoreMulti(),
+            1 => SCORE_FIRST * ApplyRoundScoreMulti(),
+            2 => SCORE_SECOND * ApplyRoundScoreMulti(),
+            3 => SCORE_THIRD * ApplyRoundScoreMulti(),
+            4 => SCORE_FOURTH * ApplyRoundScoreMulti(),
             _ => 0,
         };
     }

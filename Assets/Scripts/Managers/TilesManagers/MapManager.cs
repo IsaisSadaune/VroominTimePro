@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using static Constantes;
 
 public class MapManager : MonoBehaviour
 {
@@ -36,13 +37,13 @@ public class MapManager : MonoBehaviour
         }
         DontDestroyOnLoad(this.gameObject);
 
-        if (Constantes.NUMBER_OF_PLAYERS > 4 || Constantes.NUMBER_OF_PLAYERS < 1)
+        if (NUMBER_OF_PLAYERS > 4 || NUMBER_OF_PLAYERS < 1)
         {
-            throw new ArgumentOutOfRangeException("Nombre de joueurs invalide : " + Constantes.NUMBER_OF_PLAYERS);
+            throw new ArgumentOutOfRangeException("Nombre de joueurs invalide : " + NUMBER_OF_PLAYERS);
         }
         else
         {
-            for (int i = 0; i < Constantes.NUMBER_OF_PLAYERS; i++)
+            for (int i = 0; i < NUMBER_OF_PLAYERS; i++)
             {
                 players.Add(new Player(i+1, TMPActiveTile[i], 0, new Vector2Int(0, 0)));
             }
