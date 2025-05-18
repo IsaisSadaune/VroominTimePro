@@ -3,27 +3,23 @@ using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
+
+    //à associer à la classe Player
     public List<float> PlayerScore { get; private set; } = new();
     public List<int> PlayerTemps { get; private set; } = new();
+    //
 
-    public int record { get; private set; } = 100;
+    
+    public int Record { get; private set; } = Constantes.FIRST_RECORD_TO_BEAT;
     private int idLastRecord = -1;
+
+    private int numberOfRounds = 1;
 
 
     private bool someoneWon = false;
 
-    private int numberOfRounds = 1;
 
-    private const int NUMBER_OF_PLAYERS = 4;
 
-    private const int WIN_POINTS_REQUIRED = 20;
-
-    private const int SCORE_FIRST = 4;
-    private const int SCORE_SECOND = 2;
-    private const int SCORE_THIRD = 1;
-    private const int SCORE_FOURTH = 0;
-
-    private const int SCORE_RECORD_BEATEN = 1;
 
     private void Start()
     {
@@ -34,7 +30,7 @@ public class ScoreManager : MonoBehaviour
     {
         if (PlayerScore.Count == 0)
         {
-            for (int i = 0; i < NUMBER_OF_PLAYERS; i++)
+            for (int i = 0; i < Constantes.NUMBER_OF_PLAYERS; i++)
             {
                 PlayerScore.Add(0);
                 PlayerTemps.Add(0);
@@ -56,15 +52,15 @@ public class ScoreManager : MonoBehaviour
 
     private void ApplyEndRound(List<int> orderPlayers)
     {
-        for (int i = 0; i < NUMBER_OF_PLAYERS; i++)
+        for (int i = 0; i < Constantes.NUMBER_OF_PLAYERS; i++)
         {
             PlayerScore[i] += ApplyPoints(orderPlayers[i]);
             PlayerScore[i] = Mathf.Round(PlayerScore[i]);
             if (RecordBeaten(i) && orderPlayers[i] == 1)
             {
-                PlayerScore[i] += SCORE_RECORD_BEATEN;
+                PlayerScore[i] += Constantes.SCORE_RECORD_BEATEN;
             }
-            if (PlayerScore[i] >= WIN_POINTS_REQUIRED)
+            if (PlayerScore[i] >= Constantes.WIN_POINTS_REQUIRED)
             {
                 someoneWon = true;
                 Debug.Log("player " + (i + 1) + " won !");
@@ -76,10 +72,10 @@ public class ScoreManager : MonoBehaviour
     {
         return orderArrived switch
         {
-            1 => SCORE_FIRST * ApplyRoundScoreMulti(),
-            2 => SCORE_SECOND * ApplyRoundScoreMulti(),
-            3 => SCORE_THIRD * ApplyRoundScoreMulti(),
-            4 => SCORE_FOURTH * ApplyRoundScoreMulti(),
+            1 => Constantes.SCORE_FIRST * ApplyRoundScoreMulti(),
+            2 => Constantes.SCORE_SECOND * ApplyRoundScoreMulti(),
+            3 => Constantes.SCORE_THIRD * ApplyRoundScoreMulti(),
+            4 => Constantes.SCORE_FOURTH * ApplyRoundScoreMulti(),
             _ => 0,
         };
     }
@@ -94,9 +90,9 @@ public class ScoreManager : MonoBehaviour
 
     private bool RecordBeaten(int idPlayer)
     {
-        if (PlayerTemps[idPlayer] < record)
+        if (PlayerTemps[idPlayer] < Record)
         {
-            PlayerTemps[idPlayer] = record;
+            PlayerTemps[idPlayer] = Record;
             if (idPlayer != idLastRecord)
             {
                 idLastRecord = idPlayer;

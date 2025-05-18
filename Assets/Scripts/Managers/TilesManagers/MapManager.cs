@@ -23,9 +23,6 @@ public class MapManager : MonoBehaviour
     [field: SerializeField] public List<VisualTile> TMPActiveTile { get; private set; }
 
 
-    //tmp, à lier avec le GameManager
-    public const int NBR_PLAYERS = 4;
-
     private void Awake()
     {
         if (mapManager != null && mapManager != this)
@@ -39,13 +36,13 @@ public class MapManager : MonoBehaviour
         }
         DontDestroyOnLoad(this.gameObject);
 
-        if (NBR_PLAYERS > 4 || NBR_PLAYERS < 1)
+        if (Constantes.NUMBER_OF_PLAYERS > 4 || Constantes.NUMBER_OF_PLAYERS < 1)
         {
-            throw new ArgumentOutOfRangeException("Nombre de joueurs invalide : " + NBR_PLAYERS);
+            throw new ArgumentOutOfRangeException("Nombre de joueurs invalide : " + Constantes.NUMBER_OF_PLAYERS);
         }
         else
         {
-            for (int i = 0; i < NBR_PLAYERS; i++)
+            for (int i = 0; i < Constantes.NUMBER_OF_PLAYERS; i++)
             {
                 players.Add(new Player(i+1, TMPActiveTile[i], 0, new Vector2Int(0, 0)));
             }

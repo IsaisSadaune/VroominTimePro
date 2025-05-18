@@ -37,7 +37,7 @@ public class MapVisuals : MonoBehaviour
     /// </summary>
     public void SetVisual()
     {
-        for(int i=0; i< NBR_PLAYERS;i++)
+        for(int i=0; i< Constantes.NUMBER_OF_PLAYERS;i++)
         {
             //playerVisuals.Add(new PlayerVisuals(
             //    i,
