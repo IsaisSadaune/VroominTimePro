@@ -1,111 +1,110 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
-using System;
 
 public class ScoreManager : MonoBehaviour
 {
-    public List<int> PlayerScore { get; private set; }
+    public List<float> PlayerScore { get; private set; } = new();
+    public List<int> PlayerTemps { get; private set; } = new();
+
+    public int record { get; private set; } = 100;
+    private int idLastRecord = -1;
+
+
     private bool someoneWon = false;
 
+    private int numberOfRounds = 1;
 
+    private const int NUMBER_OF_PLAYERS = 4;
 
-    private const int WINPOINTSREQUIRED = 10;
-    private const int NUMBEROFPLAYERS = 4;
+    private const int WIN_POINTS_REQUIRED = 20;
 
-    private const int SCOREFORFIRST = 3;
-    private const int SCOREFORSECOND = 2;
-    private const int SCOREFORTHIRD = 1;
-    private const int SCOREFORFOURTH = 0;
+    private const int SCORE_FIRST = 4;
+    private const int SCORE_SECOND = 2;
+    private const int SCORE_THIRD = 1;
+    private const int SCORE_FOURTH = 0;
 
+    private const int SCORE_RECORD_BEATEN = 1;
 
     private void Start()
     {
         InitScores();
     }
 
-
     public void InitScores()
     {
         if (PlayerScore.Count == 0)
         {
-            for (int i = 0; i < NUMBEROFPLAYERS; i++)
+            for (int i = 0; i < NUMBER_OF_PLAYERS; i++)
             {
                 PlayerScore.Add(0);
+                PlayerTemps.Add(0);
             }
         }
-        else Debug.Log("ERREUR INITIALIZATION SCORE !!!");
-    }
-    private void SetWinner(int id)
-    {
-        someoneWon = true;
-        id++;
-        Debug.Log("player n°" + id + " wins !");
+        else Debug.Log("ERREUR INIT SCORE !!!");
     }
 
-    #region resultCourse
-    private void FirstArrived(int id)
+    [ContextMenu("EndRound")]
+    public void EndRound()
     {
-        PlayerScore[id] += SCOREFORFIRST;
-        if (EnoughToWin(PlayerScore[id])) SetWinner(id);
-    }
-    private void SecondArrived(int id)
-    {
-        PlayerScore[id] += SCOREFORSECOND;
-        if (EnoughToWin(PlayerScore[id])) SetWinner(id);
-    }
-    private void ThirdArrived(int id)
-    {
-        PlayerScore[id] += SCOREFORTHIRD;
-        if (EnoughToWin(PlayerScore[id])) SetWinner(id);
-    }
-    private void FourthArrived(int id)
-    {
-        PlayerScore[id] += SCOREFORFOURTH;
-        if (EnoughToWin(PlayerScore[id])) SetWinner(id);
+        if (!someoneWon)
+        {
+            List<int> order = new() { 4, 3, 2, 1 };
+            ApplyEndRound(order);
+            numberOfRounds++;
+        }
     }
 
-    public void ResultCourse(int firstId)
+    private void ApplyEndRound(List<int> orderPlayers)
     {
-        FirstArrived(firstId);
+        for (int i = 0; i < NUMBER_OF_PLAYERS; i++)
+        {
+            PlayerScore[i] += ApplyPoints(orderPlayers[i]);
+            PlayerScore[i] = Mathf.Round(PlayerScore[i]);
+            if (RecordBeaten(i) && orderPlayers[i] == 1)
+            {
+                PlayerScore[i] += SCORE_RECORD_BEATEN;
+            }
+            if (PlayerScore[i] >= WIN_POINTS_REQUIRED)
+            {
+                someoneWon = true;
+                Debug.Log("player " + (i + 1) + " won !");
+            }
+        }
     }
-    public void ResultCourse(int firstId, int secondId)
+
+    private float ApplyPoints(int orderArrived)
     {
-        FirstArrived(firstId);
-        SecondArrived(secondId);
+        return orderArrived switch
+        {
+            1 => SCORE_FIRST * ApplyRoundScoreMulti(),
+            2 => SCORE_SECOND * ApplyRoundScoreMulti(),
+            3 => SCORE_THIRD * ApplyRoundScoreMulti(),
+            4 => SCORE_FOURTH * ApplyRoundScoreMulti(),
+            _ => 0,
+        };
     }
-    public void ResultCourse(int firstId, int secondId, int thirdId)
+
+    private float ApplyRoundScoreMulti()
     {
-        FirstArrived(firstId);
-        SecondArrived(secondId);
-        ThirdArrived(thirdId);
+        if (numberOfRounds < 5) return 1f;
+        if (numberOfRounds < 10) return 1.25f;
+        if (numberOfRounds < 15) return 1.5f;
+        return 0;
     }
-    public void ResultCourse(int firstId, int secondId, int thirdId, int fourthId)
+
+    private bool RecordBeaten(int idPlayer)
     {
-        FirstArrived(firstId);
-        SecondArrived(secondId);
-        ThirdArrived(thirdId);
-        FourthArrived(fourthId);
-    }
-    #endregion
-
-    [ContextMenu("ResultCourseTest4Players")]
-    public void ResultTest() => ResultCourse(0, 1, 2, 3);
-
-    #region utilePlusTard
-    private int GetFirst() => PlayerScore.Max();
-    private int GetSecond() => PlayerScore.Where(x => x < GetFirst()).Max();
-    private int GetThird() => PlayerScore.Where(x => x > GetLast()).Min();
-    private int GetLast() => PlayerScore.Min();
-    #endregion
-
-    private static bool EnoughToWin(int score) => score >= WINPOINTSREQUIRED;
-
-    [ContextMenu("ResetScores")]
-    public void ResetScores()
-    {
-        someoneWon = false;
-        PlayerScore.Clear();
-        InitScores();
+        if (PlayerTemps[idPlayer] < record)
+        {
+            PlayerTemps[idPlayer] = record;
+            if (idPlayer != idLastRecord)
+            {
+                idLastRecord = idPlayer;
+                Debug.Log("nouveau record");
+                return false;
+            }
+        }
+        Debug.Log("pas nouveau record");
+        return false;
     }
 }
